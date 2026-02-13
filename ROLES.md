@@ -1,30 +1,9 @@
 # Team Roles & Responsibilities
 
-  -------------------------------------------------------------------------------------------
-  Role Name     | Primary              |Key Artifacts   |Evaluation Criteria
-                | Responsibility       |(English)       |(DGETI + English)
-                | (Spanish)            |                |
-  -------------------------------------------------------------------------------------------
-  **1. The       Traduce las reglas de-  erd_diagram.      Concept: Correct Cardinality
-  Analyst &      negocio a un modelo     mmd Dictiona     (1:N, N:M). English: Claar
-                                         ry.md         
-  Designer       visual. Garantiza la                 
-  (Architect)**  Normalización (3FN).                  
-
-  --------------------------------------------------------------------------------------------
-  **2.The SQL  |Escribe el código DDl   | 01_schema.sq1   | Concept: Syntax accuracy
-  Developer    |para crear la estructura| Constraints     |(CREATE, ALTER). **English:**
-  (Builder)**  |Define tipos de datos   | (PK, FK)        |Meaning table/column names
-               |exactos.                |                 |(snakes_case). **Tech:**
-               |                        |                 |Script runs without syntax errors.
- ----------------------------------------------------------------------------------------------
- **3.The data  |Gestiona, seguridad,    | 03_users.sql    |**Concept:** Security principles (Least
- base Adminis  |usuarios y backups.     | Backup          |Privilege). **English:** Professional
- trator.       |Ensambla el entregable  | Strategy        |comments in SQL scripts.
- (Guardian)**  |final.                  |                 |**Tech:** Users have correct permissions
-               |                        |                 |(GRANT/REVOKE).
- -------------------------------------------------------------------------------------------------
- **4. The Query| Pobla la base de datos | 02_seed.sql     |**Concept:** Logic in JOINs and
- Master        | (Datos semilla)y extrae|                 |Aggreagates. **English:** Query aliases
- (Manipulator  | reportes de inteligen  | queries/*.sql   |and readability. **Tech:** Queries return
-               | cia de negocios.       |                 |accurate data sets.
+| Role Name | Primary Responsibility (Spanish) | Key Artifacts (English) | Evaluation Criteria (DGETI + English) |
+|-----------|----------------------------------|--------------------------|----------------------------------------|
+| **1. The Analyst & Designer (Architect)** | Traduce las reglas de negocio a un modelo visual. Garantiza la Normalización (3FN). | `erd_diagram`<br>`dictionary.md` | **Concept:** Correct cardinality (1:N, N:M).<br>**English:** Clear descriptions in Data Dictionary.<br>**Tech:** Diagram compiles in Mermaid/Lucidchart. |
+| **2. The SQL Developer (Builder)** | Escribe el código DDL para crear la estructura. Define tipos de datos exactos. | `01_schema.sql`<br>Constraints (PK, FK) | **Concept:** Syntax accuracy (CREATE, ALTER).<br>**English:** Meaningful table/column names (snake_case).<br>**Tech:** Script runs without syntax errors. |
+| **3. The Database Administrator (Guardian)** | Gestiona seguridad, usuarios y backups. Ensambla el entregable final. | `03_users.sql`<br>Backup Strategy | **Concept:** Security principles (Least Privilege).<br>**English:** Professional comments in SQL scripts.<br>**Tech:** Users have correct permissions (GRANT/REVOKE). |
+| **4. The Query Master (Manipulator)** | Pobla la base de datos (Datos semilla) y extrae reportes de inteligencia de negocios. | `02_seed.sql`<br>`queries/*.sql` | **Concept:** Logic in JOINs and Aggregates.<br>**English:** Query aliases and readability.<br>**Tech:** Queries return accurate data sets. |
+| **5. The SQL Tester (QA / Breaker)** | Intenta romper la BD. Valida integridad referencial y tipos de datos. | `tests/bug_report.md`<br>`tests/test_cases.sql` | **Concept:** Understanding of constraints & validation.<br>**English:** Clear bug descriptions (Expected vs Actual).<br>**Tech:** Identification of logic/structural flaws. |
