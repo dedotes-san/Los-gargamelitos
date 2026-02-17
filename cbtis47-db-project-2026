@@ -15,3 +15,10 @@
 └── /tests                 # Quality Assurance 
    ├── bug_report.md      # Registro de errores encontrados 
    └── test_cases.sql     # Scripts para intentar "romper" la BD
+|---Team Names
+__Aquino Tellez Carlos Javier
+__Hernadez Trejo Irvin Ociel
+__Hernadez Suarez Dereck Yael
+__Pozos Urbina Jesus Leornado
+__Salguero Illescas Jose Manuel
+__Valdia Croda Dorian Saul
