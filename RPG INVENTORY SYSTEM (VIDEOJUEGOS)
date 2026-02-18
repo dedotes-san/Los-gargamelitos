@@ -1,0 +1,36 @@
+# 🎮 Sistema de Inventario RPG - Modelo NoSQL
+
+## 📌 Descripción General
+
+Este documento describe la implementación de tres funcionalidades principales dentro del sistema de inventario de un videojuego RPG utilizando un esquema flexible NoSQL.
+
+---
+
+# 📦 1. Gestión de Inventario
+
+---
+## 1.1 ⚔️ Gestión de Equipamiento (Espadas)
+
+### 📖 Historia de Usuario
+> Como Jugador Guerrero, quiero equipar una espada con daño y durabilidad variables para enfrentarme a enemigos de alto nivel sabiendo cuándo mi arma está a punto de romperse.
+
+### ✅ Criterios de Aceptación
+
+| Elemento | Especificación |
+|----------|---------------|
+| Campo `daño` | Numérico |
+| Campo `durabilidad` | Rango 0 - 100 |
+| Ataque | Decrementa la durabilidad en el inventario |
+| Durabilidad = 0 | El objeto se marca como `"roto"` |
+
+### 🧩 Ejemplo de Documento
+
+```json
+{
+  "nombre": "Espada del Dragón",
+  "tipo": "espada",
+  "daño": 75,
+  "durabilidad": 40,
+  "estado": "activa"
+}
+
