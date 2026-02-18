@@ -13,7 +13,10 @@ Este documento describe la implementación de tres funcionalidades principales d
 ## 1.1 ⚔️ Gestión de Equipamiento (Espadas)
 
 ### 📖 Historia de Usuario
+
 > Como Jugador Guerrero, quiero equipar una espada con daño y durabilidad variables para enfrentarme a enemigos de alto nivel sabiendo cuándo mi arma está a punto de romperse.
+
+---
 
 ### ✅ Criterios de Aceptación
 
@@ -24,33 +27,18 @@ Este documento describe la implementación de tres funcionalidades principales d
 | Ataque | Decrementa la durabilidad en el inventario |
 | Durabilidad = 0 | El objeto se marca como `"roto"` |
 
-### 🧩 Ejemplo de Documento
+---
 
-```json
-{
-  "nombre": "Espada del Dragón",
-  "tipo": "espada",
-  "daño": 75,
-  "durabilidad": 40,
-  "estado": "activa"
-}
+### 📄 Ejemplo de Documento
 
-{
-  "nombre": "Poción de Maná",
-  "tipo": "pocion",
-  "efecto": "recuperar_mana",
-  "duracion": 30,
-  "uso_unico": true
-}
+| nombre | tipo | daño | durabilidad | estado |
+|--------|------|------|-------------|--------|
+| Espada del Dragón | espada | 75 | 40 | activa |
 
-{
-  "nombre": "Mapa del Bosque Antiguo",
-  "tipo": "mapa",
-  "coordenadas": {
-    "x": 120,
-    "y": 450
-  }
-}
+| nombre | tipo | efecto | duracion | uso_unico |
+|--------|------|--------|----------|------------|
+| Poción de Maná | pocion | recuperar_mana | 30 | true |
 
-
-
+| nombre | tipo | coordenadas.x | coordenadas.y |
+|--------|------|---------------|---------------|
+| Mapa del Bosque Antiguo | mapa | 120 | 450 |
