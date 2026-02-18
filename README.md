@@ -5,7 +5,7 @@
 
 Descripcion: Nuestro proyecto se encargara de informar 
 
-##👥 Team Names##
+##👥 Team Names
 
 - Aquino Tellez Carlos Javier  
 - Hernadez Trejo Irvin Ociel  
