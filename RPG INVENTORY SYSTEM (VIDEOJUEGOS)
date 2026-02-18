@@ -9,6 +9,7 @@ Este documento describe la implementación de tres funcionalidades principales d
 # 📦 1. Gestión de Inventario
 
 ---
+
 ## 1.1 ⚔️ Gestión de Equipamiento (Espadas)
 
 ### 📖 Historia de Usuario
@@ -33,4 +34,23 @@ Este documento describe la implementación de tres funcionalidades principales d
   "durabilidad": 40,
   "estado": "activa"
 }
+
+{
+  "nombre": "Poción de Maná",
+  "tipo": "pocion",
+  "efecto": "recuperar_mana",
+  "duracion": 30,
+  "uso_unico": true
+}
+
+{
+  "nombre": "Mapa del Bosque Antiguo",
+  "tipo": "mapa",
+  "coordenadas": {
+    "x": 120,
+    "y": 450
+  }
+}
+
+
 
