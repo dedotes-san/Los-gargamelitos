@@ -1,4 +1,5 @@
-## TEMA: Los Gargamelitos ##
+## TEMA: Los Gargamelitos ## ![Proyecto](https://github.com/user-attachments/assets/45f428f5-1135-4806-adcd-fc66b5092798)
+
 
 Descripcion: Nuestro proyecto se encargara de informar 
 
