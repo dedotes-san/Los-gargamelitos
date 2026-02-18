@@ -20,25 +20,25 @@ Este documento describe la implementación de tres funcionalidades principales d
 
 ### ✅ Criterios de Aceptación
 
-| Elemento | Especificación |
-|----------|---------------|
-| Campo `daño` | Numérico |
-| Campo `durabilidad` | Rango 0 - 100 |
-| Ataque | Decrementa la durabilidad en el inventario |
-| Durabilidad = 0 | El objeto se marca como `"roto"` |
+| Elemento            | Especificación                                   |
+|---------------------|--------------------------------------------------|
+| Campo `daño`        | Numérico                                         |
+| Campo `durabilidad` | Rango 0 - 100                                    |
+| Ataque              | Decrementa la durabilidad en el inventario       |
+| Durabilidad = 0     | El objeto se marca como "roto"                   |
 
 ---
 
 ### 📄 Ejemplo de Documento
 
-| nombre | tipo | daño | durabilidad | estado |
-|--------|------|------|-------------|--------|
-| Espada del Dragón | espada | 75 | 40 | activa |
+| nombre               | tipo   | daño | durabilidad | estado  |
+|----------------------|--------|------|------------|---------|
+| Espada del Dragón    | espada | 75   | 40         | activa  |
 
-| nombre | tipo | efecto | duracion | uso_unico |
-|--------|------|--------|----------|------------|
-| Poción de Maná | pocion | recuperar_mana | 30 | true |
+| nombre              | tipo   | efecto          | duracion | uso_unico |
+|---------------------|--------|----------------|----------|------------|
+| Poción de Maná      | pocion | recuperar_mana | 30       | true       |
 
-| nombre | tipo | coordenadas.x | coordenadas.y |
-|--------|------|---------------|---------------|
-| Mapa del Bosque Antiguo | mapa | 120 | 450 |
+| nombre                    | tipo | coordenadas.x | coordenadas.y |
+|---------------------------|------|---------------|---------------|
+| Mapa del Bosque Antiguo   | mapa | 120           | 450           |
