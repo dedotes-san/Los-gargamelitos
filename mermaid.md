@@ -3,56 +3,33 @@ erDiagram
 ## Diagrama E-R
 ```mermaid
 
+  erDiagram
+
     RPG {
+        int id_rpg
         string nombre
     }
 
     PERSONAJE {
-        string Desarrollo
-        string Estadisticas
-        string Clases
+        int id_personaje
+        string nombre
+        int id_rpg
     }
 
-    SISTEMAS {
-        string Combate
-        string Inventario
-        string Progresion
+    ESTADISTICA {
+        int id_estadistica
+        string tipo
+        int valor
+        int id_personaje
     }
 
-    MUNDO {
-        string Historia
-        string Mundo_Abierto
-        string Facciones
+    SISTEMA {
+        int id_sistema
+        string tipo
+        int id_rpg
     }
 
-    DESARROLLO {
-        string Niveles
-        string Habilidades
-    }
-
-    ESTADISTICAS {
-        int Fuerza
-        int Vida_HP
-    }
-
-    COMBATE {
-        string Turnos
-        string Tiempo_Real
-    }
-
-    INVENTARIO {
-        string Armas
-        string Pociones
-    }
-
-    RPG ||--|| PERSONAJE : incluye
-    RPG ||--|| SISTEMAS : incluye
-    RPG ||--|| MUNDO : incluye
-
-    PERSONAJE ||--|| DESARROLLO : contiene
-    PERSONAJE ||--|| ESTADISTICAS : contiene
-
-    SISTEMAS ||--|| COMBATE : gestiona
-    SISTEMAS ||--|| INVENTARIO : gestiona
-
+    RPG ||--o{ PERSONAJE : tiene
+    RPG ||--o{ SISTEMA : contiene
+    PERSONAJE ||--o{ ESTADISTICA : posee
 ```
