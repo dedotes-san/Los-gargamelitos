@@ -5,8 +5,8 @@ erDiagram
 
   erDiagram
 
-    RPG {
-        int id_rpg
+    GAME {
+        int id_game
         string nombre
     }
 
@@ -23,13 +23,13 @@ erDiagram
         int id_personaje
     }
 
-    SISTEMA {
-        int id_sistema
+    REQUISITOS {
+        int id_requisitos
         string tipo
-        int id_rpg
+        int id_game
     }
 
     RPG ||--o{ PERSONAJE : tiene
-    RPG ||--o{ SISTEMA : contiene
+    RPG ||--o{ REQUISITOS : contiene
     PERSONAJE ||--o{ ESTADISTICA : posee
 ```
