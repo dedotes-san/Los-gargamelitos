@@ -1,5 +1,8 @@
 erDiagram
 
+## Diagrama E-R
+```mermaid
+
     RPG {
         string nombre
     }
@@ -51,3 +54,5 @@ erDiagram
 
     SISTEMAS ||--|| COMBATE : gestiona
     SISTEMAS ||--|| INVENTARIO : gestiona
+
+```
