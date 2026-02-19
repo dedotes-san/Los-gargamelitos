@@ -1,3 +1,6 @@
+## Diagrama E-R
+
+```mermaid
 graph LR
 
     RPG["🎮 RPG (Role-Playing Game)"]
@@ -45,4 +48,6 @@ graph LR
     %% ESTILOS
     classDef principal fill:#6C5CE7,color:#ffffff,stroke:#333,stroke-width:2px;
     class RPG principal;
+
+```
 
