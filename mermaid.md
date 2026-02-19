@@ -29,7 +29,7 @@ erDiagram
         int id_game
     }
 
-    RPG ||--o{ PERSONAJE : tiene
-    RPG ||--o{ REQUISITOS : contiene
+    GAME ||--o{ PERSONAJE : tiene
+    GAME ||--o{ REQUISITOS : contiene
     PERSONAJE ||--o{ ESTADISTICA : posee
 ```
