@@ -1,53 +1,53 @@
-## Diagrama E-R
+erDiagram
 
-```mermaid
-graph LR
+    RPG {
+        string nombre
+    }
 
-    RPG["🎮 RPG (Role-Playing Game)"]
+    PERSONAJE {
+        string Desarrollo
+        string Estadisticas
+        string Clases
+    }
 
-    %% BLOQUE PERSONAJE
-    subgraph PERSONAJE
-        Desarrollo["Desarrollo"]
-        Estadisticas["Estadísticas"]
-        Clases["Clases"]
-    end
+    SISTEMAS {
+        string Combate
+        string Inventario
+        string Progresion
+    }
 
-    %% BLOQUE SISTEMAS
-    subgraph SISTEMAS
-        Combate["Combate"]
-        Inventario["Inventario"]
-        Progresion["Progresión"]
-    end
+    MUNDO {
+        string Historia
+        string Mundo_Abierto
+        string Facciones
+    }
 
-    %% BLOQUE MUNDO
-    subgraph MUNDO
-        Historia["Historia"]
-        Mundo["Mundo Abierto"]
-        Facciones["Facciones"]
-    end
+    DESARROLLO {
+        string Niveles
+        string Habilidades
+    }
 
-    %% RELACIONES PRINCIPALES
-    RPG --> Desarrollo
-    RPG --> Combate
-    RPG --> Historia
-    RPG --> Inventario
+    ESTADISTICAS {
+        int Fuerza
+        int Vida_HP
+    }
 
-    %% SUBNIVELES
-    Desarrollo --> Niveles["Niveles"]
-    Desarrollo --> Habilidades["Habilidades"]
+    COMBATE {
+        string Turnos
+        string Tiempo_Real
+    }
 
-    Estadisticas --> Fuerza["Fuerza"]
-    Estadisticas --> Vida["Vida (HP)"]
+    INVENTARIO {
+        string Armas
+        string Pociones
+    }
 
-    Combate --> Turnos["Turnos"]
-    Combate --> TiempoReal["Tiempo Real"]
+    RPG ||--|| PERSONAJE : incluye
+    RPG ||--|| SISTEMAS : incluye
+    RPG ||--|| MUNDO : incluye
 
-    Inventario --> Armas["Armas"]
-    Inventario --> Pociones["Pociones"]
+    PERSONAJE ||--|| DESARROLLO : contiene
+    PERSONAJE ||--|| ESTADISTICAS : contiene
 
-    %% ESTILOS
-    classDef principal fill:#6C5CE7,color:#ffffff,stroke:#333,stroke-width:2px;
-    class RPG principal;
-
-```
-
+    SISTEMAS ||--|| COMBATE : gestiona
+    SISTEMAS ||--|| INVENTARIO : gestiona
