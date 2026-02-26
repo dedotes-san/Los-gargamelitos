@@ -1,0 +1,69 @@
+
+erDiagram
+```mermaid
+    GAME {
+        int id
+        string nombre
+        string genero
+    }
+
+    JUGADOR {
+        int id
+        string username
+        string email
+        int game_id
+    }
+
+    PERSONAJE {
+        int id
+        string nombre
+        int nivel
+        int experiencia
+        int jugador_id
+        int clase_id
+    }
+
+    CLASE {
+        int id
+        string nombre
+        string tipo_arma
+    }
+
+    ESTADISTICA {
+        int id
+        int fuerza
+        int defensa
+        int agilidad
+        int inteligencia
+        int personaje_id
+    }
+
+    ITEM {
+        int id
+        string nombre
+        string tipo
+        int valor
+    }
+
+    INVENTARIO {
+        int id
+        int personaje_id
+        int item_id
+        int cantidad
+    }
+
+    MISION {
+        int id
+        string nombre
+        string dificultad
+        int recompensa_exp
+    }
+
+    GAME ||--o{ JUGADOR : contiene
+    JUGADOR ||--o{ PERSONAJE : crea
+    PERSONAJE }o--|| CLASE : pertenece
+    PERSONAJE ||--|| ESTADISTICA : posee
+    PERSONAJE ||--o{ INVENTARIO : tiene
+    ITEM ||--o{ INVENTARIO : almacenado_en
+
+```
