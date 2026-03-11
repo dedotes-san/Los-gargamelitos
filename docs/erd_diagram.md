@@ -1,38 +1,40 @@
-# ER Diagram
+## Diagrama Entidad-Relación (ER)
 
 ```mermaid
 erDiagram
 
-USERS ||--o{ LIBRARY : owns
-GAMES ||--o{ LIBRARY : contains
-DEVELOPERS ||--o{ GAMES : creates
-GENRES ||--o{ GAMES : categorizes
+    USERS {
+        INT id_user PK
+        VARCHAR username
+        VARCHAR email
+        VARCHAR password
+        DATETIME created_at
+    }
 
-USERS {
-int user_id
-string username
-string email
-}
+    GAMES {
+        INT id_game PK
+        VARCHAR title
+        TEXT description
+        VARCHAR file_path
+        DATE release_date
+    }
 
-GAMES {
-int game_id
-string title
-}
+    FAVORITES {
+        INT id_favorite PK
+        INT id_user FK
+        INT id_game FK
+        DATETIME added_date
+    }
 
-DEVELOPERS {
-int developer_id
-string name
-}
+    ACHIEVEMENTS {
+        INT id_achievement PK
+        INT id_game FK
+        VARCHAR title
+        TEXT description
+        INT points
+    }
 
-GENRES {
-int genre_id
-string name
-}
-
-LIBRARY {
-int library_id
-int user_id
-int game_id
-}
+    USERS ||--o{ FAVORITES : tiene
+    GAMES ||--o{ FAVORITES : es_favorito
+    GAMES ||--o{ ACHIEVEMENTS : posee
 ```
-
