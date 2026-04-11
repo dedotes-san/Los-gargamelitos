@@ -1,5 +1,3 @@
--- Borramos el USE y el CREATE DATABASE porque el servidor ya te da la DB
--- Solo copia desde aquí:
 
 CREATE TABLE USER (
     id INT AUTO_INCREMENT PRIMARY KEY,
