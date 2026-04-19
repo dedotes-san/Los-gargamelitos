@@ -145,7 +145,7 @@ The database will be fully ready to use.
 
 #  Author
 
-**Irvin Ociel Hernández Trejo**
+**Los gargamelitos**
 
 Project created for database system design practice.
 
