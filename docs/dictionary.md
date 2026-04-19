@@ -1,6 +1,8 @@
-# 📚 Data Dictionary – RPG Launcher Database
+# 📚 Data Dictionary – RPG Launcher Database (MythCore)
 
-This document describes the structure of the RPG Launcher database, including all tables, fields, and relationships.
+This document describes the database structure used in the MythCore RPG Launcher system.
+
+The database manages users, friendships, messages, favorites, reports, and games.
 
 ---
 
@@ -11,11 +13,17 @@ Stores registered users.
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id | INT (PK) | Unique user identifier |
-| username | VARCHAR(50) | Username |
-| email | VARCHAR(150) | Email address |
-| password | VARCHAR(255) | Encrypted password |
-| status | VARCHAR(20) | Account status |
+| username | VARCHAR | Username used to log in |
+| email | VARCHAR | User email |
+| password | VARCHAR | Encrypted password |
+| avatar | VARCHAR | Avatar filename |
+| level | INT | User level |
+| xp | INT | Experience points |
 | created_at | DATETIME | Account creation date |
+| profile_pic | VARCHAR | Profile picture |
+| blocked | BOOLEAN | Account blocked status |
+| last_active | DATETIME | Last active time |
+| last_seen | DATETIME | Last seen time |
 
 ---
 
@@ -26,9 +34,13 @@ Stores available games.
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id | INT (PK) | Game identifier |
-| title | VARCHAR(100) | Game title |
+| name | VARCHAR | Game title |
+| genre | VARCHAR | Game genre |
 | description | TEXT | Game description |
-| release_date | DATE | Release date |
+| image | VARCHAR | Game image |
+| is_real | BOOLEAN | Indicates if game is real |
+| url | VARCHAR | Game URL |
+| created_at | DATETIME | Game creation date |
 | id_category | INT (FK) | Category reference |
 
 ---
@@ -40,47 +52,46 @@ Stores game categories.
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id_category | INT (PK) | Category ID |
-| name | VARCHAR(50) | Category name |
+| name | VARCHAR | Category name |
 
 ---
 
 # TABLE: favorites
 
-Stores user favorite games.
+Stores favorite games per user.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
-| id | INT (PK) | Favorite identifier |
+| id | INT (PK) | Favorite ID |
 | user_id | INT (FK) | User reference |
 | game_id | INT (FK) | Game reference |
-| added_at | DATETIME | Date added |
 
 ---
 
 # TABLE: friends
 
-Stores user friendships.
+Stores friendships between users.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id | INT (PK) | Friendship ID |
-| user_id | INT (FK) | User reference |
-| friend_id | INT (FK) | Friend reference |
-| created_at | DATETIME | Friendship date |
+| sender_id | INT (FK) | Request sender |
+| receiver_id | INT (FK) | Request receiver |
+| status | VARCHAR | Friendship status |
+| blocker_id | INT | User who blocked |
 
 ---
 
-# TABLE: friend_requests
+# TABLE: blocked_users
 
-Stores pending friend requests.
+Stores blocked users.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
-| id | INT (PK) | Request ID |
-| sender_id | INT (FK) | Sender user |
-| receiver_id | INT (FK) | Receiver user |
-| status | VARCHAR(20) | Request status |
-| created_at | DATETIME | Request date |
+| id | INT (PK) | Block identifier |
+| blocker_id | INT (FK) | User who blocks |
+| blocked_id | INT (FK) | Blocked user |
+| created_at | DATETIME | Block date |
 
 ---
 
@@ -93,54 +104,28 @@ Stores chat messages.
 | id | INT (PK) | Message ID |
 | sender_id | INT (FK) | Sender user |
 | receiver_id | INT (FK) | Receiver user |
-| message_text | TEXT | Message content |
+| message | TEXT | Message content |
 | sent_at | DATETIME | Sent date |
-
----
-
-# TABLE: blocked_users
-
-Stores blocked users.
-
-| Field | Data Type | Description |
-|------|-----------|-------------|
-| id | INT (PK) | Block ID |
-| user_id | INT (FK) | User who blocks |
-| blocked_user_id | INT (FK) | Blocked user |
-| created_at | DATETIME | Block date |
-
----
-
-# TABLE: achievements
-
-Stores unlocked achievements.
-
-| Field | Data Type | Description |
-|------|-----------|-------------|
-| id | INT (PK) | Achievement ID |
-| user_id | INT (FK) | User reference |
-| title | VARCHAR(100) | Achievement title |
-| unlocked_at | DATETIME | Unlock date |
+| status | VARCHAR | Message status |
+| created_at | DATETIME | Creation date |
 
 ---
 
 # TABLE: reports
 
-Stores user reports.
+Stores reports between users.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id | INT (PK) | Report ID |
-| reporter_id | INT (FK) | Reporting user |
-| reported_user_id | INT (FK) | Reported user |
+| reported_id | INT (FK) | Reported user |
 | reason | TEXT | Report reason |
-| created_at | DATETIME | Report date |
 
 ---
 
 # 🔗 RELATIONSHIPS
 
-Database relationships include:
+Database relationships:
 
 - One USER can send many MESSAGES
 - One USER can receive many MESSAGES
@@ -148,22 +133,21 @@ Database relationships include:
 - One USER can block many USERS
 - One USER can have many FAVORITES
 - One GAME belongs to one CATEGORY
-- One USER can unlock many ACHIEVEMENTS
 - One USER can create many REPORTS
 
 ---
 
-# 📌 DATABASE SUMMARY
+# 📊 DATABASE SUMMARY
 
-Total Tables: 10
+Total Tables: **9**
+
+Tables included:
 
 - users
 - games
 - categories
 - favorites
 - friends
-- friend_requests
-- messages
 - blocked_users
-- achievements
+- messages
 - reports
