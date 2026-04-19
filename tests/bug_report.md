@@ -1,6 +1,6 @@
 #  Bug Report — MythCore RPG Launcher
 
-Author: **Irvin Ociel Hernández Trejo**
+Author: **Los garagamelitos**
 
 This document contains detected issues during database testing and how they were resolved.
 
