@@ -1,0 +1,22 @@
+DOCUMENTACIÓN – DE NUESTRO PROYECTO 
+
+1. Descripción General
+MythCore es un lanzador de videojuegos con varias características en general, cuenta con un sistema de buscador de videojuegos, en los videojuegos puedes agregarlos a favoritos y tiene un apartado para que solo veas tus juegos favoritos y no tengas que buscar entre todos los juegos y si hay juegos que ya no quieres puedes quitarlo de favoritos y puedes ir a la tienda a comprarlo o de igual manera jugar los juegos en el sitio, cuenta con un ranking donde muestra los tops de cada jugador el nivel y la xp (experiencia) entre el nivel sea más alto podrás ser del top 1, también cuenta con un sistema de chat y un sistema de buscador de amigos y puedes añadir a cualquier amigo y puedes eliminarlo, si quieres vaciar el chat se podrá y también hay un sistema de bloqueo y el otro usuario no se va a enterar solo cuando te mande mensaje no te llegara nunca el mensaje del usuario, nuestro proyecto también cuenta con un cambio de nombre y con un filtro extremo que no deja poner groserías como nombre y te bloquea al acabar las únicas 3 oportunidades que tienes y te obligara a crear un nueva cuenta, si intentas usar el mismo correo el sistema no te lo va permitirá y te dará un mensaje de que el correo fue bloqueado, en las ventanas de inicio de sesión si olvidaste tu contraseña podrás cambiarla poniendo el correo y tu nueva contraseña, en la ventana de registro tendrás que crear una cuenta si no tienes y la contraseña debe de ser segura como mínimo 10 caracteres, cuenta con música de fondo y un sonido de trueno con relámpago en el inicio y con sistema de cambiar fotos de perfiles y en los chats aparecen, cuenta con un sistema de 32 logros y cada logro que desbloquees se te marcara con una animación, la xp se gana jugando.
+
+
+
+
+
+
+
+2. Modificaciones que se hicieron a lo largo del proyecto
+
+Hubo muchas modificaciones para mejorar la comodidad de nuestros usuarios como la mejora del filtro, la mejora del  cambio de nombre tiene un efecto mas bueno, el cambio de colores y el fondo de todo el proyecto, el cambio del color, el cambio del chat mas efectivo y mas cómodo el cambio del online y offline en funcionamiento el sistema de logros se añadieron mas logros para que no sean pocos y puedas divertirte mucho màs, se mejoró la forma de ganar puntos de XP. Se corrigió el botón de favoritos que sea mas efectivo, se añadieron botones de las categorías que hay en el proyecto, se agrego el sistema de bloqueo de el usuario, el bloqueo de chat y la eliminación de amigos.  
+
+
+
+3. Cosas por agregar o mejoras de el proyecto 
+Las cosas que tenemos planeados en meter o mejorar son el sistema de buscador de juegos con las primeras iniciales del juego que pongas aparecerá automáticamente, la mejora de el buscador de amigos con que pongas las primeras iniciales del nombre del usuario aparecerá y contaras con un historial de búsquedas de amigos, una mejora en los colores de todo el proyecto será mas táctico mas discreto pero llamativo y el fondo será diferente, las animaciones de botones, en el chat añadiremos un sistema donde pueda abrir la cámara o las fotos y de igual manera que pueda mandar archivos, un sistema donde puedan hacer un grupo y contaras con un historial de solicitudes, podrás ver tu información al picarle al botón de ajustes, podrás deseñas un muñeco 3d con cualquier ropa o accesorio, vas a poder ver la información de los demás usuarios pero será información básica, mejoraremos el sistema de sonido que este en todas las ventanas y no se corte en cualquier momento.
+
+ 4.Conclusiòn
+En conclusión, este proyecto esta creado para que puedas jugar cualquier juego rpg que desees y con mucha comodidad sin riesgos de que pueda pasar algo MythCore, Además, no solo se enfoca en ofrecer una experiencia de juego segura y divertida, si no que brinda herramientas muy útiles como el sistema de favoritos, el ranking competitivo, el chat con amigos y múltiples opciones de personalización que mejoran la interacción entre usuarios. A lo largo de su desarrollo se han realizado diversas mejoras para optimizar su funcionamiento y hacerlo más intuitivo, demostrando nuestro compromiso constante con la calidad del proyecto. Asimismo, las futuras mejoras planeadas que realizaremos permitirán que la plataforma sea aún más completa, dinámica y atractiva.
