@@ -2,7 +2,7 @@
 
 MythCore RPG Launcher is a database-driven platform designed to manage RPG games, users, friendships, messages, and favorites within a gaming environment.
 
-Author: **Irvin Ociel Hernández Trejo**
+Author: **Los gargamelitos**
 
 ---
 
