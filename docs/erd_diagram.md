@@ -4,7 +4,7 @@
 erDiagram
 
     USERS {
-        INT id_user PK
+        INT id PK
         VARCHAR username
         VARCHAR email
         VARCHAR password
@@ -12,29 +12,68 @@ erDiagram
     }
 
     GAMES {
-        INT id_game PK
-        VARCHAR title
+        INT id PK
+        VARCHAR name
         TEXT description
-        VARCHAR file_path
-        DATE release_date
+        INT id_category FK
+    }
+
+    CATEGORIES {
+        INT id_category PK
+        VARCHAR name
     }
 
     FAVORITES {
-        INT id_favorite PK
-        INT id_user FK
-        INT id_game FK
-        DATETIME added_date
+        INT id PK
+        INT user_id FK
+        INT game_id FK
     }
 
-    ACHIEVEMENTS {
-        INT id_achievement PK
-        INT id_game FK
-        VARCHAR title
-        TEXT description
-        INT points
+    FRIENDS {
+        INT id PK
+        INT sender_id FK
+        INT receiver_id FK
+        VARCHAR status
     }
 
-    USERS ||--o{ FAVORITES : tiene
-    GAMES ||--o{ FAVORITES : es_favorito
-    GAMES ||--o{ ACHIEVEMENTS : posee
-```
+    FRIEND_REQUESTS {
+        INT id PK
+        INT sender_id FK
+        INT receiver_id FK
+        VARCHAR status
+    }
+
+    BLOCKED_USERS {
+        INT id PK
+        INT blocker_id FK
+        INT blocked_id FK
+    }
+
+    MESSAGES {
+        INT id PK
+        INT sender_id FK
+        INT receiver_id FK
+        TEXT message
+        DATETIME sent_at
+    }
+
+    REPORTS {
+        INT id PK
+        INT reported_id FK
+        TEXT reason
+    }
+
+    USERS ||--o{ FAVORITES : has
+    GAMES ||--o{ FAVORITES : contains
+
+    USERS ||--o{ FRIENDS : sends
+    USERS ||--o{ FRIEND_REQUESTS : requests
+
+    USERS ||--o{ BLOCKED_USERS : blocks
+
+    USERS ||--o{ MESSAGES : sends
+    USERS ||--o{ MESSAGES : receives
+
+    USERS ||--o{ REPORTS : reports
+
+    CATEGORIES ||--o{ GAMES : categorizes
