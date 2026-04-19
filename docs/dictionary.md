@@ -1,58 +1,169 @@
-# 📚 Diccionario de Datos – Base de Datos del Launcher
+# 📚 Data Dictionary – RPG Launcher Database
 
-Este documento describe la estructura de la base de datos utilizada en el proyecto del launcher de videojuegos.
-
----
-
-# Tabla: users
-
-| Campo | Tipo de Dato | Descripción |
-|------|------|------|
-| id_user | INT (PK) | Identificador único del usuario |
-| username | VARCHAR(50) | Nombre de usuario para iniciar sesión |
-| email | VARCHAR(100) | Correo electrónico del usuario |
-| password | VARCHAR(255) | Contraseña cifrada del usuario |
-| created_at | DATETIME | Fecha de creación de la cuenta |
+This document describes the structure of the RPG Launcher database, including all tables, fields, and relationships.
 
 ---
 
-# Tabla: games
+# TABLE: users
 
-| Campo | Tipo de Dato | Descripción |
-|------|------|------|
-| id_game | INT (PK) | Identificador único del juego |
-| title | VARCHAR(100) | Nombre del videojuego |
-| description | TEXT | Descripción del juego |
-| file_path | VARCHAR(255) | Ruta del archivo ejecutable del juego |
-| release_date | DATE | Fecha de lanzamiento del juego |
+Stores registered users.
 
----
-
-# Tabla: favorites
-
-| Campo | Tipo de Dato | Descripción |
-|------|------|------|
-| id_favorite | INT (PK) | Identificador del registro de favorito |
-| id_user | INT (FK) | Usuario que agregó el juego a favoritos |
-| id_game | INT (FK) | Juego marcado como favorito |
-| added_date | DATETIME | Fecha en que el juego se agregó a favoritos |
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Unique user identifier |
+| username | VARCHAR(50) | Username |
+| email | VARCHAR(150) | Email address |
+| password | VARCHAR(255) | Encrypted password |
+| status | VARCHAR(20) | Account status |
+| created_at | DATETIME | Account creation date |
 
 ---
 
-# Tabla: achievements
+# TABLE: games
 
-| Campo | Tipo de Dato | Descripción |
-|------|------|------|
-| id_achievement | INT (PK) | Identificador del logro |
-| id_game | INT (FK) | Juego al que pertenece el logro |
-| title | VARCHAR(100) | Nombre del logro |
-| description | TEXT | Descripción del logro |
-| points | INT | Puntos obtenidos al desbloquear el logro |
+Stores available games.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Game identifier |
+| title | VARCHAR(100) | Game title |
+| description | TEXT | Game description |
+| release_date | DATE | Release date |
+| id_category | INT (FK) | Category reference |
 
 ---
 
-# Relaciones de la Base de Datos
+# TABLE: categories
 
-- Un **usuario** puede tener múltiples **favoritos**.
-- Un **juego** puede aparecer en múltiples **favoritos**.
-- Un **juego** puede tener múltiples **logros (achievements)**.
+Stores game categories.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id_category | INT (PK) | Category ID |
+| name | VARCHAR(50) | Category name |
+
+---
+
+# TABLE: favorites
+
+Stores user favorite games.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Favorite identifier |
+| user_id | INT (FK) | User reference |
+| game_id | INT (FK) | Game reference |
+| added_at | DATETIME | Date added |
+
+---
+
+# TABLE: friends
+
+Stores user friendships.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Friendship ID |
+| user_id | INT (FK) | User reference |
+| friend_id | INT (FK) | Friend reference |
+| created_at | DATETIME | Friendship date |
+
+---
+
+# TABLE: friend_requests
+
+Stores pending friend requests.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Request ID |
+| sender_id | INT (FK) | Sender user |
+| receiver_id | INT (FK) | Receiver user |
+| status | VARCHAR(20) | Request status |
+| created_at | DATETIME | Request date |
+
+---
+
+# TABLE: messages
+
+Stores chat messages.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Message ID |
+| sender_id | INT (FK) | Sender user |
+| receiver_id | INT (FK) | Receiver user |
+| message_text | TEXT | Message content |
+| sent_at | DATETIME | Sent date |
+
+---
+
+# TABLE: blocked_users
+
+Stores blocked users.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Block ID |
+| user_id | INT (FK) | User who blocks |
+| blocked_user_id | INT (FK) | Blocked user |
+| created_at | DATETIME | Block date |
+
+---
+
+# TABLE: achievements
+
+Stores unlocked achievements.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Achievement ID |
+| user_id | INT (FK) | User reference |
+| title | VARCHAR(100) | Achievement title |
+| unlocked_at | DATETIME | Unlock date |
+
+---
+
+# TABLE: reports
+
+Stores user reports.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Report ID |
+| reporter_id | INT (FK) | Reporting user |
+| reported_user_id | INT (FK) | Reported user |
+| reason | TEXT | Report reason |
+| created_at | DATETIME | Report date |
+
+---
+
+# 🔗 RELATIONSHIPS
+
+Database relationships include:
+
+- One USER can send many MESSAGES
+- One USER can receive many MESSAGES
+- One USER can have many FRIENDS
+- One USER can block many USERS
+- One USER can have many FAVORITES
+- One GAME belongs to one CATEGORY
+- One USER can unlock many ACHIEVEMENTS
+- One USER can create many REPORTS
+
+---
+
+# 📌 DATABASE SUMMARY
+
+Total Tables: 10
+
+- users
+- games
+- categories
+- favorites
+- friends
+- friend_requests
+- messages
+- blocked_users
+- achievements
+- reports
