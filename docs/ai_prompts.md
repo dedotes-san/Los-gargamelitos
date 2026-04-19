@@ -1,6 +1,6 @@
 #  AI Prompts Used — MythCore RPG Launcher
 
-Author: **Irvin Ociel Hernández Trejo**
+Author: **Los gargamelitos**
 
 This document contains example prompts used to generate and improve the database system using Artificial Intelligence tools.
 
