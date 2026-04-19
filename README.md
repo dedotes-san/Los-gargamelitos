@@ -121,15 +121,13 @@ The database will be fully ready to use.
 
 ---
 
-#  Team Roles & Responsibilities
-
-| Role Name | Primary Responsibility | Key Artifacts |
-|-----------|-----------------------|----------------|
-| The Analyst & Designer | Designs the database structure and relationships | docs/erd_diagram.mmd, docs/dictionary.md |
-| The SQL Developer | Creates database tables and constraints | src/01_schema.sql |
-| The Database Administrator | Organizes project structure and documentation | README.md |
-| The Query Master | Inserts data and creates queries | src/02_inserts_sample.sql, queries/report_games.sql |
-| The SQL Tester | Tests database queries and validates structure | queries/advanced_queries.sql |
+| Role Name | Primary Responsibility | Key Artifacts | Assigned Member |
+|-----------|-----------------------|----------------|----------------|
+| The Analyst & Designer | Designs the database structure and relationships | docs/erd_diagram.md, docs/dictionary.md | A. Irvin |
+| The SQL Developer | Creates database tables and constraints | src/01_schema.sql | B. Dorian |
+| The Database Administrator | Organizes project structure and documentation | README.md | C. Dereck |
+| The Query Master | Inserts data and creates queries | src/02_inserts_sample.sql, queries/report_games.sql | D. Manuel |
+| The SQL Tester | Tests database queries and validates structure | queries/advanced_queries.sql | E. Carlos |
 
 ---
 
