@@ -1,39 +1,97 @@
-# Normalization Report
+#  Database Normalization Report – MythCore RPG Launcher
 
-## First Normal Form (1NF)
+This report explains how the MythCore database follows normalization rules to reduce redundancy and improve data integrity.
 
-The database satisfies First Normal Form because:
-
-* Each table has a primary key.
-* Each field contains atomic values (no multiple values in a single column).
-* There are no repeating groups.
-
-Example:
-The `users` table stores one user per row and each column has a single value.
+The database is normalized up to the **Third Normal Form (3NF)**.
 
 ---
 
-## Second Normal Form (2NF)
+#  FIRST NORMAL FORM (1NF)
 
-The database satisfies Second Normal Form because:
+A table is in First Normal Form when:
 
-* All non-key attributes depend entirely on the primary key.
-* There are no partial dependencies.
+- Each column contains atomic values
+- Each record is unique
+- There are no repeating groups
 
-Example:
-In the `games` table, the title, developer_id, and genre_id depend only on `game_id`.
+## Example Tables in 1NF
+
+### users
+
+Each user record contains unique values:
+
+| id | username | email | level | xp |
+|----|----------|--------|-------|----|
+| 1 | player01 | p@email.com | 5 | 200 |
+
+✔ No repeating values  
+✔ Each user has a unique ID  
 
 ---
 
-## Third Normal Form (3NF)
+### messages
 
-The database satisfies Third Normal Form because:
+Each message is stored separately:
 
-* There are no transitive dependencies.
-* Data about developers and genres is stored in separate tables.
+| id | sender_id | receiver_id | message |
+|----|------------|--------------|----------|
+| 1 | 2 | 3 | Hello |
 
-Example:
-Instead of storing developer names directly in the games table, we reference them using `developer_id`.
+✔ Messages are stored individually  
+✔ No grouped messages  
 
-This avoids redundancy and improves data integrity.
+---
 
+#  SECOND NORMAL FORM (2NF)
+
+A table is in Second Normal Form when:
+
+- It is already in 1NF
+- All non-key attributes depend on the entire primary key
+
+## Example
+
+### favorites
+
+Primary Key: **id**
+
+| id | user_id | game_id |
+|----|---------|---------|
+| 1 | 2 | 5 |
+
+✔ game_id depends fully on id  
+✔ user_id depends fully on id  
+
+No partial dependencies exist.
+
+---
+
+### friends
+
+Primary Key: **id**
+
+| id | sender_id | receiver_id | status |
+|----|------------|--------------|--------|
+| 1 | 3 | 5 | accepted |
+
+✔ All columns depend on id  
+✔ No partial key dependency  
+
+---
+
+#  THIRD NORMAL FORM (3NF)
+
+A table is in Third Normal Form when:
+
+- It is already in 2NF
+- No transitive dependencies exist
+
+## Example
+
+### games and categories separation
+
+Instead of:
+
+```text
+games:
+id | name | category_name
