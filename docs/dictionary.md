@@ -1,45 +1,45 @@
-# 📚 Data Dictionary – RPG Launcher Database (MythCore)
+#  Data Dictionary – MythCore RPG Launcher Database
 
 This document describes the database structure used in the MythCore RPG Launcher system.
 
-The database manages users, friendships, messages, favorites, reports, and games.
+The database manages users, games, friendships, messages, favorites, reports, blocking systems, and game categories.
 
 ---
 
 # TABLE: users
 
-Stores registered users.
+Stores registered users of the platform.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id | INT (PK) | Unique user identifier |
-| username | VARCHAR | Username used to log in |
-| email | VARCHAR | User email |
-| password | VARCHAR | Encrypted password |
-| avatar | VARCHAR | Avatar filename |
+| username | VARCHAR(50) | Username used to log in |
+| email | VARCHAR(150) | User email |
+| password | VARCHAR(255) | Encrypted password |
+| avatar | VARCHAR(255) | Avatar filename |
 | level | INT | User level |
 | xp | INT | Experience points |
 | created_at | DATETIME | Account creation date |
-| profile_pic | VARCHAR | Profile picture |
-| blocked | BOOLEAN | Account blocked status |
-| last_active | DATETIME | Last active time |
-| last_seen | DATETIME | Last seen time |
+| profile_pic | VARCHAR(255) | Profile picture |
+| blocked | BOOLEAN | Indicates if user is blocked |
+| last_active | DATETIME | Last activity timestamp |
+| last_seen | DATETIME | Last seen timestamp |
 
 ---
 
 # TABLE: games
 
-Stores available games.
+Stores all available games.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id | INT (PK) | Game identifier |
-| name | VARCHAR | Game title |
-| genre | VARCHAR | Game genre |
+| name | VARCHAR(100) | Game title |
+| genre | VARCHAR(50) | Game genre |
 | description | TEXT | Game description |
-| image | VARCHAR | Game image |
-| is_real | BOOLEAN | Indicates if game is real |
-| url | VARCHAR | Game URL |
+| image | VARCHAR(255) | Game image |
+| is_real | BOOLEAN | Indicates if the game is real |
+| url | VARCHAR(255) | Game URL |
 | created_at | DATETIME | Game creation date |
 | id_category | INT (FK) | Category reference |
 
@@ -52,7 +52,7 @@ Stores game categories.
 | Field | Data Type | Description |
 |------|-----------|-------------|
 | id_category | INT (PK) | Category ID |
-| name | VARCHAR | Category name |
+| name | VARCHAR(50) | Category name |
 
 ---
 
@@ -77,14 +77,27 @@ Stores friendships between users.
 | id | INT (PK) | Friendship ID |
 | sender_id | INT (FK) | Request sender |
 | receiver_id | INT (FK) | Request receiver |
-| status | VARCHAR | Friendship status |
-| blocker_id | INT | User who blocked |
+| status | VARCHAR(20) | Friendship status |
+| blocker_id | INT | User who blocked another user |
+
+---
+
+# TABLE: friend_requests
+
+Stores pending friend requests.
+
+| Field | Data Type | Description |
+|------|-----------|-------------|
+| id | INT (PK) | Request identifier |
+| sender_id | INT (FK) | User who sends request |
+| receiver_id | INT (FK) | User who receives request |
+| created_at | DATETIME | Request creation date |
 
 ---
 
 # TABLE: blocked_users
 
-Stores blocked users.
+Stores blocked user relationships.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
@@ -101,45 +114,46 @@ Stores chat messages.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
-| id | INT (PK) | Message ID |
+| id | INT (PK) | Message identifier |
 | sender_id | INT (FK) | Sender user |
 | receiver_id | INT (FK) | Receiver user |
 | message | TEXT | Message content |
-| sent_at | DATETIME | Sent date |
-| status | VARCHAR | Message status |
-| created_at | DATETIME | Creation date |
+| sent_at | DATETIME | Sent timestamp |
+| status | VARCHAR(20) | Message status |
+| created_at | DATETIME | Message creation timestamp |
 
 ---
 
 # TABLE: reports
 
-Stores reports between users.
+Stores user reports.
 
 | Field | Data Type | Description |
 |------|-----------|-------------|
-| id | INT (PK) | Report ID |
+| id | INT (PK) | Report identifier |
 | reported_id | INT (FK) | Reported user |
 | reason | TEXT | Report reason |
 
 ---
 
-# 🔗 RELATIONSHIPS
+#  RELATIONSHIPS
 
-Database relationships:
+Database relationships include:
 
-- One USER can send many MESSAGES
-- One USER can receive many MESSAGES
-- One USER can have many FRIENDS
-- One USER can block many USERS
-- One USER can have many FAVORITES
-- One GAME belongs to one CATEGORY
-- One USER can create many REPORTS
+- One USER can send many MESSAGES  
+- One USER can receive many MESSAGES  
+- One USER can have many FRIENDS  
+- One USER can send many FRIEND REQUESTS  
+- One USER can block many USERS  
+- One USER can have many FAVORITES  
+- One GAME belongs to one CATEGORY  
+- One USER can create many REPORTS  
 
 ---
 
-# 📊 DATABASE SUMMARY
+#  DATABASE SUMMARY
 
-Total Tables: **9**
+Total Tables: **10**
 
 Tables included:
 
@@ -148,6 +162,11 @@ Tables included:
 - categories
 - favorites
 - friends
+- friend_requests
 - blocked_users
 - messages
 - reports
+
+Database Type: **MySQL**
+Engine: **InnoDB**
+Normalization Level: **Third Normal Form (3NF)**
