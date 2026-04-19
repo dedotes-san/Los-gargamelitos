@@ -149,6 +149,6 @@ The database will be fully ready to use.
 
 Project created for database system design practice.
 
-System Name:
+System Name: MythCore
 
 **MythCore RPG Launcher**
