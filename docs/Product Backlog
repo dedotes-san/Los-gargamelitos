@@ -1,1 +1,37 @@
+Product Backlog: MythCore RPG Launcher🎯
+Objetivo del ProductoPermitir a los jugadores de RPG gestionar su experiencia de juego de forma integral, ofreciendo un 
+sistema de alianzas en tiempo real, un buscador de juegos con favoritos, un sistema de chat seguro y progresión de personajes 
+(XP/Logros) mediante una interfaz inmersiva de temática medieval, reduciendo la fricción en la comunicación y mejorando la 
+competitividad entre usuarios.📦 Epics (Épicas)IDNombre de la ÉpicaPrioridadEP-01Autenticación y Seguridad ExtremaAltaEP-02Libro
+de Alianzas (Social)AltaEP-03Gestión de Títulos (RPG Library)MediaEP-04Sistema de Progresión y LogrosMedia📜 User Stories Destacadas
+(Ejemplos para tu repositorio)US-01 — Libro de Alianzas: Estado en Tiempo RealComo guerrero de MythCore,quiero ver quién de mis aliados 
+está conectado o cuánto tiempo hace que se fue,para enviar un "cuervo" (mensaje) solo cuando sea efectivo.Prioridad: Alta |
+Story Points: 5Criterios de Aceptación (Gherkin):GherkinFeature: Estado de Conexión Dinámico
 
+  Scenario: Actualización automática del estado Online
+    Given el usuario está en el "Libro de Alianzas"
+    When el servidor detecta un rastro (last_seen) menor a 90 segundos
+    Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
+    And el cambio se refleja sin necesidad de recargar la página
+
+  Scenario: Cálculo de tiempo transcurrido (Offline)
+    Given el rastro del aliado es mayor a 90 segundos
+    When el sistema procesa la fecha de última conexión
+    Then se muestra el texto descriptivo (ej: "HACE 5 MINUTOS" o "AYER A LAS 10:00 AM")
+US-02 — Filtro de Seguridad de NombresComo administrador del sistema,quiero bloquear automáticamente a 
+usuarios que intenten usar nombres ofensivos,para mantener una comunidad respetuosa.Prioridad: Alta | 
+Story Points: 3Criterios de Aceptación:GherkinFeature: Filtro de Seguridad
+
+  Scenario: Intento de uso de lenguaje ofensivo
+    Given el usuario intenta cambiar su nombre a uno prohibido
+    When el sistema valida la palabra contra la lista negra
+    Then se resta una oportunidad de las 3 disponibles
+    And se muestra un mensaje de advertencia
+
+  Scenario: Bloqueo definitivo de cuenta
+    Given el usuario ha agotado sus 3 oportunidades de cambio de nombre
+    When intenta un cuarto cambio ofensivo
+    Then la cuenta y el correo electrónico quedan bloqueados permanentemente
+Resumen del Backlog (MythCore)IDUser StoryÉpicaPrioridadPuntosUS-01Estado Online/Offline 
+RealtimeEP-02Alta5US-02Filtro de Nombres ExtremoEP-01Alta3US-03Buscador de Juegos con 
+FavoritosEP-03Media5US-04Sistema de Logros (32 medallas)EP-04Media8US-05Envío de "Cuervos" (Mensajería)EP-02Alta5Total
