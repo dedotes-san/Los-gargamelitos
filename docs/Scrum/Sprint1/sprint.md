@@ -39,28 +39,21 @@ Al finalizar este sprint, el equipo tendrá una estructura de datos sólida y en
 
 ### 3.2 Reglas del Esquema
 
-*   **Normalización (3NF):** Los datos están organizados para evitar redundancia; por ejemplo, la información de juegos es independiente de los favoritos de cada usuario.
-*   **Gestión de Tiempo:** Se utiliza el tipo de dato `DATETIME` para la columna `last_seen`, permitiendo calcular el estado "En Línea".
-*   **Seguridad de Acceso:** Las contraseñas se gestionan mediante funciones de hashing en PHP para que nunca se almacenen en texto plano.
+* **Normalización (3NF):** Los datos están organizados para evitar redundancia.
+* **Gestión de Tiempo:** Se utiliza `DATETIME` para la columna `last_seen` para calcular el estado "En Línea".
+* **Seguridad de Acceso:** Las contraseñas se gestionan mediante hashing en PHP.
 
 ---
 
 ## 4. Decisiones de Diseño Clave
 
-*   **Cálculo de Conexión:** El rastro de conexión se determina mediante la diferencia de tiempo entre la hora actual del servidor y el campo `last_seen` del usuario.
-*   **Filtro de Seguridad:** El sistema de baneo por groserías rastrea los intentos fallidos en una tabla de auditoría dedicada.
-*   **Hosting:** Se utiliza **InfinityFree** como servidor remoto para asegurar que la base de datos sea accesible desde cualquier lugar.
+* **Cálculo de Conexión:** Determinado por la diferencia entre la hora del servidor y el campo `last_seen`.
+* **Filtro de Seguridad:** El sistema de baneo rastrea intentos fallidos en una tabla de auditoría.
+* **Hosting:** Uso de **InfinityFree** como servidor remoto.
 
 ---
 
 ## 5. Product Backlog (Historias de Usuario)
-
-EP-02 · Libro de Alianzas
-
-#### US-02 — Estado de Conexión Dinámico
-**Como** guerrero de MythCore, **quiero** ver quién de mis aliados está conectado, **para** enviar un "cuervo" (mensaje) solo cuando sea efectivo.
-
-**Criterios de Aceptación:**
 
 ### EP-02 · Libro de Alianzas
 
@@ -73,6 +66,7 @@ EP-02 · Libro de Alianzas
 Scenario: Actualización de estado Online
   Given el aliado tuvo actividad hace menos de 90 segundos
   Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
+
 ## 6. Resumen del Backlog al Cierre del Sprint 1
 
 | ID | Historia de Usuario | Épica | Prioridad | Puntos |
@@ -84,8 +78,7 @@ Scenario: Actualización de estado Online
 | **US-05** | Ranking Global Competitivo | EP-04 | Baja | 3 |
 | **Total** | | | | **18 pts** |
 
----
+7. Próximo Paso
+El Sprint 2 se enfocará en el desarrollo de los scripts PHP y JavaScript necesarios para implementar la lógica del chat en tiempo real y la visualización dinámica del Libro de Alianzas.
 
-## 7. Próximo Paso
-
-El **Sprint 2** se enfocará en el desarrollo de los scripts PHP y JavaScript necesarios para implementar la lógica del chat en tiempo real y la visualización dinámica del Libro de Alianzas.
+MythCore RPG Launcher — CBTis 47 · Marzo – Abril 2026
