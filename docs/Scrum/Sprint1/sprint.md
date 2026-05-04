@@ -1,80 +1,91 @@
 # 🛡️ Sprint 1 — MythCore RPG Launcher
-**Periodo:** Marzo – Abril 2026
-**Institución:** CBTis 47
-**Metodología:** Scrum
+
+**Periodo:** Marzo – Abril 2026  
+**Institución:** CBTis 47  
+**Metodología:** Scrum  
 
 ---
 
 ## 1. Objetivo del Sprint 1
 
-Establecer los estándares de la base de datos MySQL, definir las reglas de normalización para el sistema de alianzas y redactar las Historias de Usuario iniciales para el ecosistema RPG.
+Refinar las definiciones del Sprint 0, establecer los estándares y reglas del esquema de la base de datos MySQL en **InfinityFree** y redactar las Historias de Usuario con sus criterios de aceptación iniciales para el ecosistema RPG.
 
-Al finalizar este sprint, el equipo tendrá una estructura de datos sólida en **InfinityFree** y entenderá exactamente cómo debe funcionar el sistema de "En Línea" y el filtro de seguridad antes de pasar a la programación intensiva.
+Al finalizar este sprint, el equipo tendrá una estructura de datos sólida y entenderá exactamente qué debe hacer cada función (como el rastro de conexión y el filtro de baneo) para comenzar el desarrollo en el Sprint 2 sin ambigüedades.
 
 ---
 
 ## 2. Equipo de Trabajo
 
-| Miembro Asignado | Rol | Responsabilidad Principal |
-| :--- | :--- | :--- |
-| **A. Irvin** | Analista y Diseñador | Estándares de nombres y normalización 3NF. |
-| **B. Dorian** | Desarrollador SQL | Implementación de tablas en el servidor remoto. |
-| **C. Derek** | Administrador (DBA) | Gestión de documentación y README. |
-| **D. Manuel** | Maestro de Consultas | Creación de datos de prueba para el Ranking. |
-| **E. Carlos** | Probador SQL (Tester) | Validación de triggers y filtros de seguridad. |
+| Miembro Asignado | Rol | Responsabilidad Principal | Artefactos Clave |
+| :--- | :--- | :--- | :--- |
+| **A. Irvin** | Analista y Diseñador | Diseña la estructura y relaciones de la BD. | `erd_diagram.md`, `dictionary.md` |
+| **B. Dorian** | Desarrollador SQL | Crea tablas y restricciones en el servidor remoto. | `01_schema.sql` |
+| **C. Derek** | Administrador (DBA) | Organiza la estructura y documentación del proyecto. | `LÉAME.md` |
+| **D. Manuel** | Maestro de Consultas | Inserta datos de prueba y crea reportes de ranking. | `02_inserts_sample.sql` |
+| **E. Carlos** | Probador SQL (Tester) | Valida consultas y la integridad de los filtros. | `consultas_avanzadas.sql` |
 
 ---
 
-## 3. Estándares de la Base de Datos (MythCore DB)
+## 3. Estándares de la Base de Datos
 
 ### 3.1 Convenciones de Nomenclatura
 
 | Elemento | Convención | Ejemplo |
 | :--- | :--- | :--- |
-| Tablas | Minúsculas con guiones bajos | `usuarios`, `lista_amigos` |
-| Columnas | Minúsculas (snake_case) | `xp_total`, `ultimo_visto` |
-| Llaves Primarias | `id` + nombre singular | `id_usuario`, `id_logro` |
-| Llaves Foráneas | Mismo nombre que la PK original | `id_usuario FK → usuarios.id_usuario` |
+| **Tablas** | Minúsculas con guiones bajos | `usuarios`, `lista_amigos` |
+| **Columnas** | Minúsculas (snake_case) | `xp_total`, `ultimo_visto` |
+| **Llaves Primarias** | `id_` + nombre singular | `id_usuario`, `id_logro` |
+| **Llaves Foráneas** | Mismo nombre que la PK original | `id_usuario FK → usuarios.id_usuario` |
 
-### 3.2 Reglas de Esquema General
+### 3.2 Reglas del Esquema
 
-*   **Normalización (3NF):** Los datos de los juegos (nombre, género) están en `juegos` y se vinculan a `favoritos` mediante FK para evitar redundancia.
-*   **Gestión de Tiempo:** Se utiliza `DATETIME` para la columna `last_seen` (rastro de conexión).
-*   **Seguridad:** Las contraseñas se gestionan con `password_hash()` de PHP; nunca se guardan en texto plano.
-*   **Integridad:** Se aplican restricciones `UNIQUE` al correo y al nombre de usuario para evitar duplicados.
+*   **Normalización (3NF):** Los datos están organizados para evitar redundancia; por ejemplo, la información de juegos es independiente de los favoritos de cada usuario.
+*   **Gestión de Tiempo:** Se utiliza el tipo de dato `DATETIME` para la columna `last_seen`, permitiendo calcular el estado "En Línea".
+*   **Seguridad de Acceso:** Las contraseñas se gestionan mediante funciones de hashing en PHP para que nunca se almacenen en texto plano.
 
 ---
 
 ## 4. Decisiones de Diseño Clave
 
-
-
-*   **Rastro de Conexión:** Se decidió que el estado "EN LÍNEA" se calcule mediante la diferencia de tiempo (`TIMESTAMPDIFF`) entre la hora actual y el campo `last_seen` en la base de datos.
-*   **Filtro de Seguridad:** El baneo se activa tras 3 intentos fallidos registrados en una tabla de auditoría de seguridad.
-*   **Separación Social:** La tabla `mensajes` es independiente de `lista_amigos` para permitir el vaciado del chat sin eliminar la amistad.
+*   **Cálculo de Conexión:** El rastro de conexión se determina mediante la diferencia de tiempo entre la hora actual del servidor y el campo `last_seen` del usuario.
+*   **Filtro de Seguridad:** El sistema de baneo por groserías rastrea los intentos fallidos en una tabla de auditoría dedicada.
+*   **Hosting:** Se utiliza **InfinityFree** como servidor remoto para asegurar que la base de datos sea accesible desde cualquier lugar.
 
 ---
 
-## 5. Product Backlog Inicial (User Stories)
+## 5. Product Backlog (Historias de Usuario)
 
-### EP-01 · Seguridad y Acceso
+EP-02 · Libro de Alianzas
 
-#### US-01 — Registro con Filtro de Nombres
-**Como** nuevo jugador, **quiero** crear una cuenta con un nombre permitido, **para** no ser bloqueado por el sistema desde el inicio.
+#### US-02 — Estado de Conexión Dinámico
+**Como** guerrero de MythCore, **quiero** ver quién de mis aliados está conectado, **para** enviar un "cuervo" (mensaje) solo cuando sea efectivo.
+
+**Criterios de Aceptación:**
+
+### EP-02 · Libro de Alianzas
+
+#### US-02 — Estado de Conexión Dinámico
+**Como** guerrero de MythCore, **quiero** ver quién de mis aliados está conectado, **para** enviar un "cuervo" (mensaje) solo cuando sea efectivo.
+
+**Criterios de Aceptación:**
 
 ```gherkin
-Scenario: Registro exitoso
-  Given el usuario ingresa un nombre sin groserías y un correo nuevo
-  Then el sistema crea la cuenta en la tabla 'usuarios'
-
-Scenario: Intento con nombre prohibido
-  Given el usuario ingresa una palabra de la lista negra
-  Then el sistema resta una oportunidad y muestra advertencia
-EP-02 · Libro de AlianzasUS-02 — Estado de Conexión RealtimeComo guerrero, quiero ver quién de mis amigos está activo, para organizar una partida RPG en el momento.GherkinScenario: Usuario Online
+Scenario: Actualización de estado Online
   Given el aliado tuvo actividad hace menos de 90 segundos
-  Then aparece el rastro "EN LÍNEA" en color verde
+  Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
+## 6. Resumen del Backlog al Cierre del Sprint 1
 
-Scenario: Usuario Offline
-  Given el aliado no tiene rastro reciente
-  Then el sistema muestra el tiempo transcurrido (ej: "Hace 10 min")
-6. Resumen de Puntos de HistoriaIDHistoria de UsuarioÉpicaPrioridadPuntosUS-01Registro y FiltroEP-01Alta3US-02Login y SesionesEP-01Alta2US-03Estado En LíneaEP-02Alta5US-04Sistema de AmigosEP-02Media5US-05Ranking GlobalEP-04Baja3Total18 pts7. Próximo PasoEn el Sprint 2, el equipo comenzará la codificación de los scripts PHP para la actualización automática del estado de conexión y la lógica del chat seguro en el servidor InfinityFree.
+| ID | Historia de Usuario | Épica | Prioridad | Puntos |
+| :--- | :--- | :--- | :--- | :--- |
+| **US-01** | Registro y Filtro de Seguridad | EP-01 | Alta | 3 |
+| **US-02** | Login y Sesiones de Usuario | EP-01 | Alta | 2 |
+| **US-03** | Estado de Conexión (Real-time) | EP-02 | Alta | 5 |
+| **US-04** | Sistema de Amigos y Bloqueos | EP-02 | Media | 5 |
+| **US-05** | Ranking Global Competitivo | EP-04 | Baja | 3 |
+| **Total** | | | | **18 pts** |
+
+---
+
+## 7. Próximo Paso
+
+El **Sprint 2** se enfocará en el desarrollo de los scripts PHP y JavaScript necesarios para implementar la lógica del chat en tiempo real y la visualización dinámica del Libro de Alianzas.
