@@ -70,3 +70,11 @@ Scenario: Registro exitoso
 Scenario: Intento con nombre prohibido
   Given el usuario ingresa una palabra de la lista negra
   Then el sistema resta una oportunidad y muestra advertencia
+EP-02 · Libro de AlianzasUS-02 — Estado de Conexión RealtimeComo guerrero, quiero ver quién de mis amigos está activo, para organizar una partida RPG en el momento.GherkinScenario: Usuario Online
+  Given el aliado tuvo actividad hace menos de 90 segundos
+  Then aparece el rastro "EN LÍNEA" en color verde
+
+Scenario: Usuario Offline
+  Given el aliado no tiene rastro reciente
+  Then el sistema muestra el tiempo transcurrido (ej: "Hace 10 min")
+6. Resumen de Puntos de HistoriaIDHistoria de UsuarioÉpicaPrioridadPuntosUS-01Registro y FiltroEP-01Alta3US-02Login y SesionesEP-01Alta2US-03Estado En LíneaEP-02Alta5US-04Sistema de AmigosEP-02Media5US-05Ranking GlobalEP-04Baja3Total18 pts7. Próximo PasoEn el Sprint 2, el equipo comenzará la codificación de los scripts PHP para la actualización automática del estado de conexión y la lógica del chat seguro en el servidor InfinityFree.
