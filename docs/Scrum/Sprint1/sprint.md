@@ -67,17 +67,17 @@ Scenario: Actualización de estado Online
   Given el aliado tuvo actividad hace menos de 90 segundos
   Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
 
+## 6. Resumen del Backlog al Cierre del Sprint 1
+| ID | Historia de Usuario | Épica | Prioridad |
+| :--- | :--- | :--- | :--- |
+| **US-01** | Registro y Filtro de Seguridad | EP-01 | Alta |
+| **US-02** | Login y Sesiones de Usuario | EP-01 | Alta |
+| **US-03** | Estado de Conexión (Tiempo Real) | EP-02 | Alta |
+| **US-04** | Sistema de Amigos y Bloqueos | EP-02 | Media |
+| **US-05** | Ranking Global Competitivo | EP-04 | Baja |
 
-| ID        | Historia de Usuario              | Épica | Prioridad | Puntos     |
-| --------- | -------------------------------- | ----- | --------- | ---------- |
-| **US-01** | Registro y Filtro de Seguridad   | EP-01 | Alta      | 3          |
-| **US-02** | Login y Sesiones de Usuario      | EP-01 | Alta      | 2          |
-| **US-03** | Estado de Conexión (Tiempo Real) | EP-02 | Alta      | 5          |
-| **US-04** | Sistema de Amigos y Bloqueos     | EP-02 | Media     | 5          |
-| **US-05** | Ranking Global Competitivo       | EP-04 | Baja      | 3          |
-| **TOTAL** |                                  |       |           | **18 pts** |
+## 7. Proximo paso
 
-7. Próximo Paso
 El Sprint 2 se enfocará en el desarrollo de los scripts PHP y JavaScript necesarios para implementar la lógica del chat en tiempo real y la visualización dinámica del Libro de Alianzas.
 
 MythCore RPG Launcher — CBTis 47 · Marzo – Abril 2026
