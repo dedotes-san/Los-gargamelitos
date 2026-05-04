@@ -62,7 +62,7 @@ Al finalizar este sprint, el equipo tendrá una estructura de datos sólida y en
 
 **Criterios de Aceptación:**
 
-```gherkin
+gherkin
 Scenario: Actualización de estado Online
   Given el aliado tuvo actividad hace menos de 90 segundos
   Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
