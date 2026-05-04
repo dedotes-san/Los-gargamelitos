@@ -1,125 +1,56 @@
-# 🛡️ MythCore RPG Launcher
+# MythCore RPG Launcher - Documentación Técnica
 
-> Plataforma integral basada en bases de datos para la gestión de videojuegos RPG, interacción social entre usuarios, sistemas de mensajería y personalización de bibliotecas.
+## 1. Información del Proyecto
+Este proyecto consiste en el desarrollo de un ecosistema integral para la gestión de videojuegos RPG, integrando funciones sociales y de administración de datos.
 
----
+*   **Nombre del Proyecto:** MythCore RPG Launcher.
+*   **Equipo de Desarrollo:** Los Gargamelitos.
+*   **Institución:** CBTis 47.
+*   **Estado Actual:** Sprint 2 (Mayo 2026).
 
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Sprint%202-green?style=for-the-badge)
-![DB](https://img.shields.io/badge/Normalización-3NF-blue?style=for-the-badge)
-![Académico](https://img.shields.io/badge/Uso-Académico%20CBTis%2047-purple?style=for-the-badge)
+## 2. Alcance Funcional
+El sistema permite una gestión completa del entorno de juego y comunidad:
+*   **Gestión de Usuarios:** Registro, inicio de sesión y administración de perfiles.
+*   **Sistema Social:** Envío de solicitudes de amistad, chat en tiempo real ("rpg-chat") mediante Pusher JS y gestión de bloqueos.
+*   **Biblioteca de Juegos:** Exploración de títulos comerciales y creación de juegos personalizados organizados por categorías.
+*   **Moderación y Seguridad:** Sistema de reportes de usuarios para control de comunidad.
+*   **Progresión:** Visualización de rankings, logros y acumulación de XP.
 
----
+## 3. Arquitectura de la Base de Datos
+La base de datos está diseñada bajo estándares de eficiencia y escalabilidad:
+*   **Motor:** MySQL (Entorno XAMPP local y hosting en InfinityFree).
+*   **Normalización:** Tercera Forma Normal (3NF) para eliminar redundancia.
+*   **Relaciones:** Implementación estricta de Llaves Primarias (PK) y Foráneas (FK) en 9 tablas interconectadas.
 
-## 📋 Tabla de Contenidos
-
-- [Sobre el proyecto](#-sobre-el-proyecto)
-- [Funcionalidades principales](#-funcionalidades-principales)
-- [Características de la Base de Datos](#-características-de-la-base-de-datos)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Esquema de Tablas](#-esquema-de-tablas)
-- [Historias de Usuario](#-historias-de-usuario)
-- [Guía de Instalación](#-guía-de-instalación)
-- [Equipo de Desarrollo](#-equipo-de-desarrollo)
-
----
-
-## 📖 Sobre el proyecto
-
-**MythCore RPG Launcher** simula un ecosistema de videojuegos donde la persistencia de datos es el núcleo. El sistema permite a los jugadores no solo gestionar su librería de juegos, sino también construir una comunidad mediante sistemas de amistad, reportes y mensajería en tiempo real, todo bajo una arquitectura de datos optimizada.
-
-> 📌 Desarrollado por el equipo **"Los Gargamelitos"** para la práctica de diseño de sistemas de bases de datos.
-
----
-
-## ✨ Funcionalidades principales
-
-- **Gestión de Cuentas:** Registro y administración de perfiles de usuario.
-- **Ecosistema Social:** Sistema de solicitudes de amistad, chat entre usuarios y gestión de bloqueos.
-- **Biblioteca RPG:** Exploración de categorías, búsqueda de juegos comerciales y creación de juegos personalizados.
-- **Sistema de Moderación:** Reportes de usuarios para mantener un ambiente de juego sano.
-- **Personalización:** Marcado de juegos favoritos y organización por categorías.
-
----
-
-## 🗄️ Características de la Base de Datos
-
-El motor del launcher está construido bajo estándares profesionales:
-- **Normalización:** Estructura en **Tercera Forma Normal (3NF)** para eliminar redundancias.
-- **Integridad:** Uso estricto de Llaves Primarias (PK) y Foráneas (FK).
-- **Rendimiento:** Consultas avanzadas optimizadas para reportes y estadísticas.
-- **Escalabilidad:** Soporta tanto juegos reales como contenido generado por el usuario.
-
----
-
-## 📁 Estructura del Proyecto
-
-MythCore-RPG-Launcher/
-│
-├── src/
-│   ├── 01_schema.sql           # Definición de tablas y constraints
-│   └── 02_inserts_sample.sql   # Datos de prueba reales
-│
-├── docs/
-│   ├── dictionary.md           # Diccionario de datos detallado
-│   ├── normalization_report.md # Reporte de cumplimiento 3NF
-│   └── erd_diagram.mmd         # Diagrama Entidad-Relación
-│
-├── queries/
-│   ├── report_games.sql        # Consultas de reportes generales
-│   └── advanced_queries.sql    # Queries complejas y validaciones
-│
-└── README.md                   # Documentación principal
-
-
----
-
-## 📊 Esquema de Tablas
-
-El sistema se compone de **9 tablas interconectadas**:
-
-1.  `users`: Perfiles y credenciales.
-2.  `games`: Catálogo de títulos RPG.
-3.  `categories`: Clasificación de géneros.
-4.  `favorites`: Relación usuario-juego preferido.
-5.  `friends`: Lista de amistades confirmadas.
-6.  `friend_requests`: Gestión de invitaciones sociales.
-7.  `blocked_users`: Sistema de seguridad y privacidad.
+### Listado de Tablas:
+1.  `users`: Perfiles y credenciales de acceso.
+2.  `games`: Catálogo general de títulos.
+3.  `categories`: Géneros y clasificaciones.
+4.  `favorites`: Relación de juegos marcados por el usuario.
+5.  `friends`: Listado de amistades confirmadas.
+6.  `friend_requests`: Control de solicitudes de amistad enviadas/recibidas.
+7.  `blocked_users`: Restricciones de interacción entre usuarios.
 8.  `messages`: Historial de comunicación interna.
-9.  `reports`: Registro de incidencias y moderación.
+9.  `reports`: Registro de incidencias y reportes de comportamiento.
 
----
+## 4. Estructura de Roles (Equipo Los Gargamelitos)
 
-## 🚀 Guía de Instalación
-
-Para desplegar la base de datos localmente:
-
-1.  Abre tu gestor de base de datos (**MySQL Workbench** o **phpMyAdmin**).
-2.  Importa y ejecuta el archivo de esquema: `src/01_schema.sql`.
-3.  Puebla el sistema con datos de prueba: `src/02_inserts_sample.sql`.
-4.  Verifica el funcionamiento con las consultas en: `queries/report_games.sql`.
-
----
-
-## 👥 Equipo de Desarrollo (Los Gargamelitos)
-
-| Rol | Responsabilidad | Miembro |
+| Integrante | Rol Designado | Responsabilidades |
 | :--- | :--- | :--- |
-| **Analyst & Designer** | Diseño de arquitectura y diagramas ERD | **A. Irvin** |
-| **SQL Developer** | Creación de tablas, constraints y triggers | **B. Dorian** |
-| **DBA** | Organización de archivos y documentación | **C. Dereck** |
-| **Query Master** | Inserción de datos y creación de reportes SQL | **D. Manuel** |
-| **SQL Tester** | Validación de estructura y pruebas de estrés | **E. Carlos** |
+| **A. Irvin** | Analista y Diseñador | Diseño de diagramas ERD y documentación de procesos. |
+| **B. Dorian** | Desarrollador SQL | Implementación de tablas, constraints y scripts de base de datos. |
+| **C. Dereck** | Administrador (DBA) | Gestión de archivos, versionado y soporte técnico de la DB. |
+| **D. Manuel** | Especialista en Queries | Carga de datos de prueba y generación de reportes SQL. |
+| **E. Carlos** | Tester SQL | Pruebas de integridad, validación de consultas y control de errores. |
 
----
+## 5. Organización del Repositorio
+El proyecto se organiza mediante una metodología de trabajo basada en Sprints para el control de versiones en GitHub:
+*   `/database/01_schema.sql`: Definición de la estructura de tablas.
+*   `/database/02_inserts.sql`: Scripts para población inicial de datos.
+*   `/queries/reports.sql`: Consultas para estadísticas y reportes de administración.
+*   `/docs/`: Diccionario de datos y manuales técnicos.
 
-## 🛠️ Tecnologías Utilizadas
-
-- **Motor:** MySQL / MariaDB
-- **Gestión:** phpMyAdmin
-- **Lenguaje:** SQL Estándar
-- **Metodología:** Agile / Scrum (Sprints)
-
----
-*MythCore RPG Launcher — CBTis 47 · Mayo 2026*
+## 6. Tecnologías Utilizadas
+*   **Lenguajes:** PHP (Backend) y SQL (Base de datos).
+*   **Servicios:** Pusher JS para mensajería en tiempo real.
+*   **Entorno:** XAMPP sobre Windows para desarrollo local.
