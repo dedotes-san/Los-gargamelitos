@@ -68,7 +68,6 @@ Scenario: Actualización de estado Online
   Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
 
 6. Resumen del Backlog al Cierre del Sprint 1
-
 | ID        | Historia de Usuario              | Épica | Prioridad | Puntos     |
 | --------- | -------------------------------- | ----- | --------- | ---------- |
 | **US-01** | Registro y Filtro de Seguridad   | EP-01 | Alta      | 3          |
