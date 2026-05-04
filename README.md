@@ -1,152 +1,125 @@
-#  MythCore RPG Launcher
+# 🛡️ MythCore RPG Launcher
 
-MythCore RPG Launcher is a database-driven platform designed to manage RPG games, users, friendships, messages, and favorites within a gaming environment.
-
-Author: **Los gargamelitos**
+> Plataforma integral basada en bases de datos para la gestión de videojuegos RPG, interacción social entre usuarios, sistemas de mensajería y personalización de bibliotecas.
 
 ---
 
-#  Project Description
-
-MythCore RPG Launcher simulates a gaming launcher system where users can:
-
-- Create user accounts  
-- Add friends  
-- Send messages  
-- Favorite games  
-- Browse RPG games  
-- Report users  
-- Block users  
-- Manage game categories  
-
-The system supports both real commercial games and custom games created by users.
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Sprint%202-green?style=for-the-badge)
+![DB](https://img.shields.io/badge/Normalización-3NF-blue?style=for-the-badge)
+![Académico](https://img.shields.io/badge/Uso-Académico%20CBTis%2047-purple?style=for-the-badge)
 
 ---
 
-#  Database Features
+## 📋 Tabla de Contenidos
 
-The database includes:
-
-- Multiple related tables  
-- Primary Keys (PK)  
-- Foreign Keys (FK)  
-- Normalized structure (3NF)  
-- Real sample data  
-- Advanced SQL queries  
+- [Sobre el proyecto](#-sobre-el-proyecto)
+- [Funcionalidades principales](#-funcionalidades-principales)
+- [Características de la Base de Datos](#-características-de-la-base-de-datos)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Esquema de Tablas](#-esquema-de-tablas)
+- [Historias de Usuario](#-historias-de-usuario)
+- [Guía de Instalación](#-guía-de-instalación)
+- [Equipo de Desarrollo](#-equipo-de-desarrollo)
 
 ---
 
-#  Project Structure
+## 📖 Sobre el proyecto
 
+**MythCore RPG Launcher** simula un ecosistema de videojuegos donde la persistencia de datos es el núcleo. El sistema permite a los jugadores no solo gestionar su librería de juegos, sino también construir una comunidad mediante sistemas de amistad, reportes y mensajería en tiempo real, todo bajo una arquitectura de datos optimizada.
+
+> 📌 Desarrollado por el equipo **"Los Gargamelitos"** para la práctica de diseño de sistemas de bases de datos.
+
+---
+
+## ✨ Funcionalidades principales
+
+- **Gestión de Cuentas:** Registro y administración de perfiles de usuario.
+- **Ecosistema Social:** Sistema de solicitudes de amistad, chat entre usuarios y gestión de bloqueos.
+- **Biblioteca RPG:** Exploración de categorías, búsqueda de juegos comerciales y creación de juegos personalizados.
+- **Sistema de Moderación:** Reportes de usuarios para mantener un ambiente de juego sano.
+- **Personalización:** Marcado de juegos favoritos y organización por categorías.
+
+---
+
+## 🗄️ Características de la Base de Datos
+
+El motor del launcher está construido bajo estándares profesionales:
+- **Normalización:** Estructura en **Tercera Forma Normal (3NF)** para eliminar redundancias.
+- **Integridad:** Uso estricto de Llaves Primarias (PK) y Foráneas (FK).
+- **Rendimiento:** Consultas avanzadas optimizadas para reportes y estadísticas.
+- **Escalabilidad:** Soporta tanto juegos reales como contenido generado por el usuario.
+
+---
+
+## 📁 Estructura del Proyecto
 
 MythCore-RPG-Launcher/
-
 │
 ├── src/
-│ ├── 01_schema.sql
-│ ├── 02_inserts_sample.sql
+│   ├── 01_schema.sql           # Definición de tablas y constraints
+│   └── 02_inserts_sample.sql   # Datos de prueba reales
 │
 ├── docs/
-│ ├── dictionary.md
-│ ├── normalization_report.md
-│ ├── erd_diagram.mmd
+│   ├── dictionary.md           # Diccionario de datos detallado
+│   ├── normalization_report.md # Reporte de cumplimiento 3NF
+│   └── erd_diagram.mmd         # Diagrama Entidad-Relación
 │
 ├── queries/
-│ ├── report_games.sql
-│ ├── advanced_queries.sql
+│   ├── report_games.sql        # Consultas de reportes generales
+│   └── advanced_queries.sql    # Queries complejas y validaciones
 │
-└── README.md
+└── README.md                   # Documentación principal
 
 
 ---
 
-# Database Tables
+## 📊 Esquema de Tablas
 
-The system includes the following tables:
+El sistema se compone de **9 tablas interconectadas**:
 
-- users  
-- games  
-- categories  
-- favorites  
-- friends  
-- friend_requests  
-- blocked_users  
-- messages  
-- reports  
-
-Total Tables: **9**
+1.  `users`: Perfiles y credenciales.
+2.  `games`: Catálogo de títulos RPG.
+3.  `categories`: Clasificación de géneros.
+4.  `favorites`: Relación usuario-juego preferido.
+5.  `friends`: Lista de amistades confirmadas.
+6.  `friend_requests`: Gestión de invitaciones sociales.
+7.  `blocked_users`: Sistema de seguridad y privacidad.
+8.  `messages`: Historial de comunicación interna.
+9.  `reports`: Registro de incidencias y moderación.
 
 ---
 
-#  Normalization Level
+## 🚀 Guía de Instalación
 
-Database normalization achieved:
+Para desplegar la base de datos localmente:
 
-**Third Normal Form (3NF)**
-
-This ensures:
-
-- Reduced redundancy  
-- Better performance  
-- Data integrity  
-- Structured relationships  
+1.  Abre tu gestor de base de datos (**MySQL Workbench** o **phpMyAdmin**).
+2.  Importa y ejecuta el archivo de esquema: `src/01_schema.sql`.
+3.  Puebla el sistema con datos de prueba: `src/02_inserts_sample.sql`.
+4.  Verifica el funcionamiento con las consultas en: `queries/report_games.sql`.
 
 ---
 
-#  How to Run the Database
+## 👥 Equipo de Desarrollo (Los Gargamelitos)
 
-Follow these steps:
-
-1. Open MySQL or phpMyAdmin  
-
-2. Run:
-
-
-src/01_schema.sql
-
-
-3. Then run:
-
-
-src/02_inserts_sample.sql
-
-
-4. Run query examples:
-
-
-queries/report_games.sql
-
-
-The database will be fully ready to use.
+| Rol | Responsabilidad | Miembro |
+| :--- | :--- | :--- |
+| **Analyst & Designer** | Diseño de arquitectura y diagramas ERD | **A. Irvin** |
+| **SQL Developer** | Creación de tablas, constraints y triggers | **B. Dorian** |
+| **DBA** | Organización de archivos y documentación | **C. Dereck** |
+| **Query Master** | Inserción de datos y creación de reportes SQL | **D. Manuel** |
+| **SQL Tester** | Validación de estructura y pruebas de estrés | **E. Carlos** |
 
 ---
 
-| Role Name | Primary Responsibility | Key Artifacts | Assigned Member |
-|-----------|-----------------------|----------------|----------------|
-| The Analyst & Designer | Designs the database structure and relationships | docs/erd_diagram.md, docs/dictionary.md | A. Irvin |
-| The SQL Developer | Creates database tables and constraints | src/01_schema.sql | B. Dorian |
-| The Database Administrator | Organizes project structure and documentation | README.md | C. Dereck |
-| The Query Master | Inserts data and creates queries | src/02_inserts_sample.sql, queries/report_games.sql | D. Manuel |
-| The SQL Tester | Tests database queries and validates structure | queries/advanced_queries.sql | E. Carlos |
+## 🛠️ Tecnologías Utilizadas
+
+- **Motor:** MySQL / MariaDB
+- **Gestión:** phpMyAdmin
+- **Lenguaje:** SQL Estándar
+- **Metodología:** Agile / Scrum (Sprints)
 
 ---
-
-#  Technologies Used
-
-- MySQL  
-- phpMyAdmin  
-- SQL  
-- Relational Database Design  
-- Data Normalization (3NF)
-
----
-
-#  Author
-
-**Los gargamelitos**
-
-Project created for database system design practice.
-
-System Name: MythCore
-
-**MythCore RPG Launcher**
+*MythCore RPG Launcher — CBTis 47 · Mayo 2026*
