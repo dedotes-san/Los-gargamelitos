@@ -67,6 +67,7 @@ Scenario: Actualización de estado Online
   Given el aliado tuvo actividad hace menos de 90 segundos
   Then la etiqueta del aliado cambia a "EN LÍNEA" en color verde
 
+
 ## 6. Resumen del Backlog al Cierre del Sprint 1
 
 | ID | Historia de Usuario | Épica | Prioridad | Puntos |
