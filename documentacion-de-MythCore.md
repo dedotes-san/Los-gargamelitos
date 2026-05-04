@@ -1,38 +1,98 @@
-DOCUMENTACIÓN – DE NUESTRO PROYECTO 
+# 🛡️ Technical Summary — MythCore RPG Launcher
+**Versión:** 1.0 (Sprint 1)  
+**Periodo:** Marzo – Abril 2026  
+**Institución:** CBTis 47  
 
-1. Descripción General
-MythCore es un lanzador de videojuegos con varias características en general, cuenta con un sistema de buscador de videojuegos, en los videojuegos puedes agregarlos a 
-favoritos y tiene un apartado para que solo veas tus juegos favoritos y no tengas que buscar entre todos los juegos y si hay juegos que ya no quieres puedes quitarlo de 
-favoritos y puedes ir a la tienda a comprarlo o de igual manera jugar los juegos en el sitio, cuenta con un ranking donde muestra los tops de cada jugador el nivel y la 
-xp (experiencia) entre el nivel sea más alto podrás ser del top 1, también cuenta con un sistema de chat y un sistema de buscador de amigos y puedes añadir a cualquier amigo 
-y puedes eliminarlo, si quieres vaciar el chat se podrá y también hay un sistema de bloqueo y el otro usuario no se va a enterar solo cuando te mande mensaje no te llegara 
-nunca el mensaje del usuario, nuestro proyecto también cuenta con un cambio de nombre y con un filtro extremo que no deja poner groserías como nombre y te bloquea al acabar 
-las únicas 3 oportunidades que tienes y te obligara a crear un nueva cuenta, si intentas usar el mismo correo el sistema no te lo va permitirá y te dará un mensaje de que el 
-correo fue bloqueado, en las ventanas de inicio de sesión si olvidaste tu contraseña podrás cambiarla poniendo el correo y tu nueva contraseña, en la ventana de registro tendrás 
-que crear una cuenta si no tienes y la contraseña debe de ser segura como mínimo 10 caracteres, cuenta con música de fondo y un sonido de trueno con relámpago en el inicio y 
-con sistema de cambiar fotos de perfiles y en los chats aparecen, cuenta con un sistema de 32 logros y cada logro que desbloquees se te marcara con una animación, la xp se gana jugando.
+---
 
+## 1. Descripción General
 
-2. Modificaciones que se hicieron a lo largo del proyecto
+**MythCore** es un ecosistema integral para entusiastas de juegos RPG. Funciona como un lanzador (launcher) que centraliza la gestión de una biblioteca de juegos, interacción social en tiempo real, un sistema competitivo de niveles (XP) y una infraestructura de seguridad avanzada que incluye filtros de comportamiento y auditoría de perfiles.
 
-Hubo muchas modificaciones para mejorar la comodidad de nuestros usuarios como la mejora del filtro, la mejora del  cambio de nombre tiene un efecto mas bueno, 
-el cambio de colores y el fondo de todo el proyecto, el cambio del color, el cambio del chat mas efectivo y mas cómodo el cambio del online y offline en funcionamiento 
-el sistema de logros se añadieron mas logros para que no sean pocos y puedas divertirte mucho màs, se mejoró la forma de ganar puntos de XP. Se corrigió el botón de 
-favoritos que sea mas efectivo, se añadieron botones de las categorías que hay en el proyecto, se agrego el sistema de bloqueo de el usuario, el bloqueo de chat y la 
-eliminación de amigos.  
+---
 
+## 2. Objetivo del Sistema
 
-3. Cosas por agregar o mejoras de el proyecto 
-Las cosas que tenemos planeados en meter o mejorar son el sistema de buscador de juegos con las primeras iniciales del juego que pongas aparecerá automáticamente, 
-la mejora de el buscador de amigos con que pongas las primeras iniciales del nombre del usuario aparecerá y contaras con un historial de búsquedas de amigos, una 
-mejora en los colores de todo el proyecto será mas táctico mas discreto pero llamativo y el fondo será diferente, las animaciones de botones, en el chat añadiremos 
-un sistema donde pueda abrir la cámara o las fotos y de igual manera que pueda mandar archivos, un sistema donde puedan hacer un grupo y contaras con un historial de 
-solicitudes, podrás ver tu información al picarle al botón de ajustes, podrás deseñas un muñeco 3d con cualquier ropa o accesorio, vas a poder ver la información de los demás 
-usuarios pero será información básica, mejoraremos el sistema de sonido que este en todas las ventanas y no se corte en cualquier momento.
+Desarrollar una plataforma interactiva que combine la ejecución de videojuegos con redes sociales funcionales, permitiendo a los usuarios gestionar sus progresos (logros y XP), competir en rankings globales y comunicarse de forma segura mediante un sistema de chat con moderación automática.
 
- 4.Conclusiòn
-En conclusión, este proyecto esta creado para que puedas jugar cualquier juego rpg que desees y con mucha comodidad sin riesgos de que pueda pasar algo MythCore, Además, 
-no solo se enfoca en ofrecer una experiencia de juego segura y divertida, si no que brinda herramientas muy útiles como el sistema de favoritos, el ranking competitivo, 
-el chat con amigos y múltiples opciones de personalización que mejoran la interacción entre usuarios. A lo largo de su desarrollo se han realizado diversas mejoras para 
-optimizar su funcionamiento y hacerlo más intuitivo, demostrando nuestro compromiso constante con la calidad del proyecto. Asimismo, las futuras mejoras planeadas que 
-realizaremos permitirán que la plataforma sea aún más completa, dinámica y atractiva.
+---
+
+## 3. Equipo de Desarrollo
+
+| Nombre | Rol |
+| :--- | :--- |
+| **A. Irvin** | Analista y Diseñador |
+| **B. Dorian** | Desarrollador SQL |
+| **C. Derek** | Administrador (DBA) |
+| **D. Manuel** | Maestro de Consultas |
+| **E. Carlos** | Probador SQL (Tester) |
+
+---
+
+## 4. Tecnologías Utilizadas
+
+| Componente | Tecnología |
+| :--- | :--- |
+| **Frontend** | HTML5, CSS3 (Animaciones, Efectos de Rayos), JavaScript |
+| **Backend** | PHP (Lógica de servidor y Hashing) |
+| **Base de Datos** | MySQL (Alojada en InfinityFree) |
+| **Real-time** | Pusher JS (Sincronización de chat y estados) |
+
+---
+
+## 5. Épicas del Proyecto (Epics)
+
+| ID | Épica | Prioridad |
+| :--- | :--- | :--- |
+| **EP-01** | Autenticación y Seguridad (Filtro de Baneo) | Crítica |
+| **EP-02** | Sistema Social (Chat, Amigos y Bloqueos) | Alta |
+| **EP-03** | Biblioteca de Juegos y Favoritos | Alta |
+| **EP-04** | Gamificación (Ranking, XP y Logros) | Media |
+| **EP-05** | Personalización de Perfil y Ajustes | Baja |
+
+---
+
+## 6. Estándares y Decisiones de Diseño
+
+*   **Seguridad Extrema:** Sistema de filtrado de palabras prohibidas con 3 oportunidades antes del baneo permanente por correo y usuario.
+*   **Gestión de XP:** Sistema dinámico donde la experiencia se acumula mediante el tiempo de juego, afectando el ranking global en tiempo real.
+*   **Privacidad Social:** Sistema de bloqueo "silencioso" donde el usuario bloqueado no recibe notificación, pero sus mensajes nunca llegan al destinatario.
+*   **Multimedia:** Integración de audio ambiental dinámico (truenos/relámpagos) y música de fondo persistente.
+
+---
+
+## 7. Product Backlog — Historias de Usuario
+
+| ID | Historia de Usuario | Épica | Prioridad | Puntos |
+| :--- | :--- | :--- | :--- | :--- |
+| **US-01** | Registro con validación de seguridad (10 chars) | EP-01 | Alta | 3 |
+| **US-02** | Filtro de groserías y baneo automático | EP-01 | Alta | 5 |
+| **US-03** | Recuperación de cuenta (Reset Password) | EP-01 | Media | 3 |
+| **US-04** | Chat en tiempo real con borrado de historial | EP-02 | Alta | 5 |
+| **US-05** | Buscador de amigos y sistema de bloqueos | EP-02 | Alta | 5 |
+| **US-06** | Catálogo de juegos con sistema de favoritos | EP-03 | Media | 3 |
+| **US-07** | Ranking global basado en nivel y XP | EP-04 | Media | 3 |
+| **US-08** | Sistema de 32 logros con animaciones | EP-04 | Baja | 8 |
+| **US-09** | Personalización de avatar y cambio de nombre | EP-05 | Baja | 2 |
+| **Total** | | | | **37 pts** |
+
+---
+
+## 8. Alcance del Sistema (Scope)
+
+### En Alcance (v1.0)
+- Autenticación segura y recuperación de contraseña.
+- Chat individual con funciones de bloqueo y eliminar amigos.
+- Sistema de niveles, XP y 32 logros animados.
+- Biblioteca de juegos con filtro de favoritos y categorías.
+- Efectos visuales y sonoros ambientales.
+
+### Fuera de Alcance / Próximas Mejoras
+- Buscador predictivo (autocompletado) de juegos y amigos.
+- Integración de cámara y envío de archivos en el chat.
+- Avatares 3D personalizables.
+- Sistema de grupos/clanes con historial de solicitudes.
+
+---
+
+*MythCore RPG Launcher — CBTis 47 · Marzo – Abril 2026*
