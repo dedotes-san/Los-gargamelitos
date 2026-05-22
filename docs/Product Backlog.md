@@ -1,372 +1,407 @@
-# Product Backlog — RPG Launcher MythCore RPG Launcher
-
-
-> **Plataforma de Gestión RPG** · Desarrollo Independiente  
-> **Stack:** HTML5 · CSS3 · JavaScript · PHP · MySQL (XAMPP) · GitHub
+# Product Backlog — MythCore RPG Launcher
+RPG Social Platform · CBTis 47  
+Stack: PHP · MySQL · Pusher JS · XAMPP · GitHub
 
 ---
 
-## 🎯 Product Goal
+# 🎯 Product Goal
 
-Habilitar a los usuarios de un juego de rol para registrarse, gestionar su perfil de guerrero, visualizar su progreso de nivel/XP y configurar su ambiente sonoro de forma independiente a través de una aplicación web, sincronizando cada cambio con el servidor en tiempo real — reduciendo la carga manual de administración y mejorando la inmersión de los jugadores en el Nexo.
+Enable players to register, interact, communicate, manage their RPG library, and participate in a secure gaming community through a centralized launcher system that integrates social interaction, moderation, rankings, and personalized game management.
 
 ---
 
-## 📦 Epics
+# 📦 Epics
 
 | ID | Epic Name | Audience | Priority |
 | :--- | :--- | :--- | :--- |
-| **EP-01** | User Authentication | Guerrero | High |
-| **EP-02** | Warrior Profile Management | Guerrero | High |
-| **EP-03** | Ambient Audio System | Guerrero | Medium |
-| **EP-04** | Experience & Leveling Logic | Guerrero | High |
-| **EP-05** | System Administration | Administrator | High |
+| EP-01 | User Authentication | User | High |
+| EP-02 | User Profile Management | User | High |
+| EP-03 | Social System | User | High |
+| EP-04 | RPG Chat System | User | High |
+| EP-05 | Game Library Management | User | High |
+| EP-06 | Ranking & XP System | User | Medium |
+| EP-07 | Moderation & Reports | Moderator / Admin | High |
+| EP-08 | Administration Panel | Administrator | High |
 
 ---
 
-## 📊 Backlog Summary
+# 📊 Backlog Summary
 
 | Story ID | User Story | Epic | Role | Priority | Points |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **US-01** | Warrior Registration | EP-01 | Guerrero | High | 5 |
-| **US-02** | Warrior Login | EP-01 | Guerrero | High | 2 |
-| **US-03** | Warrior Logout | EP-01 | Guerrero | Medium | 1 |
-| **US-04** | Update ADN Visual (Avatar) | EP-02 | Guerrero | High | 5 |
-| **US-05** | Edit Battle Name | EP-02 | Guerrero | High | 3 |
-| **US-06** | Adjust Master Volume | EP-03 | Guerrero | Medium | 3 |
-| **US-07** | Audio Sync with Database | EP-03 | Guerrero | High | 5 |
-| **US-08** | Real-time XP Progress Bar | EP-04 | Guerrero | High | 3 |
-| **US-09** | Manual Stat Modification | EP-05 | Admin | High | 5 |
-| **US-10** | Manage Warrior Database (CRUD) | EP-05 | Admin | High | 5 |
-| **Total** | | | | | **37** |
+| US-01 | User Registration | EP-01 | User | High | 5 |
+| US-02 | User Login | EP-01 | User | High | 3 |
+| US-03 | User Logout | EP-01 | User | Medium | 1 |
+| US-04 | Edit User Profile | EP-02 | User | Medium | 3 |
+| US-05 | Send Friend Request | EP-03 | User | High | 5 |
+| US-06 | Accept or Reject Friend Requests | EP-03 | User | High | 3 |
+| US-07 | Block Users | EP-03 | User | Medium | 3 |
+| US-08 | Real-Time RPG Chat | EP-04 | User | High | 5 |
+| US-09 | Send Messages | EP-04 | User | High | 3 |
+| US-10 | Browse RPG Library | EP-05 | User | High | 5 |
+| US-11 | Add Games to Favorites | EP-05 | User | Medium | 2 |
+| US-12 | Create Custom Games | EP-05 | User | Medium | 5 |
+| US-13 | View Rankings | EP-06 | User | Medium | 3 |
+| US-14 | Gain XP and Achievements | EP-06 | User | Medium | 5 |
+| US-15 | Report Users | EP-07 | User | High | 5 |
+| US-16 | View User Reports | EP-07 | Moderator / Admin | High | 3 |
+| US-17 | Manage Users | EP-08 | Administrator | High | 5 |
+| US-18 | Manage Games | EP-08 | Administrator | High | 5 |
+| US-19 | Manage Categories | EP-08 | Administrator | Medium | 3 |
+| US-20 | Manage Reports | EP-08 | Administrator | High | 5 |
+
+|  |  |  | **Total** |  | **74** |
 
 ---
 
-## EP-01 · User Authentication
+# EP-01 · User Authentication
 
-### US-01 — Warrior Registration
-**As a** new visitor,  
-**I want to** create a warrior account with my credentials,  
-**so that** I can start my journey in the RPG and save my progress.
+## US-01 — User Registration
+
+As a new player, I want to create an account with my credentials and personal information, so that I can access the MythCore RPG Launcher platform securely.
 
 **Priority:** High | **Story Points:** 5
 
-#### Acceptance Criteria
-```gherkin
-Feature: Warrior Registration
+### Acceptance Criteria
 
-  Scenario: Successful registration with valid data
-    Given the user is on the registration page
-    When the user enters a valid username, email, and password
-    And the user submits the registration form
-    Then the system creates a new record in the USERS table
-    And initializes level = 1, xp = 0, and avatar = "default.png"
-    And the user is redirected to the login page
-    And a message "¡BIENVENIDO AL NEXO!" is displayed
+### Feature: User Registration
 
-  Scenario: Registration fails with an existing username
-    Given the user is on the registration page
-    When the user enters a username that already exists in the USERS table
-    And the user submits the registration form
-    Then the system displays an error message indicating the username is taken
-    And no new record is created in the database
-US-02 — Warrior Login
-As a registered warrior,
+#### Scenario: Successful registration
+Given the user is on the registration page  
+When the user enters a valid username, email, and password  
+And submits the registration form  
+Then the system creates a new account in the `users` table  
+And redirects the user to the login page  
+And displays a confirmation message
 
-I want to log in with my credentials,
-
-so that I can access my profile and stats.
-
-Priority: High | Story Points: 2
-
-Acceptance Criteria
-Gherkin
-Feature: Warrior Login
-
-  Scenario: Successful login
-    Given the user is on the login page
-    When the user enters their registered username and correct password
-    And the user clicks the login button
-    Then the system creates a PHP session ($_SESSION['user_id'])
-    And the user is redirected to the dashboard.php
-EP-02 · Warrior Profile Management
-US-04 — Update ADN Visual (Avatar)
-As a logged-in warrior,
-
-I want to upload a profile image (ADN Visual),
-
-so that I can personalize my identity in the Nexo.
-
-Priority: High | Story Points: 5
-
-Acceptance Criteria
-Gherkin
-Feature: Avatar Update
-
-  Scenario: Successful image upload
-    Given the user is in the "Perfil de Guerrero" section
-    When the user selects a .jpg or .png file from their device
-    And clicks on "Cargar ADN Visual"
-    Then the file is moved to the uploads/ directory with a unique ID
-    And the avatar column in the USERS table is UPDATED for the current user
-    And the profile image updates instantly in the UI
-EP-03 · Ambient Audio System
-US-06 — Adjust Master Volume
-As a logged-in warrior,
-
-I want to adjust the background music volume through a slider,
-
-so that I can customize the battle atmosphere to my preference.
-
-Priority: Medium | Story Points: 3
-
-Acceptance Criteria
-Gherkin
-Feature: Master Volume Adjustment
-
-  Scenario: Real-time volume change
-    Given the audioMaster object is playing "battle.mp3"
-    When the user moves the volume slider (volRange)
-    Then the system updates the audioMaster.volume property immediately
-    And no page reload is required
-EP-05 · System Administration
-US-10 — Manage Warrior Database (CRUD)
-As an Administrator,
-
-I want to create, edit, or delete warrior records,
-
-so that I can maintain the integrity of the Nexo database.
-
-Priority: High | Story Points: 5
-
-Acceptance Criteria
-Gherkin
-Feature: Warrior CRUD
-
-  Scenario: Manual Rank Correction
-    Given the administrator selects a warrior with level 9
-    When they modify the level field to 10 and save
-    Then the system executes an UPDATE in the USERS table
-    And the change is reflected in the warrior's next session
+#### Scenario: Registration with existing username
+Given the user is on the registration page  
+When the user enters a username that already exists  
+Then the system displays an error message  
+And prevents account creation
 
 ---
 
-## EP-03 · Ambient Audio System
+## US-02 — User Login
 
-### US-06 — Adjust Master Volume
-**As a** logged-in warrior,  
-**I want to** adjust the background music volume through a slider,  
-**so that** I can customize the battle atmosphere to my preference.
+As a registered player, I want to log into the launcher, so that I can access my profile and RPG services.
+
+**Priority:** High | **Story Points:** 3
+
+### Acceptance Criteria
+
+### Feature: User Login
+
+#### Scenario: Successful login
+Given the user is registered  
+When the user enters correct credentials  
+Then the system authenticates the account  
+And redirects the user to the dashboard
+
+#### Scenario: Invalid credentials
+Given the user is on the login page  
+When incorrect credentials are entered  
+Then the system displays an authentication error
+
+---
+
+## US-03 — User Logout
+
+As a logged-in player, I want to close my session securely, so that my account remains protected.
+
+**Priority:** Medium | **Story Points:** 1
+
+### Acceptance Criteria
+
+### Feature: User Logout
+
+#### Scenario: Successful logout
+Given the user is logged into the launcher  
+When the user clicks the logout button  
+Then the session is terminated  
+And the user is redirected to the login screen
+
+---
+
+# EP-02 · User Profile Management
+
+## US-04 — Edit User Profile
+
+As a player, I want to modify my profile information, so that I can personalize my account.
 
 **Priority:** Medium | **Story Points:** 3
 
-#### Acceptance Criteria
-```gherkin
-Feature: Master Volume Adjustment
+### Acceptance Criteria
 
-  Scenario: Real-time volume change
-    Given the audioMaster object is playing "battle.mp3"
-    When the user moves the volume slider (volRange)
-    Then the system updates the audioMaster.volume property immediately
-    And the UI displays the percentage (0% - 100%) in the volPerc element
-    And no page reload is required for the change to take effect
+### Feature: Profile Management
 
-  Scenario: Muting the audio
-    Given the user is on the Sound System panel
-    When the user moves the slider to the minimum position (0)
-    Then the system sets audioMaster.volume to 0
-    And the UI label displays "SILENCIO".
-
-
-US-07 — Audio Sync with DatabaseAs a logged-in warrior,I want to save my audio preferences in the cloud,so that my volume level remains consistent across different sessions and devices.Priority: High | Story Points: 5Acceptance CriteriaGherkinFeature: Audio Preference Persistence
-
-  Scenario: Successful synchronization with database
-    Given the user has adjusted the volume slider to a specific level
-    When the user clicks the "Sincronizar Cambios con la Nube" button
-    Then the system executes an UPDATE on the vol_master column in the USERS table
-    And a confirmation message "¡EXPEDIENTE ACTUALIZADO CON ÉXITO!" is displayed
-    And the new volume level is loaded automatically on the next login.
-
-
-EP-04 · Experience & Leveling LogicUS-08 — Real-time XP Progress BarAs a logged-in warrior,I want to see my current level and an XP progress bar,so that I can track how much experience I need to reach the next rank.Priority: High | Story Points: 3Acceptance CriteriaGherkinFeature: XP Visualization
-
-  Scenario: Correct progress bar calculation
-    Given the user has a record in the USERS table with level = 9 and xp = 75
-    When the dashboard or configuration page loads
-    Then the system calculates the progress percentage as (xp / 100) * 100
-    And the .level-fill element width is set to 75%
-    And the labels "Nivel 9" and "75 / 100 XP" are displayed correctly.
-
-
-EP-05 · System Administration & SecurityUS-09 — Security Protocol CheckAs a logged-in warrior,I want to manage my security protocols (visibility and keys),so that I can protect my progress from unauthorized access.Priority: Medium | Story Points: 2Acceptance CriteriaGherkinFeature: Security Management
-
-  Scenario: Toggle profile visibility
-    Given the user is in the "Protocolos de Seguridad" section
-    When the user toggles the "Visibilidad del Perfil" checkbox
-    Then the system updates the visibility status in the database
-    And determines if other warriors can view the user's achievements.
-
-
-US-10 — Manual Stat Modification (Admin)As an Administrator,I want to manually edit any warrior's level or XP,so that I can correct errors or reward specific heroic actions.Priority: High | Story Points: 5Acceptance CriteriaGherkinFeature: Manual Stat Correction
-
-  Scenario: Successful stat override
-    Given the administrator has identified a specific warrior's ID
-    When they update the level or xp fields via the admin panel
-    Then the system executes an UPDATE on the USERS table
-    And the warrior sees the updated stats immediately upon their next session refresh.
-
-
-📈 Story Points SummaryEpicStoriesTotal PointsEP-01 · User AuthenticationUS-01, US-02, US-038EP-02 · Warrior Profile ManagementUS-04, US-058EP-03 · Ambient Audio SystemUS-06, US-078EP-04 · Experience & Leveling LogicUS-083EP-05 · System AdministrationUS-09, US-1010TOTAL37
+#### Scenario: Successful profile update
+Given the user is on their profile page  
+When they modify their profile information  
+Then the system updates the `users` table  
+And displays the updated information
 
 ---
 
-## EP-06 · Gestión de Misiones Asignadas (Nivel Maestro)
-> **Roles:** Administrador / Maestro de Armas  
-> **Tablas involucradas:** `USERS`, `MISSIONS`, `USER_MISSIONS`, `XP_LOG`
+# EP-03 · Social System
 
-### US-12 — Consultar Estadísticas de Jugadores Asignados
-**Como** Maestro de Armas,  
-**quiero** consultar los guerreros bajo mi supervisión con su nivel, XP actual y estado,  
-**para** monitorear el progreso del servidor y planificar eventos de nivelación.
+## US-05 — Send Friend Request
 
-**Prioridad:** Alta | **Story Points:** 3
+As a player, I want to send friend requests to other users, so that I can build my RPG community.
 
-#### Criterios de Aceptación
-```gherkin
-Feature: Consulta de Estadísticas de Guerreros
+**Priority:** High | **Story Points:** 5
 
-  Scenario: Visualización exitosa de guerreros
-    Given el Maestro de Armas ha iniciado sesión
-    When navega a la sección "Gestión de Guerreros"
-    Then el sistema consulta la tabla USERS y despliega la lista de jugadores
-    And cada registro muestra: user_name, level, current_xp, avatar y status (online/offline)
+### Acceptance Criteria
 
-  Scenario: Filtrar guerreros por nivel
-    Given el Maestro de Armas está viendo la lista de guerreros
-    When aplica un filtro para "Nivel 9"
-    Then el sistema muestra solo los registros en USERS donde level = 9
-EP-07 · Gestión de Audio y Soporte Técnico
-Roles: Centinela de Audio / Soporte
+### Feature: Friend Requests
 
-Tablas involucradas: USERS, INCIDENTS_LOG, AUDIO_SETTINGS
-
-US-16 — Registrar Incidencias de Audio o Sistema
-Como Centinela del Nexo,
-
-quiero registrar cualquier fallo reportado en la música ambiental o errores de carga,
-
-para que el administrador principal pueda realizar el seguimiento técnico.
-
-Prioridad: Media | Story Points: 3
-
-Criterios de Aceptación
-Gherkin
-Feature: Registro de Incidencias Técnicas
-
-  Scenario: Registro exitoso de error de audio
-    Given el Centinela detecta que el archivo "battle.mp3" no carga (Error 404)
-    When completa el formulario de incidencia con tipo "Audio" y descripción del error
-    Then el sistema inserta un registro en la tabla INCIDENTS_LOG con id_user, tipo, descripción y timestamp
-    And muestra el mensaje "Incidencia reportada al Gran Maestro"
-EP-09 · Administración del Reino (CRUD Maestro)
-Role: Gran Administrador
-
-Tablas involucradas: USERS, MISSIONS, AUDIO_SETTINGS, XP_TABLE
-
-US-19 — Gestionar Guerreros y Niveles (CRUD)
-Como Gran Administrador,
-
-quiero crear, editar, subir de nivel o eliminar guerreros del sistema,
-
-para mantener el catálogo de usuarios actualizado y libre de tramposos.
-
-Prioridad: Alta | Story Points: 5
-
-Criterios de Aceptación
-Gherkin
-Feature: Gestión de Usuarios (CRUD)
-
-  Scenario: Subir nivel manualmente a un guerrero
-    Given el Administrador selecciona un guerrero en la tabla USERS
-    When modifica el campo level de "9" a "10" y confirma los cambios
-    Then el sistema ejecuta un UPDATE en la base de datos
-    And el cambio se refleja instantáneamente en el Dashboard del usuario
-
-  Scenario: Eliminación de guerrero sin progreso activo
-    Given el Administrador selecciona un usuario con level = 1 y xp = 0
-    When confirma la eliminación del registro
-    Then el sistema borra el registro de la tabla USERS y libera el user_name
-US-22 — Ver Reportes de Progreso y Actividad
-Como Gran Administrador,
-
-quiero ver un reporte consolidado de cuánta XP se ha ganado en el servidor y cuántos niveles se han subido por día,
-
-para medir el rendimiento y actividad de mi RPG Launcher.
-
-Prioridad: Media | Story Points: 3
-
-Criterios de Aceptación
-Gherkin
-Feature: Reportes de Actividad del Servidor
-
-  Scenario: Visualizar total de XP global
-    Given el Administrador accede al módulo de reportes
-    When la página carga
-    Then el sistema suma el campo xp de todos los registros en USERS
-    And muestra el total de "Experiencia Acumulada en el Reino" en el gráfico principal
-📈 Story Points Summary (Final)
-Epic	Stories	Total Points
-EP-01 · User Authentication	US-01, US-02, US-03	8
-EP-02 · Warrior Profile Management	US-04, US-05	8
-EP-03 · Ambient Audio System	US-06, US-07	8
-EP-04 · Experience & Leveling Logic	US-08	3
-EP-05 · System Administration	US-12, US-16, US-19, US-22	16
-TOTAL GENERAL		43 pts
+#### Scenario: Successful friend request
+Given the user searches another player  
+When the user clicks "Send Friend Request"  
+Then the system creates a record in `friend_requests`
 
 ---
 
-### US-23 — Cancelar o Modificar Progresos de Guerreros
-**Como** Gran Administrador,  
-**quiero** cancelar misiones o modificar registros de nivel en casos especiales,  
-**de modo que** pueda corregir errores de sistema o manejar solicitudes directas de los guerreros.
+## US-06 — Accept or Reject Friend Requests
 
-**Prioridad:** Alta | **Story Points:** 3
+As a player, I want to manage incoming friend requests, so that I can control my social connections.
 
-#### Acceptance Criteria
-```gherkin
-Feature: Modificación Administrativa de Perfiles
+**Priority:** High | **Story Points:** 3
 
-  Scenario: Cancelar una misión confirmada (XP reversible)
-    Given el administrador localiza un registro en USER_MISSIONS 
-         con status = "confirmed"
-    When selecciona la opción "Revocar Misión" y confirma la acción
-    Then el sistema ejecuta un UPDATE en USER_MISSIONS seteando status = "cancelled"
-    And descuenta la XP otorgada previamente del campo xp en la tabla USERS
-    And la misión vuelve a estar disponible para ser reclamada por el usuario
+### Acceptance Criteria
 
-  Scenario: Corrección manual de nivel
-    Given el administrador localiza un guerrero con nivel incorrecto
-    When selecciona la opción "Ajuste de Rango Manual"
-    Then el sistema ejecuta un UPDATE en la tabla USERS modificando el campo level
-    And registra el cambio en el historial de auditoría del sistema
+### Feature: Friend Request Management
 
-  Scenario: Intento de cancelación en registro ya cancelado
-    Given un registro en USER_MISSIONS ya tiene status = "cancelled"
-    When el administrador intenta cancelarlo de nuevo
-    Then el sistema despliega un mensaje indicando que el registro ya fue revocado
-    And no se ejecuta ningún UPDATE adicional en la base de datos
+#### Scenario: Accept request
+Given the user has a pending friend request  
+When the user accepts it  
+Then the system creates a friendship record in `friends`
 
-  Scenario: Confirmar manualmente una actualización de estado pendiente
-    Given el administrador localiza un cambio de avatar o ajuste de audio 
-         con status = "pending" (bloqueado por sistema)
-    When selecciona la opción "Confirmar Manualmente"
-    Then el sistema fuerza el UPDATE en la tabla USERS seteando status = "confirmed"
-    And los cambios se reflejan en el perfil del guerrero inmediatamente
-📈 Story Points Summary (Final del Proyecto)
-Epic	Stories	Total Points
-EP-01 · User Authentication	US-01, US-02, US-03	8
-EP-02 · Warrior Profile Management	US-04, US-05	8
-EP-03 · Ambient Audio System	US-06, US-07	8
-EP-04 · Experience & Leveling Logic	US-08	3
-EP-05 · System Administration	US-09, US-10, US-12, US-16, US-19, US-22, US-23	26
-Grand Total	15 stories	53 pts
+---
+
+## US-07 — Block Users
+
+As a player, I want to block toxic users, so that I can avoid unwanted interactions.
+
+**Priority:** Medium | **Story Points:** 3
+
+### Acceptance Criteria
+
+### Feature: User Blocking
+
+#### Scenario: Block user successfully
+Given the user selects another player  
+When the block option is confirmed  
+Then the system inserts a record into `blocked_users`
+
+---
+
+# EP-04 · RPG Chat System
+
+## US-08 — Real-Time RPG Chat
+
+As a player, I want to communicate in real time through the RPG chat, so that I can interact instantly with friends.
+
+**Priority:** High | **Story Points:** 5
+
+### Acceptance Criteria
+
+### Feature: Real-Time Chat
+
+#### Scenario: Real-time communication
+Given two users are online  
+When a message is sent  
+Then the message appears instantly using Pusher JS
+
+---
+
+## US-09 — Send Messages
+
+As a player, I want to send messages to friends, so that I can communicate privately.
+
+**Priority:** High | **Story Points:** 3
+
+### Acceptance Criteria
+
+### Feature: Private Messaging
+
+#### Scenario: Send private message
+Given two users are friends  
+When one user sends a message  
+Then the system stores the message in `messages`
+
+---
+
+# EP-05 · Game Library Management
+
+## US-10 — Browse RPG Library
+
+As a player, I want to browse the game catalog, so that I can discover RPG titles.
+
+**Priority:** High | **Story Points:** 5
+
+### Acceptance Criteria
+
+### Feature: Game Library
+
+#### Scenario: Display RPG games
+Given the user enters the library section  
+When the page loads  
+Then the system displays all records from `games`
+
+---
+
+## US-11 — Add Games to Favorites
+
+As a player, I want to save favorite games, so that I can access them quickly later.
+
+**Priority:** Medium | **Story Points:** 2
+
+### Acceptance Criteria
+
+### Feature: Favorites
+
+#### Scenario: Add favorite game
+Given the user selects a game  
+When the favorite button is pressed  
+Then the system inserts a record into `favorites`
+
+---
+
+## US-12 — Create Custom Games
+
+As a player, I want to create custom RPG entries, so that I can personalize my library.
+
+**Priority:** Medium | **Story Points:** 5
+
+### Acceptance Criteria
+
+### Feature: Custom Games
+
+#### Scenario: Create custom RPG
+Given the user fills the custom game form  
+When the form is submitted  
+Then the system stores the game in `games`
+
+---
+
+# EP-06 · Ranking & XP System
+
+## US-13 — View Rankings
+
+As a player, I want to see rankings, so that I can compare my progress with others.
+
+**Priority:** Medium | **Story Points:** 3
+
+### Acceptance Criteria
+
+### Feature: Rankings
+
+#### Scenario: Display ranking board
+Given the user opens the ranking section  
+When the page loads  
+Then the system displays players ordered by XP
+
+---
+
+## US-14 — Gain XP and Achievements
+
+As a player, I want to earn XP and achievements, so that I can track my progression.
+
+**Priority:** Medium | **Story Points:** 5
+
+### Acceptance Criteria
+
+### Feature: XP System
+
+#### Scenario: Gain XP
+Given the user completes activities in the launcher  
+When XP conditions are met  
+Then the system updates the player's XP and achievements
+
+---
+
+# EP-07 · Moderation & Reports
+
+## US-15 — Report Users
+
+As a player, I want to report inappropriate behavior, so that moderators can review incidents.
+
+**Priority:** High | **Story Points:** 5
+
+### Acceptance Criteria
+
+### Feature: User Reports
+
+#### Scenario: Successful report
+Given the user selects another player  
+When the report form is submitted  
+Then the system inserts a record into `reports`
+
+---
+
+## US-16 — View User Reports
+
+As a moderator or administrator, I want to review reports, so that I can take moderation actions.
+
+**Priority:** High | **Story Points:** 3
+
+### Acceptance Criteria
+
+### Feature: Report Management
+
+#### Scenario: View reports
+Given the moderator accesses the reports section  
+When the page loads  
+Then the system displays all records from `reports`
+
+---
+
+# EP-08 · Administration Panel
+
+## US-17 — Manage Users
+
+As an administrator, I want to manage users, so that I can maintain platform integrity.
+
+**Priority:** High | **Story Points:** 5
+
+---
+
+## US-18 — Manage Games
+
+As an administrator, I want to manage the RPG catalog, so that the library remains updated.
+
+**Priority:** High | **Story Points:** 5
+
+---
+
+## US-19 — Manage Categories
+
+As an administrator, I want to organize RPG categories, so that games are classified correctly.
+
+**Priority:** Medium | **Story Points:** 3
+
+---
+
+## US-20 — Manage Reports
+
+As an administrator, I want to resolve reports and moderate users, so that the community remains safe.
+
+**Priority:** High | **Story Points:** 5
+
+---
+
+# 📈 Story Points Summary
+
+| Epic | Stories | Total Points |
+| :--- | :--- | :--- |
+| EP-01 · User Authentication | US-01, US-02, US-03 | 9 |
+| EP-02 · User Profile Management | US-04 | 3 |
+| EP-03 · Social System | US-05, US-06, US-07 | 11 |
+| EP-04 · RPG Chat System | US-08, US-09 | 8 |
+| EP-05 · Game Library Management | US-10, US-11, US-12 | 12 |
+| EP-06 · Ranking & XP System | US-13, US-14 | 8 |
+| EP-07 · Moderation & Reports | US-15, US-16 | 8 |
+| EP-08 · Administration Panel | US-17, US-18, US-19, US-20 | 18 |
+
+| **Grand Total** | **20 Stories** | **74 pts** |
