@@ -175,7 +175,9 @@ Feature: Master Volume Adjustment
     Given the user is on the Sound System panel
     When the user moves the slider to the minimum position (0)
     Then the system sets audioMaster.volume to 0
-    And the UI label displays "SILENCIO"
+    And the UI label displays "SILENCIO".
+
+
 US-07 — Audio Sync with DatabaseAs a logged-in warrior,I want to save my audio preferences in the cloud,so that my volume level remains consistent across different sessions and devices.Priority: High | Story Points: 5Acceptance CriteriaGherkinFeature: Audio Preference Persistence
 
   Scenario: Successful synchronization with database
@@ -183,7 +185,9 @@ US-07 — Audio Sync with DatabaseAs a logged-in warrior,I want to save my audio
     When the user clicks the "Sincronizar Cambios con la Nube" button
     Then the system executes an UPDATE on the vol_master column in the USERS table
     And a confirmation message "¡EXPEDIENTE ACTUALIZADO CON ÉXITO!" is displayed
-    And the new volume level is loaded automatically on the next login
+    And the new volume level is loaded automatically on the next login.
+
+
 EP-04 · Experience & Leveling LogicUS-08 — Real-time XP Progress BarAs a logged-in warrior,I want to see my current level and an XP progress bar,so that I can track how much experience I need to reach the next rank.Priority: High | Story Points: 3Acceptance CriteriaGherkinFeature: XP Visualization
 
   Scenario: Correct progress bar calculation
@@ -191,21 +195,27 @@ EP-04 · Experience & Leveling LogicUS-08 — Real-time XP Progress BarAs a logg
     When the dashboard or configuration page loads
     Then the system calculates the progress percentage as (xp / 100) * 100
     And the .level-fill element width is set to 75%
-    And the labels "Nivel 9" and "75 / 100 XP" are displayed correctly
+    And the labels "Nivel 9" and "75 / 100 XP" are displayed correctly.
+
+
 EP-05 · System Administration & SecurityUS-09 — Security Protocol CheckAs a logged-in warrior,I want to manage my security protocols (visibility and keys),so that I can protect my progress from unauthorized access.Priority: Medium | Story Points: 2Acceptance CriteriaGherkinFeature: Security Management
 
   Scenario: Toggle profile visibility
     Given the user is in the "Protocolos de Seguridad" section
     When the user toggles the "Visibilidad del Perfil" checkbox
     Then the system updates the visibility status in the database
-    And determines if other warriors can view the user's achievements
+    And determines if other warriors can view the user's achievements.
+
+
 US-10 — Manual Stat Modification (Admin)As an Administrator,I want to manually edit any warrior's level or XP,so that I can correct errors or reward specific heroic actions.Priority: High | Story Points: 5Acceptance CriteriaGherkinFeature: Manual Stat Correction
 
   Scenario: Successful stat override
     Given the administrator has identified a specific warrior's ID
     When they update the level or xp fields via the admin panel
     Then the system executes an UPDATE on the USERS table
-    And the warrior sees the updated stats immediately upon their next session refresh
+    And the warrior sees the updated stats immediately upon their next session refresh.
+
+
 📈 Story Points SummaryEpicStoriesTotal PointsEP-01 · User AuthenticationUS-01, US-02, US-038EP-02 · Warrior Profile ManagementUS-04, US-058EP-03 · Ambient Audio SystemUS-06, US-078EP-04 · Experience & Leveling LogicUS-083EP-05 · System AdministrationUS-09, US-1010TOTAL37
 
 ---
