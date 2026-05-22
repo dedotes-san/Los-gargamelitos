@@ -331,7 +331,6 @@ As a player, I want to report inappropriate behavior, so that moderators can rev
 
 ### Acceptance Criteria
 
-### Feature: User Reports
 
 #### Scenario: Successful report
 Given the user selects another player  
