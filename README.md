@@ -66,7 +66,7 @@ The database is designed following efficiency and scalability standards:
 
 ---
 
-# 👥 Role Structure (Team Los Gargamelitos)
+# 👥 Role Structure 
 
 | Member | Assigned Role | Responsibilities |
 | :--- | :--- | :--- |
