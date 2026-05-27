@@ -1,5 +1,5 @@
 # Product Backlog — MythCore RPG Launcher
-RPG Social Platform · CBTis 47  
+RPG Social Platform  
 Stack: PHP · MySQL · Pusher JS · XAMPP · GitHub
 
 ---
@@ -49,8 +49,8 @@ Enable players to register, interact, communicate, manage their RPG library, and
 | US-18 | Manage Games | EP-08 | Administrator | High | 5 |
 | US-19 | Manage Categories | EP-08 | Administrator | Medium | 3 |
 | US-20 | Manage Reports | EP-08 | Administrator | High | 5 |
-
-|  |  |  | **Total** |  | **74** |
+| US-21 | Delete Games | EP-05 | User | Medium | 3 |
+| **Total** |  |  |  |  | **77** |
 
 ---
 
@@ -60,11 +60,9 @@ Enable players to register, interact, communicate, manage their RPG library, and
 
 As a new player, I want to create an account with my credentials and personal information, so that I can access the MythCore RPG Launcher platform securely.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
-### Feature: User Registration
 
 #### Scenario: Successful registration
 Given the user is on the registration page  
@@ -80,17 +78,37 @@ When the user enters a username that already exists
 Then the system displays an error message  
 And prevents account creation
 
+#### Scenario: Registration with invalid email
+Given the user is on the registration page  
+When the user enters an email without the **@** symbol  
+Then the system displays an invalid email message  
+And prevents registration
+
+#### Scenario: Empty fields
+Given the user is on the registration page  
+When required fields are empty  
+Then the system prevents form submission  
+And displays validation errors
+
+#### Scenario: Weak password
+Given the user is on the registration page  
+When the password does not meet security requirements  
+Then the system displays a password security warning
+
+#### Scenario: Successful loading animation
+Given the user submits the registration form  
+When the system processes the registration  
+Then a loading animation with a sword character is displayed
+
 ---
 
 ## US-02 — User Login
 
 As a registered player, I want to log into the launcher, so that I can access my profile and RPG services.
 
-**Priority:** High | **Story Points:** 3
+**Priority:** **High** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: User Login
 
 #### Scenario: Successful login
 Given the user is registered  
@@ -109,11 +127,9 @@ Then the system displays an authentication error
 
 As a logged-in player, I want to close my session securely, so that my account remains protected.
 
-**Priority:** Medium | **Story Points:** 1
+**Priority:** **Medium** | **Story Points:** **1**
 
 ### Acceptance Criteria
-
-### Feature: User Logout
 
 #### Scenario: Successful logout
 Given the user is logged into the launcher  
@@ -129,11 +145,9 @@ And the user is redirected to the login screen
 
 As a player, I want to modify my profile information, so that I can personalize my account.
 
-**Priority:** Medium | **Story Points:** 3
+**Priority:** **Medium** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: Profile Management
 
 #### Scenario: Successful profile update
 Given the user is on their profile page  
@@ -149,11 +163,9 @@ And displays the updated information
 
 As a player, I want to send friend requests to other users, so that I can build my RPG community.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
-### Feature: Friend Requests
 
 #### Scenario: Successful friend request
 Given the user searches another player  
@@ -166,16 +178,20 @@ Then the system creates a record in `friend_requests`
 
 As a player, I want to manage incoming friend requests, so that I can control my social connections.
 
-**Priority:** High | **Story Points:** 3
+**Priority:** **High** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: Friend Request Management
 
 #### Scenario: Accept request
 Given the user has a pending friend request  
 When the user accepts it  
 Then the system creates a friendship record in `friends`
+
+#### Scenario: Reject request
+Given the user has a pending friend request  
+When the user rejects the request  
+Then the system removes the request from `friend_requests`  
+And notifies the sender about the rejection
 
 ---
 
@@ -183,11 +199,9 @@ Then the system creates a friendship record in `friends`
 
 As a player, I want to block toxic users, so that I can avoid unwanted interactions.
 
-**Priority:** Medium | **Story Points:** 3
+**Priority:** **Medium** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: User Blocking
 
 #### Scenario: Block user successfully
 Given the user selects another player  
@@ -202,11 +216,9 @@ Then the system inserts a record into `blocked_users`
 
 As a player, I want to communicate in real time through the RPG chat, so that I can interact instantly with friends.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
-### Feature: Real-Time Chat
 
 #### Scenario: Real-time communication
 Given two users are online  
@@ -219,11 +231,9 @@ Then the message appears instantly using Pusher JS
 
 As a player, I want to send messages to friends, so that I can communicate privately.
 
-**Priority:** High | **Story Points:** 3
+**Priority:** **High** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: Private Messaging
 
 #### Scenario: Send private message
 Given two users are friends  
@@ -238,11 +248,9 @@ Then the system stores the message in `messages`
 
 As a player, I want to browse the game catalog, so that I can discover RPG titles.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
-### Feature: Game Library
 
 #### Scenario: Display RPG games
 Given the user enters the library section  
@@ -255,11 +263,9 @@ Then the system displays all records from `games`
 
 As a player, I want to save favorite games, so that I can access them quickly later.
 
-**Priority:** Medium | **Story Points:** 2
+**Priority:** **Medium** | **Story Points:** **2**
 
 ### Acceptance Criteria
-
-### Feature: Favorites
 
 #### Scenario: Add favorite game
 Given the user selects a game  
@@ -272,16 +278,29 @@ Then the system inserts a record into `favorites`
 
 As a player, I want to create custom RPG entries, so that I can personalize my library.
 
-**Priority:** Medium | **Story Points:** 5
+**Priority:** **Medium** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
-### Feature: Custom Games
 
 #### Scenario: Create custom RPG
 Given the user fills the custom game form  
 When the form is submitted  
 Then the system stores the game in `games`
+
+---
+
+## US-21 — Delete Games
+
+As a player, I want to delete games from my library, so that I can manage my personal RPG collection.
+
+**Priority:** **Medium** | **Story Points:** **3**
+
+### Acceptance Criteria
+
+#### Scenario: Delete game successfully
+Given the user selects a game from their library  
+When the delete option is confirmed  
+Then the system removes the game from `games`
 
 ---
 
@@ -291,11 +310,9 @@ Then the system stores the game in `games`
 
 As a player, I want to see rankings, so that I can compare my progress with others.
 
-**Priority:** Medium | **Story Points:** 3
+**Priority:** **Medium** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: Rankings
 
 #### Scenario: Display ranking board
 Given the user opens the ranking section  
@@ -308,11 +325,9 @@ Then the system displays players ordered by XP
 
 As a player, I want to earn XP and achievements, so that I can track my progression.
 
-**Priority:** Medium | **Story Points:** 5
+**Priority:** **Medium** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
-### Feature: XP System
 
 #### Scenario: Gain XP
 Given the user completes activities in the launcher  
@@ -327,10 +342,9 @@ Then the system updates the player's XP and achievements
 
 As a player, I want to report inappropriate behavior, so that moderators can review incidents.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ### Acceptance Criteria
-
 
 #### Scenario: Successful report
 Given the user selects another player  
@@ -343,11 +357,9 @@ Then the system inserts a record into `reports`
 
 As a moderator or administrator, I want to review reports, so that I can take moderation actions.
 
-**Priority:** High | **Story Points:** 3
+**Priority:** **High** | **Story Points:** **3**
 
 ### Acceptance Criteria
-
-### Feature: Report Management
 
 #### Scenario: View reports
 Given the moderator accesses the reports section  
@@ -362,7 +374,7 @@ Then the system displays all records from `reports`
 
 As an administrator, I want to manage users, so that I can maintain platform integrity.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ---
 
@@ -370,7 +382,7 @@ As an administrator, I want to manage users, so that I can maintain platform int
 
 As an administrator, I want to manage the RPG catalog, so that the library remains updated.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ---
 
@@ -378,7 +390,7 @@ As an administrator, I want to manage the RPG catalog, so that the library remai
 
 As an administrator, I want to organize RPG categories, so that games are classified correctly.
 
-**Priority:** Medium | **Story Points:** 3
+**Priority:** **Medium** | **Story Points:** **3**
 
 ---
 
@@ -386,7 +398,7 @@ As an administrator, I want to organize RPG categories, so that games are classi
 
 As an administrator, I want to resolve reports and moderate users, so that the community remains safe.
 
-**Priority:** High | **Story Points:** 5
+**Priority:** **High** | **Story Points:** **5**
 
 ---
 
@@ -398,9 +410,8 @@ As an administrator, I want to resolve reports and moderate users, so that the c
 | EP-02 · User Profile Management | US-04 | 3 |
 | EP-03 · Social System | US-05, US-06, US-07 | 11 |
 | EP-04 · RPG Chat System | US-08, US-09 | 8 |
-| EP-05 · Game Library Management | US-10, US-11, US-12 | 12 |
+| EP-05 · Game Library Management | US-10, US-11, US-12, US-21 | 15 |
 | EP-06 · Ranking & XP System | US-13, US-14 | 8 |
 | EP-07 · Moderation & Reports | US-15, US-16 | 8 |
 | EP-08 · Administration Panel | US-17, US-18, US-19, US-20 | 18 |
-
-| **Grand Total** | **20 Stories** | **74 pts** |
+| **Grand Total** | **21 Stories** | **77 pts** |
