@@ -191,7 +191,8 @@ Then the system creates a friendship record in `friends`
 Given the user has a pending friend request  
 When the user rejects the request  
 Then the system removes the request from `friend_requests`  
-And notifies the sender about the rejection
+And the pending button changes to "Add Friend"  
+And the sender receives the message "Your friend request was rejected"
 
 ---
 
