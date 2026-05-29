@@ -49,49 +49,92 @@ All responsibilities will be completed according to the sprint planning.
 # 🛠️ Infrastructure & Database
 
 ## #INFRA-01 – Configure MySQL Database
-* **Type:** Technical Task
-* **Status:** In Progress
-* **Responsible:** B. Dorian, C. Dereck
+**Type:** Technical Task  
+**Status:** In Progress  
+**Responsible:** B. Dorian, C. Dereck  
 
 ### Description
-Creation and configuration of the MySQL database structure for the MythCore RPG Launcher using XAMPP and phpMyAdmin.
+Design, create, and configure the MySQL database structure for the MythCore RPG Launcher project using XAMPP, phpMyAdmin, PHP, and MySQL relational databases.
 
-The following tables will be created:
-- `users`
-- `friend_requests`
-- `friends`
-- `blocked_users`
-- `messages`
-- `games`
-- `favorites`
-- `reports`
+The objective of this task is to build the complete database structure required for the launcher systems, including authentication, social interaction, messaging, moderation, and game management features.
+
+The following technical tasks will be performed during this activity:
+
+- Create the `users` table to store player account information
+- Configure primary keys for all database tables
+- Create the `friend_requests` table to manage pending friendship requests
+- Configure foreign keys between `users` and `friend_requests`
+- Create the `friends` table to store accepted friendships
+- Create the `blocked_users` table to prevent unwanted interactions
+- Create the `messages` table for the private messaging system
+- Create the `games` table to store RPG game information
+- Create the `favorites` table to manage favorite games
+- Create the `reports` table for moderation and user reports
+- Configure relational integrity between all tables
+- Validate foreign key restrictions and cascading relationships
+- Configure the PHP connection to the MySQL database
+- Test SQL queries for insert, update, delete, and select operations
+- Insert test records for database validation
+- Verify compatibility with phpMyAdmin and XAMPP
+- Organize SQL scripts and database files inside the GitHub repository
+- Validate database functionality locally before integration with the launcher system
 
 ### Expected Closure Documentation
-- Successful database connection using PHP and MySQL.
-- Validation of primary keys and foreign keys.
-- Test data insertion.
-- Local testing using XAMPP.
-- Evidence uploaded to the GitHub repository.
+- Successful database connection using PHP and MySQL
+- Validation of primary keys and foreign keys completed successfully
+- SQL relational structure tested correctly
+- Test data inserted into all required tables
+- CRUD operations validated successfully
+- Local testing completed using XAMPP and phpMyAdmin
+- SQL scripts uploaded to the GitHub repository
+- Database documentation completed successfully
 
 ---
 
 ## #INFRA-02 – Configure Authentication System
-* **Type:** Technical Task
-* **Status:** In Progress
-* **Responsible:** A. Irvin, C. Dereck
+**Type:** Technical Task  
+**Status:** In Progress  
+**Responsible:** A. Irvin, C. Dereck  
 
 ### Description
-Implementation of the authentication system using PHP sessions and encrypted passwords.
+Develop and configure the authentication system for the MythCore RPG Launcher using PHP sessions, MySQL queries, encrypted passwords, and secure session management.
+
+The authentication system will allow users to register, log in, maintain active sessions securely, and log out safely while protecting private routes inside the launcher.
+
+The following technical tasks will be completed during this activity:
+
+- Create the user login validation system
+- Configure PHP session initialization
+- Validate credentials using MySQL queries
+- Compare encrypted passwords securely
+- Implement password encryption using `password_hash()`
+- Configure password verification using `password_verify()`
+- Create secure logout functionality
+- Destroy active sessions correctly after logout
+- Protect private routes using session validation
+- Redirect unauthorized users to the login page
+- Validate incorrect login credentials
+- Display authentication error messages
+- Validate empty login fields
+- Configure secure session persistence
+- Test multiple login attempts
+- Validate login functionality using registered users
+- Test session behavior after page refresh
+- Validate access restrictions after logout
+- Verify authentication compatibility with MySQL database
+- Upload authentication files and documentation to GitHub repository
 
 ### Expected Closure Documentation
-- Login validation configured successfully.
-- Secure session handling implemented.
-- Logout destroys active sessions correctly.
-- Password hashing implemented using PHP security functions.
-- Multiple login tests executed successfully.
-
----
-
+- Login validation configured successfully
+- PHP sessions working correctly
+- Secure logout functionality implemented
+- Password encryption validated successfully
+- Invalid credential validation functioning correctly
+- Protected routes secured successfully
+- Session persistence tested successfully
+- Authentication system integrated with MySQL database
+- Multiple login tests completed successfully
+- Authentication documentation uploaded to GitHub repository
 # 👤 User Stories
 
 ## #US-01 – User Registration
