@@ -307,26 +307,26 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 
 # ✅ Sprint Checklist
 
-- [ ] Configure MySQL database
-- [ ] Create users table
-- [ ] Create friend request system
-- [ ] Configure login system
-- [ ] Configure logout system
-- [ ] Implement profile management
-- [ ] Add avatar update system
-- [ ] Implement email validation with @
-- [ ] Implement password validation
-- [ ] Create loading animation with sword character
-- [ ] Implement accept friend request feature
-- [ ] Implement reject friend request feature
-- [ ] Change pending button to "Add Friend" after rejection
-- [ ] Display rejection notification message
-- [ ] Configure blocked users system
-- [ ] Test database connection
-- [ ] Validate authentication system
-- [ ] Validate protected routes
-- [ ] Upload project to GitHub repository
-- [ ] Complete Sprint 1 documentation
+- [x] Configure MySQL database
+- [x] Create users table
+- [x] Create friend request system
+- [x] Configure login system
+- [x] Configure logout system
+- [x] Implement profile management
+- [x] Add avatar update system
+- [x] Implement email validation with @
+- [x] Implement password validation
+- [x] Create loading animation with sword character
+- [x] Implement accept friend request feature
+- [x] Implement reject friend request feature
+- [x] Change pending button to "Add Friend" after rejection
+- [x] Display rejection notification message
+- [x] Configure blocked users system
+- [x] Test database connection
+- [x] Validate authentication system
+- [x] Validate protected routes
+- [x] Upload project to GitHub repository
+- [x] Complete Sprint 1 documentation
 
 ---
 
