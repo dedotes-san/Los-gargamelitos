@@ -1,6 +1,6 @@
 # 🚀 Sprint 1 Backlog & Project Closure
 
-This document contains the technical tasks, user stories, completed functionalities, acceptance criteria, validations, and closure documentation developed during **Sprint 1** of the **MythCore RPG Launcher** project.
+This document contains the technical tasks, user stories, planned functionalities, acceptance criteria, validations, and project documentation for **Sprint 1** of the **MythCore RPG Launcher** project.
 
 ---
 
@@ -16,7 +16,7 @@ Jose Octavio Sánchez Contreras
 Develop the authentication and social systems of the launcher, including registration, login, friend requests, rejection system, profile management, and database integration.
 
 ### Sprint Velocity:
-15 Tasks Completed / 15 Planned (100% Velocity)
+15 Tasks Planned / 15 Expected
 
 ---
 
@@ -34,15 +34,15 @@ Develop the authentication and social systems of the launcher, including registr
 
 # 📌 Team Contribution Summary
 
-Each team member contributed to the successful development of the MythCore RPG Launcher database and authentication systems during Sprint 1.
+Each team member will contribute to the successful development of the MythCore RPG Launcher database and authentication systems during Sprint 1.
 
-- The **Analyst and Designer** created the database structure and project documentation.
-- The **SQL Developer** implemented relational tables, constraints, and SQL scripts.
-- The **Database Administrator (DBA)** managed project files, database maintenance, and technical support.
-- The **Query Specialist** generated SQL reports and inserted test records for validation.
-- The **SQL Tester** validated data integrity, tested queries, and controlled database errors.
+- The **Analyst and Designer** will create the database structure and project documentation.
+- The **SQL Developer** will implement relational tables, constraints, and SQL scripts.
+- The **Database Administrator (DBA)** will manage project files, database maintenance, and technical support.
+- The **Query Specialist** will generate SQL reports and insert test records for validation.
+- The **SQL Tester** will validate data integrity, test queries, and control database errors.
 
-All responsibilities were completed successfully according to the sprint planning.
+All responsibilities will be completed according to the sprint planning.
 
 ---
 
@@ -50,13 +50,13 @@ All responsibilities were completed successfully according to the sprint plannin
 
 ## #INFRA-01 – Configure MySQL Database
 * **Type:** Technical Task
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** B. Dorian, C. Dereck
 
 ### Description
 Creation and configuration of the MySQL database structure for the MythCore RPG Launcher using XAMPP and phpMyAdmin.
 
-The following tables were created:
+The following tables will be created:
 - `users`
 - `friend_requests`
 - `friends`
@@ -66,29 +66,29 @@ The following tables were created:
 - `favorites`
 - `reports`
 
-### Closure Documentation
+### Expected Closure Documentation
 - Successful database connection using PHP and MySQL.
 - Validation of primary keys and foreign keys.
-- Test data inserted successfully.
-- Database tested locally using XAMPP.
-- Evidence available in the GitHub repository.
+- Test data insertion.
+- Local testing using XAMPP.
+- Evidence uploaded to the GitHub repository.
 
 ---
 
 ## #INFRA-02 – Configure Authentication System
 * **Type:** Technical Task
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** A. Irvin, C. Dereck
 
 ### Description
 Implementation of the authentication system using PHP sessions and encrypted passwords.
 
-### Closure Documentation
-- Login validation implemented successfully.
-- Secure session handling configured.
+### Expected Closure Documentation
+- Login validation configured successfully.
+- Secure session handling implemented.
 - Logout destroys active sessions correctly.
-- Password hashing implemented with PHP security functions.
-- Multiple login tests completed successfully.
+- Password hashing implemented using PHP security functions.
+- Multiple login tests executed successfully.
 
 ---
 
@@ -96,14 +96,14 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 
 ## #US-01 – User Registration
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** A. Irvin, E. Carlos
 
 > **As a** new player,  
 > **I want** to create an account with my credentials and personal information,  
 > **so that** I can access the MythCore RPG Launcher platform securely.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Successful registration
 **Given** the user is on the registration page  
@@ -141,27 +141,26 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 **When** the system processes the registration  
 **Then** a loading animation with a sword character is displayed
 
-### Closure Documentation
-- Registration form created successfully.
+### Expected Closure Documentation
+- Registration form configured successfully.
 - Email validation with **@** symbol implemented.
-- Duplicate users blocked correctly.
-- Password security validation completed.
+- Duplicate user prevention configured.
+- Password validation implemented.
 - Loading animation integrated successfully.
-- Data stored correctly in MySQL database.
-- 10 successful registration tests completed.
+- MySQL insertion tested successfully.
 
 ---
 
 ## #US-02 – User Login
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** A. Irvin, E. Carlos
 
 > **As a** registered player,  
 > **I want** to log into the launcher,  
 > **so that** I can access my profile and RPG services.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Successful login
 **Given** the user is registered  
@@ -174,24 +173,23 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 **When** incorrect credentials are entered  
 **Then** the system displays an authentication error
 
-### Closure Documentation
-- PHP session system implemented successfully.
-- Incorrect credentials validation working properly.
-- Dashboard redirection configured.
-- Multiple login tests executed successfully.
+### Expected Closure Documentation
+- PHP session system configured successfully.
+- Invalid credential validation implemented.
+- Dashboard redirection configured correctly.
 
 ---
 
 ## #US-03 – User Logout
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** A. Irvin
 
 > **As a** logged-in player,  
 > **I want** to close my session securely,  
 > **so that** my account remains protected.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Successful logout
 **Given** the user is logged into the launcher  
@@ -199,23 +197,23 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 **Then** the session is terminated  
 **And** the user is redirected to the login screen
 
-### Closure Documentation
-- Session destruction implemented successfully.
-- Protected routes redirect correctly after logout.
-- Security validation completed successfully.
+### Expected Closure Documentation
+- Logout system configured correctly.
+- Session destruction validated successfully.
+- Protected routes secured after logout.
 
 ---
 
 ## #US-04 – Edit User Profile
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** D. Manuel
 
 > **As a** player,  
 > **I want** to modify my profile information,  
 > **so that** I can personalize my account.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Successful profile update
 **Given** the user is on their profile page  
@@ -223,48 +221,46 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 **Then** the system updates the `users` table  
 **And** displays the updated information
 
-### Closure Documentation
-- Profile editing interface completed.
-- Avatar update system implemented.
-- Changes persist correctly after reload.
-- MySQL update queries tested successfully.
+### Expected Closure Documentation
+- Profile editing interface implemented.
+- Avatar update system configured.
+- Changes saved correctly in MySQL.
 
 ---
 
 ## #US-05 – Send Friend Request
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** D. Manuel
 
 > **As a** player,  
 > **I want** to send friend requests to other users,  
 > **so that** I can build my RPG community.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Successful friend request
 **Given** the user searches another player  
 **When** the user clicks "Send Friend Request"  
 **Then** the system creates a record in `friend_requests`
 
-### Closure Documentation
-- Friend request button implemented.
+### Expected Closure Documentation
+- Friend request button configured.
 - Requests stored correctly in database.
-- Pending state displayed successfully.
-- Duplicate requests blocked correctly.
+- Duplicate request prevention implemented.
 
 ---
 
 ## #US-06 – Accept or Reject Friend Requests
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** D. Manuel, E. Carlos
 
 > **As a** player,  
 > **I want** to manage incoming friend requests,  
 > **so that** I can control my social connections.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Accept request
 **Given** the user has a pending friend request  
@@ -278,52 +274,59 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 **And** the pending button changes to "Add Friend"  
 **And** the sender receives the message "Your friend request was rejected"
 
-### Closure Documentation
+### Expected Closure Documentation
 - Accept and reject buttons implemented.
 - Friend relationships stored correctly.
 - Rejected requests removed automatically.
-- Notification system functioning correctly.
-- UI updates instantly after rejection.
+- Notification system configured successfully.
 
 ---
 
 ## #US-07 – Block Users
 * **Type:** User Story
-* **Status:** Done
+* **Status:** In Progress
 * **Responsible:** E. Carlos
 
 > **As a** player,  
 > **I want** to block toxic users,  
 > **so that** I can avoid unwanted interactions.
 
-### Acceptance Criteria Completed
+### Acceptance Criteria
 
 #### Scenario: Block user successfully
 **Given** the user selects another player  
 **When** the block option is confirmed  
 **Then** the system inserts a record into `blocked_users`
 
-### Closure Documentation
-- User blocking system completed.
-- Blocked users cannot send requests or messages.
-- Database validations completed successfully.
+### Expected Closure Documentation
+- User blocking system implemented.
+- Blocked users prevented from sending requests and messages.
+- Database validation completed successfully.
 
 ---
 
-# 🧪 Testing Phase
+# ✅ Sprint Checklist
 
-| Test ID | Description | Result |
-| :--- | :--- | :--- |
-| TEST-01 | Valid registration | Passed |
-| TEST-02 | Invalid email validation | Passed |
-| TEST-03 | Empty fields validation | Passed |
-| TEST-04 | Successful login | Passed |
-| TEST-05 | Incorrect login | Passed |
-| TEST-06 | Logout validation | Passed |
-| TEST-07 | Send friend request | Passed |
-| TEST-08 | Reject friend request | Passed |
-| TEST-09 | Block user system | Passed |
-| TEST-10 | Database connection | Passed |
+- [ ] Configure MySQL database
+- [ ] Create users table
+- [ ] Create friend request system
+- [ ] Configure login system
+- [ ] Configure logout system
+- [ ] Implement profile management
+- [ ] Add avatar update system
+- [ ] Implement email validation with @
+- [ ] Implement password validation
+- [ ] Create loading animation with sword character
+- [ ] Implement accept friend request feature
+- [ ] Implement reject friend request feature
+- [ ] Change pending button to "Add Friend" after rejection
+- [ ] Display rejection notification message
+- [ ] Configure blocked users system
+- [ ] Test database connection
+- [ ] Validate authentication system
+- [ ] Validate protected routes
+- [ ] Upload project to GitHub repository
+- [ ] Complete Sprint 1 documentation
 
 ---
 
@@ -331,30 +334,30 @@ Implementation of the authentication system using PHP sessions and encrypted pas
 
 | Category | Total |
 | :--- | :--- |
-| User Stories Completed | 7 |
-| Technical Tasks Completed | 2 |
-| Tests Executed | 10 |
-| Critical Errors | 0 |
-| Sprint Velocity | 100% |
+| User Stories Planned | 7 |
+| Technical Tasks Planned | 2 |
+| Planned Tests | 10 |
+| Expected Critical Errors | 0 |
+| Expected Sprint Velocity | 100% |
 
 ---
 
 # ✅ Definition of Done
 
-- Registration system connected to MySQL
-- Login and logout fully functional
-- Friend request system operational
-- Reject request system implemented
-- Validation with **@** symbol functioning
-- Loading animation working correctly
-- Database tested successfully
-- Protected routes secured
-- All sprint tasks completed
-- GitHub repository updated successfully
+- Registration system will be connected to MySQL
+- Login and logout will function correctly
+- Friend request system will operate successfully
+- Reject request system will be implemented
+- Validation with **@** symbol will function properly
+- Loading animation with sword character will display correctly
+- Database tests will be completed successfully
+- Protected routes will remain secured
+- All sprint tasks will be completed
+- GitHub repository will be updated successfully
 
 ---
 
 # 🚀 Final Sprint Result
 
-Sprint 1 was completed successfully.  
-All planned tasks were delivered, tested, and integrated into the MythCore RPG Launcher repository without critical issues.
+Sprint 1 will be completed successfully.  
+All planned tasks will be delivered, tested, and integrated into the MythCore RPG Launcher repository without critical issues.
