@@ -1,316 +1,214 @@
-# 🚀 Sprint 2 Backlog
+# 🚀 Sprint Backlog 2 — MythCore RPG Launcher
 
-This document contains the planned technical tasks, user stories, acceptance criteria, validations, and expected deliverables for **Sprint 2** of the **MythCore RPG Launcher** project.
+This document contains the planned tasks, user stories, validations, estimated hours, responsibilities, and deliverables for **Sprint 2** of the **MythCore RPG Launcher** project.
 
 ---
 
 # 📅 Sprint Information
 
 ### Sprint Duration:
-March 12, 2026 — April 17, 2026
+March 16, 2026 — April 17, 2026
 
 ### Product Owner:
 Jose Octavio Sánchez Contreras
 
 ### Sprint Goal:
-Develop and integrate the social interaction system, profile management, database validation, and user authentication improvements for the MythCore RPG Launcher.
+Complete the database structure, establish connections between the frontend and MySQL database, implement profile management features, and prepare the social interaction system for integration.
 
 ### Sprint Velocity:
-15 Tasks Planned / 15 Expected
+12 Tasks Planned / 12 Expected
 
 ---
 
 # 👥 Sprint Team Roles
 
 | Member | Assigned Role | Responsibilities |
-|----------|----------|----------|
-| A. Irvin | Analyst and Designer | ERD updates, interface design, documentation |
-| B. Dorian | SQL Developer | Database structure, constraints, SQL scripts |
-| C. Dereck | Database Administrator (DBA) | Database maintenance, backups, repository management |
+| :--- | :--- | :--- |
+| A. Irvin | Analyst and Designer | ERD diagram updates, interface design, documentation |
+| B. Dorian | SQL Developer | Database implementation, constraints, SQL scripts |
+| C. Dereck | Database Administrator (DBA) | Database maintenance, backups, version control |
 | D. Manuel | Query Specialist | SQL queries, reports, test data generation |
-| E. Carlos | SQL Tester | Testing, validation, error detection |
+| E. Carlos | SQL Tester | Validation testing, integrity testing, bug reporting |
 
 ---
 
-# 🛠️ Infrastructure & Database
+# 🛠️ Sprint Backlog
 
-## #INFRA-01 – Expand MySQL Database Structure
-
-**Type:** Technical Task  
-**Status:** Planned  
-**Responsible:** B. Dorian, C. Dereck
-
-### Description
-
-The database structure will be expanded to support social interaction features within the launcher.
-
-The team will:
-
-- Create the `friend_requests` table.
-- Create the `friends` table.
-- Create the `blocked_users` table.
-- Create the `messages` table.
-- Configure primary keys.
-- Configure foreign key relationships.
-- Implement referential integrity constraints.
-- Configure cascade delete rules where necessary.
-- Validate relationships between users and social tables.
-
-### Expected Closure Documentation
-
-- Database schema updated successfully.
-- Foreign keys validated.
-- Relationships tested successfully.
-- SQL scripts uploaded to GitHub.
-- Local tests completed in phpMyAdmin.
-
----
-
-## #INFRA-02 – Improve Authentication System
-
-**Type:** Technical Task  
-**Status:** Planned  
-**Responsible:** A. Irvin, C. Dereck
-
-### Description
-
-The authentication system will be enhanced to improve security and session management.
-
-The team will:
-
-- Implement password hashing using PHP.
-- Validate user credentials against the database.
-- Configure secure PHP sessions.
-- Restrict access to protected pages.
-- Implement automatic logout after session expiration.
-- Add login error handling.
-- Prevent unauthorized access attempts.
-
-### Expected Closure Documentation
-
-- Login validation completed.
-- Password encryption tested.
-- Session management working correctly.
-- Protected routes secured.
-- Authentication tests completed successfully.
+| ID | Task | Priority | Hours | Responsible | Status |
+| :--- | :--- | :--- | :---: | :--- | :--- |
+| DB-01 | Create foreign keys between users, friends and friend_requests tables | High | 4 h | Dorian | Planned |
+| DB-02 | Create indexes to optimize login and user searches | Medium | 3 h | Dorian | Planned |
+| DB-03 | Create reports table relationships and validations | High | 4 h | Dorian | Planned |
+| DB-04 | Insert test users into database | Medium | 3 h | Manuel | Planned |
+| DB-05 | Insert friendship requests and social interaction test data | Medium | 3 h | Manuel | Planned |
+| INT-01 | Connect registration form with MySQL database | High | 5 h | Irvin | Planned |
+| INT-02 | Connect login form with MySQL validation system | High | 4 h | Irvin | Planned |
+| INT-03 | Create profile loading system from database | High | 5 h | Irvin | Planned |
+| INT-04 | Implement avatar persistence in MySQL | High | 4 h | Irvin | Planned |
+| TEST-01 | Validate registration scenarios | High | 3 h | Carlos | Planned |
+| TEST-02 | Validate login scenarios and session management | High | 3 h | Carlos | Planned |
+| TEST-03 | Validate database integrity and relationships | High | 4 h | Carlos | Planned |
 
 ---
 
 # 👤 User Stories
 
-## #US-01 – User Registration
+## #US-08 – Avatar Management
 
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** A. Irvin, E. Carlos
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** A. Irvin
 
-> **As a** new player,  
-> **I want** to create an account with my credentials and personal information,  
-> **so that** I can access the MythCore RPG Launcher platform securely.
-
-### Acceptance Criteria
-
-#### Scenario: Successful registration
-
-**Given** the user is on the registration page  
-**When** the user enters a valid username, email, and password  
-**And** submits the registration form  
-**Then** the system will create a new account in the `users` table  
-**And** redirect the user to the login page  
-**And** display a confirmation message
-
-#### Scenario: Existing username
-
-**Given** the user is on the registration page  
-**When** the user enters an existing username  
-**Then** the system will display an error message  
-**And** prevent account creation
-
----
-
-## #US-02 – User Login
-
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** A. Irvin, E. Carlos
-
-> **As a** registered player,  
-> **I want** to log into the launcher,  
-> **so that** I can access my profile and RPG services.
+> **As a** player,
+>
+> **I want** to select and save a custom avatar,
+>
+> **so that** I can personalize my profile.
 
 ### Acceptance Criteria
 
-#### Scenario: Successful login
+#### Scenario: Successful avatar update
 
-**Given** the user is registered  
-**When** correct credentials are entered  
-**Then** the system will authenticate the account  
-**And** redirect the user to the dashboard
+**Given** the user is on the profile page
+
+**When** the user selects a new avatar
+
+**Then** the system updates the avatar in the database
+
+**And** displays the new avatar immediately
+
+#### Scenario: Avatar persistence
+
+**Given** the user previously selected an avatar
+
+**When** the user logs in again
+
+**Then** the selected avatar remains displayed
+
+### Estimated Hours
+**6 hours**
 
 ---
 
-## #US-03 – User Logout
+## #US-09 – User Search
 
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** A. Irvin
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** D. Manuel
 
-> **As a** logged-in player,  
-> **I want** to close my session securely,  
-> **so that** my account remains protected.
+> **As a** player,
+>
+> **I want** to search for other users,
+>
+> **so that** I can send friendship requests.
 
 ### Acceptance Criteria
 
-#### Scenario: Logout
+#### Scenario: User found
 
-**Given** the user is logged in  
-**When** the logout button is clicked  
-**Then** the system will terminate the session  
-**And** redirect the user to the login page
+**Given** the user enters an existing username
+
+**When** the search is executed
+
+**Then** the system displays matching users
+
+#### Scenario: User not found
+
+**Given** the username does not exist
+
+**When** the search is executed
+
+**Then** the system displays a no-results message
+
+### Estimated Hours
+**5 hours**
 
 ---
 
-## #US-04 – Edit User Profile
+## #US-10 – Profile Information Display
 
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** D. Manuel
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** A. Irvin
 
-> **As a** player,  
-> **I want** to modify my profile information,  
-> **so that** I can personalize my account.
+> **As a** player,
+>
+> **I want** to view my stored profile information,
+>
+> **so that** I can verify my account data.
 
 ### Acceptance Criteria
 
-#### Scenario: Profile update
+#### Scenario: Successful profile loading
 
-**Given** the user is on the profile page  
-**When** profile information is modified  
-**Then** the system will update the `users` table  
-**And** display the updated information
+**Given** the user is logged in
 
----
+**When** the profile page opens
 
-## #US-05 – Send Friend Request
+**Then** the system retrieves information from the database
 
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** D. Manuel
+**And** displays username, email and avatar
 
-> **As a** player,  
-> **I want** to send friend requests to other users,  
-> **so that** I can build my RPG community.
-
-### Acceptance Criteria
-
-#### Scenario: Send request
-
-**Given** the user searches another player  
-**When** the user clicks "Send Friend Request"  
-**Then** the system will create a record in `friend_requests`
+### Estimated Hours
+**4 hours**
 
 ---
 
-## #US-06 – Accept or Reject Friend Requests
+# 🧪 Testing Tasks
 
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** D. Manuel, E. Carlos
-
-> **As a** player,  
-> **I want** to manage incoming friend requests,  
-> **so that** I can control my social connections.
-
-### Acceptance Criteria
-
-#### Scenario: Accept request
-
-**Given** the user has a pending friend request  
-**When** the request is accepted  
-**Then** the system will create a friendship record in `friends`
-
-#### Scenario: Reject request
-
-**Given** the user has a pending friend request  
-**When** the request is rejected  
-**Then** the system will remove the request from `friend_requests`  
-**And** the pending button will change to **Add Friend**  
-**And** the sender will receive the message:
-
-*"Your friend request was rejected."*
+| Test ID | Description | Hours | Responsible |
+| :--- | :--- | :---: | :--- |
+| TEST-01 | Registration validation tests | 3 h | Carlos |
+| TEST-02 | Login and session validation | 3 h | Carlos |
+| TEST-03 | Avatar persistence tests | 2 h | Carlos |
+| TEST-04 | User search validation | 2 h | Carlos |
+| TEST-05 | Foreign key validation | 2 h | Carlos |
 
 ---
 
-## #US-07 – Block Users
+# 📊 Hours Distribution by Team Member
 
-**Type:** User Story  
-**Status:** Planned  
-**Responsible:** E. Carlos
-
-> **As a** player,  
-> **I want** to block toxic users,  
-> **so that** I can avoid unwanted interactions.
-
-### Acceptance Criteria
-
-#### Scenario: Block user
-
-**Given** the user selects another player  
-**When** the block option is confirmed  
-**Then** the system will insert a record into `blocked_users`
-
----
+| Member | Assigned Hours |
+| :--- | :---: |
+| A. Irvin | 24 h |
+| B. Dorian | 14 h |
+| C. Dereck | 12 h |
+| D. Manuel | 14 h |
+| E. Carlos | 12 h |
+| **Total Sprint Hours** | **76 h** |
 
 # ✅ Definition of Done
-
-- [x] Configure MySQL database
-- [x] Create users table
-- [x] Create friend_requests table
-- [x] Create friends table
-- [x] Create blocked_users table
-- [x] Create messages table
-- [x] Configure foreign keys
-- [x] Configure authentication system
-- [x] Implement registration
-- [x] Implement login
-- [x] Implement logout
-- [x] Implement profile editing
-- [x] Implement avatar update
-- [x] Implement send friend request
-- [x] Implement accept friend request
-- [x] Implement reject friend request
-- [x] Implement block user feature
-- [x] Validate database relationships
-- [x] Perform authentication testing
-- [x] Upload updates to GitHub
-- [x] Database structure created successfully
-- [x] Foreign keys validated
-- [x] Authentication system implemented
-- [x] Registration system connected to MySQL
-- [x] Login and logout functional
-- [x] Profile management implemented
-- [x] Avatar system integrated
-- [x] Friend request system operational
-- [x] Rejection system operational
-- [x] Block user system operational
-- [x] Testing completed successfully
-- [x] Documentation completed
-- [x] Repository updated successfully
+- [x] Create foreign keys between related tables
+- [x] Create indexes for database optimization
+- [x] Insert test users into database
+- [x] Insert friendship request test data
+- [x] Connect registration form to MySQL
+- [x] Connect login form to MySQL
+- [x] Implement profile information loading
+- [x] Implement avatar persistence system
+- [x] Implement user search functionality
+- [x] Validate registration scenarios
+- [x] Validate login scenarios
+- [x] Validate database integrity
+- [x] Validate avatar persistence
+- [x] Upload updated code to GitHub repository
+- [x] Update sprint documentation
 
 ---
 
-# 📊 Sprint Summary
+# 📦 Expected Deliverables
 
-| Category | Total |
-|----------|----------|
-| User Stories Planned | 7 |
-| Technical Tasks Planned | 2 |
-| Planned Tests | 10 |
-| Expected Critical Errors | 0 |
-| Expected Sprint Velocity | 100% |
+| Deliverable | Location |
+| :--- | :--- |
+| Updated MySQL database | XAMPP / phpMyAdmin |
+| Registration and Login integration | Repository |
+| Avatar system | Repository |
+| User search system | Repository |
+| Updated documentation | GitHub |
+| Test reports | Project documentation |
 
 ---
 
 # 🚀 Expected Sprint Result
 
-Sprint 2 will deliver the complete social interaction system of the MythCore RPG Launcher, including authentication improvements, profile management, friend requests, rejection notifications, user blocking, and database integration.
+Sprint 2 will complete the database integration phase of the MythCore RPG Launcher project. All profile management features, user search functions, avatar persistence, and database relationships will be prepared for the social systems implemented during Sprint 3.
