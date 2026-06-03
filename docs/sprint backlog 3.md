@@ -1,19 +1,19 @@
-# 🚀 Sprint 3 Backlog & Project Closure
+# 🚀 Sprint Backlog 3 — MythCore RPG Launcher
 
-This document contains the technical tasks, user stories, planned functionalities, acceptance criteria, validations, and project documentation for **Sprint 3** of the **MythCore RPG Launcher** project.
+This document contains the planned tasks, user stories, estimated hours, responsibilities, validations, and deliverables for **Sprint 3** of the **MythCore RPG Launcher** project.
 
 ---
 
 # 📅 Sprint Information
 
 ### Sprint Duration:
-April 10, 2026 — May 8, 2026
+April 20, 2026 — May 22, 2026
 
 ### Product Owner:
 Jose Octavio Sánchez Contreras
 
 ### Sprint Goal:
-Develop the ranking system, XP and achievements system, moderation tools, user reporting features, and administration panel functionalities.
+Complete the social interaction system, friend management, notifications, reports, messaging features, and finalize all launcher functionalities for deployment.
 
 ### Sprint Velocity:
 15 Tasks Planned / 15 Expected
@@ -24,344 +24,369 @@ Develop the ranking system, XP and achievements system, moderation tools, user r
 
 | Member | Assigned Role | Responsibilities |
 | :--- | :--- | :--- |
-| A. Irvin | Analyst and Designer | Interface design and project documentation |
-| B. Dorian | SQL Developer | Database implementation and SQL scripts |
-| C. Dereck | Database Administrator (DBA) | Database maintenance and technical support |
-| D. Manuel | Query Specialist | Query development and data validation |
-| E. Carlos | SQL Tester | Testing, validation, and quality assurance |
+| A. Irvin | Analyst and Designer | Interface improvements, documentation, social system design |
+| B. Dorian | SQL Developer | New tables, constraints, stored procedures, optimization |
+| C. Dereck | Database Administrator (DBA) | Database maintenance, backups, deployment support |
+| D. Manuel | Query Specialist | Queries, notifications, reports, data generation |
+| E. Carlos | SQL Tester | Functional testing, integrity validation, bug reporting |
 
 ---
 
 # 🛠️ Infrastructure & Database
 
-## #INFRA-05 – Configure Ranking & XP System
+## #INFRA-03 – Social System Database Integration
 
-**Type:** Technical Task  
-**Status:** In Progress  
-**Responsible:** B. Dorian, D. Manuel
+* **Type:** Technical Task
+* **Status:** In Progress
+* **Responsible:** B. Dorian, C. Dereck
 
 ### Description
 
-Design and configure the database structure required for player rankings, XP progression, and achievements.
+Expand the database structure to support social interactions between users.
 
-The objective of this task is to allow players to earn experience points, unlock achievements, and appear in ranking boards according to their progress.
+Tasks include:
 
-The following technical tasks will be performed:
+- Create relationships between `friend_requests` and `users`.
+- Create relationships between `friends` and `users`.
+- Add notification support for friendship actions.
+- Optimize friendship lookup queries.
+- Validate cascade delete behavior.
+- Create indexes for social features.
+- Verify referential integrity.
 
-- Add XP fields to the `users` table
-- Create achievement storage structure
-- Configure XP update queries
-- Create ranking calculation queries
-- Create player sorting queries based on XP
-- Configure achievement registration system
-- Validate XP progression logic
-- Insert test data for rankings
-- Test ranking calculations
-- Upload SQL scripts to GitHub repository
+### Estimated Hours
 
-### Expected Closure Documentation
-
-- XP system configured successfully
-- Ranking calculations validated
-- Achievement storage configured
-- Test data inserted successfully
-- Database tests completed
-- Documentation uploaded to GitHub
+**12 Hours**
 
 ---
 
-## #INFRA-06 – Configure Moderation & Administration System
+## #INFRA-04 – Notification System
 
-**Type:** Technical Task  
-**Status:** In Progress  
-**Responsible:** B. Dorian, C. Dereck
+* **Type:** Technical Task
+* **Status:** In Progress
+* **Responsible:** D. Manuel, B. Dorian
 
 ### Description
 
-Design and configure the database structure required for user reports, moderation actions, and administration panel features.
+Develop the notification system responsible for informing users about:
 
-The objective of this task is to provide moderation tools that allow administrators to review reports, manage users, manage games, and maintain a safe community environment.
+- Friend requests received.
+- Friend requests accepted.
+- Friend requests rejected.
+- User reports.
+- System alerts.
 
-The following technical tasks will be performed:
+### Estimated Hours
 
-- Configure `reports` table relationships
-- Create report management queries
-- Create report status update queries
-- Configure moderation action records
-- Create user management queries
-- Create game management queries
-- Create category management queries
-- Validate administration permissions
-- Test report workflow functionality
-- Upload SQL scripts to GitHub repository
-
-### Expected Closure Documentation
-
-- Report management system configured successfully
-- Administration queries validated
-- Database relationships tested successfully
-- Report workflow tested successfully
-- Documentation uploaded to GitHub
+**10 Hours**
 
 ---
 
 # 👤 User Stories
 
-## #US-13 – View Rankings
+---
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** A. Irvin, E. Carlos
+## #US-11 – Real-Time Friend Request Notifications
 
-> **As a** player,  
-> **I want** to see rankings,  
-> **so that** I can compare my progress with other players.
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** D. Manuel
+
+> **As a** player,
+>
+> **I want** to receive notifications when someone sends me a friend request,
+>
+> **so that** I can respond quickly.
 
 ### Acceptance Criteria
 
-#### Scenario: Display ranking board
-**Given** the user opens the ranking section  
-**When** the page loads  
-**Then** the system displays players ordered by XP
+#### Scenario: Notification received
 
-### Expected Closure Documentation
+**Given** another player sends a friend request
 
-- Ranking interface implemented
-- XP ordering configured correctly
-- Ranking board tested successfully
+**When** the request is stored
+
+**Then** the system displays a notification
+
+**And** updates the pending requests counter
+
+### Estimated Hours
+
+**6 Hours**
 
 ---
 
-## #US-14 – Gain XP and Achievements
+## #US-12 – Accept Friend Requests
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** D. Manuel
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** D. Manuel
 
-> **As a** player,  
-> **I want** to earn XP and achievements,  
-> **so that** I can track my progression.
+> **As a** player,
+>
+> **I want** to accept friend requests,
+>
+> **so that** I can add users to my friends list.
 
 ### Acceptance Criteria
 
-#### Scenario: Gain XP
-**Given** the user completes activities in the launcher  
-**When** XP conditions are met  
-**Then** the system updates the player's XP and achievements
+#### Scenario: Request accepted
 
-### Expected Closure Documentation
+**Given** the user has a pending friend request
 
-- XP reward system implemented
-- Achievement notifications configured
-- XP updates validated successfully
+**When** the accept button is pressed
+
+**Then** the system inserts records into `friends`
+
+**And** removes the request from `friend_requests`
+
+### Estimated Hours
+
+**5 Hours**
 
 ---
 
-## #US-15 – Report Users
+## #US-13 – Reject Friend Requests
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** E. Carlos
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** D. Manuel
 
-> **As a** player,  
-> **I want** to report inappropriate behavior,  
-> **so that** moderators can review incidents.
+> **As a** player,
+>
+> **I want** to reject friend requests,
+>
+> **so that** I can control who interacts with me.
 
 ### Acceptance Criteria
 
-#### Scenario: Successful report
-**Given** the user selects another player  
-**When** the report form is submitted  
-**Then** the system inserts a record into the `reports` table
+#### Scenario: Request rejected
 
-### Expected Closure Documentation
+**Given** the user has a pending friend request
 
-- Report form implemented
-- Reports stored successfully
-- Report validation tested
+**When** the reject button is pressed
+
+**Then** the system removes the request from `friend_requests`
+
+**And** changes the button from "Pending" to "Add Friend"
+
+**And** displays the message:
+
+*"Your friend request was rejected"*
+
+### Estimated Hours
+
+**5 Hours**
 
 ---
 
-## #US-16 – View User Reports
+## #US-14 – Friends List
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** D. Manuel, E. Carlos
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** A. Irvin
 
-> **As a** moderator or administrator,  
-> **I want** to review reports,  
-> **so that** I can take moderation actions.
+> **As a** player,
+>
+> **I want** to see my friends list,
+>
+> **so that** I can manage my connections.
 
 ### Acceptance Criteria
 
-#### Scenario: View reports
-**Given** the moderator accesses the reports section  
-**When** the page loads  
-**Then** the system displays all records from the `reports` table
+#### Scenario: Friends loaded
 
-### Expected Closure Documentation
+**Given** the user has friends
 
-- Report management panel implemented
-- Reports displayed successfully
-- Filtering system configured
+**When** the friends page is opened
+
+**Then** all accepted friendships are displayed
+
+### Estimated Hours
+
+**6 Hours**
 
 ---
 
-## #US-17 – Manage Users
+## #US-15 – User Blocking System
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** A. Irvin, C. Dereck
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** E. Carlos
 
-> **As an** administrator,  
-> **I want** to manage users,  
-> **so that** I can maintain platform integrity.
+> **As a** player,
+>
+> **I want** to block unwanted users,
+>
+> **so that** they cannot interact with me.
 
 ### Acceptance Criteria
 
-#### Scenario: Manage users
-**Given** the administrator accesses the administration panel  
-**When** user management options are selected  
-**Then** the system allows user administration actions
+#### Scenario: User blocked
 
-### Expected Closure Documentation
+**Given** the user selects another player
 
-- User management panel implemented
-- User search functionality configured
-- Administration actions tested
+**When** block is confirmed
+
+**Then** a record is inserted into `blocked_users`
+
+**And** the blocked user cannot send requests
+
+### Estimated Hours
+
+**5 Hours**
 
 ---
 
-## #US-18 – Manage Games
+## #US-16 – Messaging System
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** B. Dorian
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** A. Irvin
 
-> **As an** administrator,  
-> **I want** to manage games,  
-> **so that** the game library remains updated.
+> **As a** player,
+>
+> **I want** to exchange messages with friends,
+>
+> **so that** we can communicate inside the launcher.
 
 ### Acceptance Criteria
 
-#### Scenario: Manage games
-**Given** the administrator accesses the games section  
-**When** a game is created, edited, or deleted  
-**Then** the system updates the `games` table
+#### Scenario: Message sent
 
-### Expected Closure Documentation
+**Given** two users are friends
 
-- Game administration panel implemented
-- CRUD operations validated
-- Database updates tested
+**When** a message is sent
+
+**Then** the system stores it in `messages`
+
+**And** displays it in the conversation window
+
+### Estimated Hours
+
+**8 Hours**
 
 ---
 
-## #US-19 – Manage Categories
+## #US-17 – Report User
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** B. Dorian
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** E. Carlos
 
-> **As an** administrator,  
-> **I want** to organize RPG categories,  
-> **so that** games are classified correctly.
+> **As a** player,
+>
+> **I want** to report inappropriate users,
+>
+> **so that** administrators can review their behavior.
 
 ### Acceptance Criteria
 
-#### Scenario: Manage categories
-**Given** the administrator accesses the categories section  
-**When** categories are modified  
-**Then** the system updates category records correctly
+#### Scenario: Report submitted
 
-### Expected Closure Documentation
+**Given** the user selects another player
 
-- Category management panel implemented
-- Category CRUD operations tested
-- Data integrity validated
+**When** a report is submitted
+
+**Then** the system stores the report in `reports`
+
+### Estimated Hours
+
+**5 Hours**
 
 ---
 
-## #US-20 – Manage Reports
+## #US-18 – Favorites System
 
-**Type:** User Story  
-**Status:** In Progress  
-**Responsible:** C. Dereck, E. Carlos
+* **Type:** User Story
+* **Status:** In Progress
+* **Responsible:** A. Irvin
 
-> **As an** administrator,  
-> **I want** to resolve reports and moderate users,  
-> **so that** the community remains safe.
+> **As a** player,
+>
+> **I want** to save favorite games,
+>
+> **so that** I can access them quickly.
 
 ### Acceptance Criteria
 
-#### Scenario: Resolve report
-**Given** the administrator reviews a report  
-**When** an action is selected  
-**Then** the report status is updated and moderation action is applied
+#### Scenario: Add favorite
 
-### Expected Closure Documentation
+**Given** a game exists
 
-- Report resolution workflow implemented
-- Report status updates functioning correctly
-- Moderation actions tested successfully
+**When** the user clicks favorite
 
----
+**Then** the game is stored in `favorites`
 
-# ✅ Sprint Checklist
+### Estimated Hours
 
-- [x] Configure XP fields in users table
-- [x] Create achievement tracking system
-- [x] Create ranking calculation queries
-- [x] Create ranking interface
-- [x] Implement XP reward system
-- [x] Configure achievement notifications
-- [x] Create report submission form
-- [x] Store reports in database
-- [x] Create moderator report panel
-- [x] Configure report filtering system
-- [x] Create user administration panel
-- [x] Create game administration panel
-- [x] Create category administration panel
-- [x] Implement report resolution workflow
-- [x] Validate moderation actions
-- [x] Test ranking calculations
-- [x] Test XP progression system
-- [x] Validate administration permissions
-- [x] Upload Sprint 3 documentation to GitHub
-- [x] Complete Sprint 3 documentation
+**4 Hours**
 
 ---
 
-# 📊 Sprint Summary
+# 🧪 Testing Tasks
 
-| Category | Total |
-| :--- | :--- |
-| User Stories Planned | 8 |
-| Technical Tasks Planned | 2 |
-| Planned Tests | 10 |
-| Expected Critical Errors | 0 |
-| Expected Sprint Velocity | 100% |
+| Test ID | Description | Hours | Responsible |
+| :--- | :--- | :---: | :--- |
+| TEST-01 | Friend request validation | 3 h | Carlos |
+| TEST-02 | Accept request validation | 2 h | Carlos |
+| TEST-03 | Reject request validation | 2 h | Carlos |
+| TEST-04 | Blocking system validation | 2 h | Carlos |
+| TEST-05 | Messaging system validation | 3 h | Carlos |
+| TEST-06 | Reports validation | 2 h | Carlos |
+| TEST-07 | Notification validation | 2 h | Carlos |
+
+---
+
+# 📊 Hours Distribution by Team Member
+
+| Member | Assigned Hours |
+| :--- | :---: |
+| A. Irvin | 22 h |
+| B. Dorian | 18 h |
+| C. Dereck | 12 h |
+| D. Manuel | 20 h |
+| E. Carlos | 18 h |
+| **Total Sprint Hours** | **90 h** |
 
 ---
 
 # ✅ Definition of Done
 
-- Ranking system will function correctly
-- XP progression system will update successfully
-- Achievement system will operate correctly
-- User reports will be stored successfully
-- Moderation panel will function correctly
-- User administration features will operate successfully
-- Game administration features will function correctly
-- Category management will operate correctly
-- Report resolution workflow will function successfully
-- All functionalities will be tested and documented
-- GitHub repository will be updated successfully
+- [x] Create friendship relationships in database
+- [x] Implement notification system
+- [x] Implement friend request system
+- [x] Implement accept request feature
+- [x] Implement reject request feature
+- [x] Change "Pending" button to "Add Friend" after rejection
+- [x] Display rejection notification message
+- [x] Create friends list
+- [x] Implement blocking system
+- [x] Implement messaging system
+- [x] Implement report system
+- [x] Implement favorites system
+- [x] Validate database integrity
+- [x] Execute all functional tests
+- [x] Upload final version to GitHub repository
+- [x] Update project documentation
 
 ---
 
-# 🚀 Final Sprint Result
+# 📦 Expected Deliverables
 
-Sprint 3 will be completed successfully.
+| Deliverable | Location |
+| :--- | :--- |
+| Friendship System | Repository |
+| Notification System | Repository |
+| Messaging System | Repository |
+| Blocking System | Repository |
+| Reporting System | Repository |
+| Favorites System | Repository |
+| Updated Database | MySQL |
+| Test Documentation | GitHub |
 
-All planned tasks will be delivered, tested, and integrated into the MythCore RPG Launcher repository without critical issues.
+---
+
+# 🚀 Expected Sprint Result
+
+Sprint 3 will complete all social and interaction features of the MythCore RPG Launcher, including friend management, messaging, notifications, reports, favorites, and user moderation systems. All planned functionalities will be integrated, tested, and documented before project delivery.
