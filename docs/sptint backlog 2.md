@@ -1,292 +1,316 @@
-# 🚀 Sprint 2 Backlog & Project Closure
+# 🚀 Sprint 2 Backlog
 
-This document contains the technical tasks, user stories, planned functionalities, acceptance criteria, validations, and project documentation for **Sprint 2** of the **MythCore RPG Launcher** project.
+This document contains the planned technical tasks, user stories, acceptance criteria, validations, and expected deliverables for **Sprint 2** of the **MythCore RPG Launcher** project.
 
 ---
 
 # 📅 Sprint Information
 
 ### Sprint Duration:
-March 12, 2026 — April 9, 2026
+March 12, 2026 — April 17, 2026
 
 ### Product Owner:
 Jose Octavio Sánchez Contreras
 
 ### Sprint Goal:
-Develop the RPG chat system and game library management features, including real-time messaging, private communication, game browsing, favorites management, and custom game creation.
+Develop and integrate the social interaction system, profile management, database validation, and user authentication improvements for the MythCore RPG Launcher.
 
 ### Sprint Velocity:
-12 Tasks Planned / 12 Expected
+15 Tasks Planned / 15 Expected
 
 ---
 
 # 👥 Sprint Team Roles
 
 | Member | Assigned Role | Responsibilities |
-| :--- | :--- | :--- |
-| A. Irvin | Analyst and Designer | Interface design and project documentation |
-| B. Dorian | SQL Developer | Database implementation and SQL scripts |
-| C. Dereck | Database Administrator (DBA) | Database maintenance and technical support |
-| D. Manuel | Query Specialist | Query development and data validation |
-| E. Carlos | SQL Tester | Testing, validation, and quality assurance |
+|----------|----------|----------|
+| A. Irvin | Analyst and Designer | ERD updates, interface design, documentation |
+| B. Dorian | SQL Developer | Database structure, constraints, SQL scripts |
+| C. Dereck | Database Administrator (DBA) | Database maintenance, backups, repository management |
+| D. Manuel | Query Specialist | SQL queries, reports, test data generation |
+| E. Carlos | SQL Tester | Testing, validation, error detection |
 
 ---
 
 # 🛠️ Infrastructure & Database
 
-## #INFRA-03 – Configure Chat System Database
+## #INFRA-01 – Expand MySQL Database Structure
 
 **Type:** Technical Task  
-**Status:** In Progress  
+**Status:** Planned  
 **Responsible:** B. Dorian, C. Dereck
 
 ### Description
 
-Design and configure the database structure required for the RPG chat system and private messaging features.
+The database structure will be expanded to support social interaction features within the launcher.
 
-The objective of this task is to provide secure communication between users through stored and real-time messages.
+The team will:
 
-The following technical tasks will be performed:
-
-- Create the `messages` table
-- Configure primary key for messages
-- Create foreign keys linking sender and receiver users
-- Configure message storage structure
-- Create SQL queries for message insertion
-- Create SQL queries for message retrieval
-- Validate relationships between users and messages
-- Test message storage operations
-- Validate database performance during message exchange
-- Upload SQL scripts to GitHub repository
+- Create the `friend_requests` table.
+- Create the `friends` table.
+- Create the `blocked_users` table.
+- Create the `messages` table.
+- Configure primary keys.
+- Configure foreign key relationships.
+- Implement referential integrity constraints.
+- Configure cascade delete rules where necessary.
+- Validate relationships between users and social tables.
 
 ### Expected Closure Documentation
 
-- Messages table created successfully
-- Foreign keys validated successfully
-- Message insertion queries tested
-- Message retrieval queries functioning correctly
-- Local database tests completed
-- Documentation uploaded to GitHub
+- Database schema updated successfully.
+- Foreign keys validated.
+- Relationships tested successfully.
+- SQL scripts uploaded to GitHub.
+- Local tests completed in phpMyAdmin.
 
 ---
 
-## #INFRA-04 – Configure Game Library Database
+## #INFRA-02 – Improve Authentication System
 
 **Type:** Technical Task  
-**Status:** In Progress  
-**Responsible:** B. Dorian, D. Manuel
+**Status:** Planned  
+**Responsible:** A. Irvin, C. Dereck
 
 ### Description
 
-Design and configure the database structure required for game management and favorite game functionality.
+The authentication system will be enhanced to improve security and session management.
 
-The objective of this task is to allow users to browse RPG games, save favorites, and create custom game entries.
+The team will:
 
-The following technical tasks will be performed:
-
-- Configure the `games` table structure
-- Configure the `favorites` table
-- Create foreign key relationships
-- Create SQL queries for game retrieval
-- Create SQL queries for favorite insertion
-- Validate favorite game relationships
-- Insert test game records
-- Test game management operations
-- Validate data integrity
-- Upload SQL scripts to GitHub repository
+- Implement password hashing using PHP.
+- Validate user credentials against the database.
+- Configure secure PHP sessions.
+- Restrict access to protected pages.
+- Implement automatic logout after session expiration.
+- Add login error handling.
+- Prevent unauthorized access attempts.
 
 ### Expected Closure Documentation
 
-- Games table configured successfully
-- Favorites table configured successfully
-- Database relationships validated
-- Test records inserted successfully
-- CRUD operations tested successfully
-- Documentation uploaded to GitHub
+- Login validation completed.
+- Password encryption tested.
+- Session management working correctly.
+- Protected routes secured.
+- Authentication tests completed successfully.
 
 ---
 
 # 👤 User Stories
 
-## #US-08 – Real-Time RPG Chat
+## #US-01 – User Registration
 
 **Type:** User Story  
-**Status:** In Progress  
+**Status:** Planned  
 **Responsible:** A. Irvin, E. Carlos
 
-> **As a** player,  
-> **I want** to communicate in real time through the RPG chat,  
-> **so that** I can interact instantly with friends.
+> **As a** new player,  
+> **I want** to create an account with my credentials and personal information,  
+> **so that** I can access the MythCore RPG Launcher platform securely.
 
 ### Acceptance Criteria
 
-#### Scenario: Real-time communication
-**Given** two users are online  
-**When** a message is sent  
-**Then** the message appears instantly using Pusher JS
+#### Scenario: Successful registration
 
-### Expected Closure Documentation
+**Given** the user is on the registration page  
+**When** the user enters a valid username, email, and password  
+**And** submits the registration form  
+**Then** the system will create a new account in the `users` table  
+**And** redirect the user to the login page  
+**And** display a confirmation message
 
-- Pusher JS integrated successfully
-- Real-time events configured
-- Messages displayed instantly
-- Communication tested successfully
+#### Scenario: Existing username
+
+**Given** the user is on the registration page  
+**When** the user enters an existing username  
+**Then** the system will display an error message  
+**And** prevent account creation
 
 ---
 
-## #US-09 – Send Messages
+## #US-02 – User Login
 
 **Type:** User Story  
-**Status:** In Progress  
+**Status:** Planned  
+**Responsible:** A. Irvin, E. Carlos
+
+> **As a** registered player,  
+> **I want** to log into the launcher,  
+> **so that** I can access my profile and RPG services.
+
+### Acceptance Criteria
+
+#### Scenario: Successful login
+
+**Given** the user is registered  
+**When** correct credentials are entered  
+**Then** the system will authenticate the account  
+**And** redirect the user to the dashboard
+
+---
+
+## #US-03 – User Logout
+
+**Type:** User Story  
+**Status:** Planned  
+**Responsible:** A. Irvin
+
+> **As a** logged-in player,  
+> **I want** to close my session securely,  
+> **so that** my account remains protected.
+
+### Acceptance Criteria
+
+#### Scenario: Logout
+
+**Given** the user is logged in  
+**When** the logout button is clicked  
+**Then** the system will terminate the session  
+**And** redirect the user to the login page
+
+---
+
+## #US-04 – Edit User Profile
+
+**Type:** User Story  
+**Status:** Planned  
 **Responsible:** D. Manuel
 
 > **As a** player,  
-> **I want** to send messages to friends,  
-> **so that** I can communicate privately.
+> **I want** to modify my profile information,  
+> **so that** I can personalize my account.
 
 ### Acceptance Criteria
 
-#### Scenario: Send private message
-**Given** two users are friends  
-**When** one user sends a message  
-**Then** the system stores the message in the `messages` table
+#### Scenario: Profile update
 
-### Expected Closure Documentation
-
-- Private messaging interface implemented
-- Messages stored successfully
-- Chat history displayed correctly
-- Message validation tested
+**Given** the user is on the profile page  
+**When** profile information is modified  
+**Then** the system will update the `users` table  
+**And** display the updated information
 
 ---
 
-## #US-10 – Browse RPG Library
+## #US-05 – Send Friend Request
 
 **Type:** User Story  
-**Status:** In Progress  
-**Responsible:** A. Irvin, D. Manuel
-
-> **As a** player,  
-> **I want** to browse the game catalog,  
-> **so that** I can discover RPG titles.
-
-### Acceptance Criteria
-
-#### Scenario: Display RPG games
-**Given** the user enters the library section  
-**When** the page loads  
-**Then** the system displays all records from the `games` table
-
-### Expected Closure Documentation
-
-- Game catalog interface implemented
-- Games retrieved successfully from database
-- Search functionality configured
-- Library tested successfully
-
----
-
-## #US-11 – Add Games to Favorites
-
-**Type:** User Story  
-**Status:** In Progress  
+**Status:** Planned  
 **Responsible:** D. Manuel
 
 > **As a** player,  
-> **I want** to save favorite games,  
-> **so that** I can access them quickly later.
+> **I want** to send friend requests to other users,  
+> **so that** I can build my RPG community.
 
 ### Acceptance Criteria
 
-#### Scenario: Add favorite game
-**Given** the user selects a game  
-**When** the favorite button is pressed  
-**Then** the system inserts a record into the `favorites` table
+#### Scenario: Send request
 
-### Expected Closure Documentation
-
-- Favorite button implemented
-- Favorites stored successfully
-- Favorite list displayed correctly
-- Duplicate favorites prevented
+**Given** the user searches another player  
+**When** the user clicks "Send Friend Request"  
+**Then** the system will create a record in `friend_requests`
 
 ---
 
-## #US-12 – Create Custom Games
+## #US-06 – Accept or Reject Friend Requests
 
 **Type:** User Story  
-**Status:** In Progress  
-**Responsible:** A. Irvin, B. Dorian
+**Status:** Planned  
+**Responsible:** D. Manuel, E. Carlos
 
 > **As a** player,  
-> **I want** to create custom RPG entries,  
-> **so that** I can personalize my library.
+> **I want** to manage incoming friend requests,  
+> **so that** I can control my social connections.
 
 ### Acceptance Criteria
 
-#### Scenario: Create custom RPG
-**Given** the user fills the custom game form  
-**When** the form is submitted  
-**Then** the system stores the game in the `games` table
+#### Scenario: Accept request
 
-### Expected Closure Documentation
+**Given** the user has a pending friend request  
+**When** the request is accepted  
+**Then** the system will create a friendship record in `friends`
 
-- Custom game form implemented
-- Data validation completed
-- Custom games stored successfully
-- Games displayed in library correctly
+#### Scenario: Reject request
+
+**Given** the user has a pending friend request  
+**When** the request is rejected  
+**Then** the system will remove the request from `friend_requests`  
+**And** the pending button will change to **Add Friend**  
+**And** the sender will receive the message:
+
+*"Your friend request was rejected."*
 
 ---
 
-# ✅ Sprint Checklist
+## #US-07 – Block Users
 
-- [x] Create `messages` table
-- [x] Configure foreign keys for chat system
-- [x] Integrate Pusher JS
-- [x] Create real-time message events
-- [x] Store private messages in MySQL
-- [x] Display chat history
-- [x] Configure `games` table
-- [x] Configure `favorites` table
-- [x] Create game catalog interface
-- [x] Implement favorite games system
-- [x] Create custom game form
-- [x] Validate custom game data
-- [x] Test messaging system
-- [x] Test game library functionality
-- [x] Upload Sprint 2 documentation to GitHub
+**Type:** User Story  
+**Status:** Planned  
+**Responsible:** E. Carlos
+
+> **As a** player,  
+> **I want** to block toxic users,  
+> **so that** I can avoid unwanted interactions.
+
+### Acceptance Criteria
+
+#### Scenario: Block user
+
+**Given** the user selects another player  
+**When** the block option is confirmed  
+**Then** the system will insert a record into `blocked_users`
+
+---
+
+# ✅ Definition of Done
+
+- [x] Configure MySQL database
+- [x] Create users table
+- [x] Create friend_requests table
+- [x] Create friends table
+- [x] Create blocked_users table
+- [x] Create messages table
+- [x] Configure foreign keys
+- [x] Configure authentication system
+- [x] Implement registration
+- [x] Implement login
+- [x] Implement logout
+- [x] Implement profile editing
+- [x] Implement avatar update
+- [x] Implement send friend request
+- [x] Implement accept friend request
+- [x] Implement reject friend request
+- [x] Implement block user feature
+- [x] Validate database relationships
+- [x] Perform authentication testing
+- [x] Upload updates to GitHub
+- [x] Database structure created successfully
+- [x] Foreign keys validated
+- [x] Authentication system implemented
+- [x] Registration system connected to MySQL
+- [x] Login and logout functional
+- [x] Profile management implemented
+- [x] Avatar system integrated
+- [x] Friend request system operational
+- [x] Rejection system operational
+- [x] Block user system operational
+- [x] Testing completed successfully
+- [x] Documentation completed
+- [x] Repository updated successfully
 
 ---
 
 # 📊 Sprint Summary
 
 | Category | Total |
-| :--- | :--- |
-| User Stories Planned | 5 |
+|----------|----------|
+| User Stories Planned | 7 |
 | Technical Tasks Planned | 2 |
-| Planned Tests | 8 |
+| Planned Tests | 10 |
 | Expected Critical Errors | 0 |
 | Expected Sprint Velocity | 100% |
 
 ---
 
-# ✅ Definition of Done
+# 🚀 Expected Sprint Result
 
-- Real-time chat system will function correctly
-- Private messages will be stored in MySQL
-- Pusher JS integration will work successfully
-- Game library will display RPG titles correctly
-- Favorite games system will operate correctly
-- Custom games will be created successfully
-- Database relationships will be validated
-- All functionalities will be tested successfully
-- GitHub repository will be updated
-- Sprint documentation will be completed
-
----
-
-# 🚀 Final Sprint Result
-
-Sprint 2 will be completed successfully.
-
-All planned tasks will be delivered, tested, and integrated into the MythCore RPG Launcher repository without critical issues.
+Sprint 2 will deliver the complete social interaction system of the MythCore RPG Launcher, including authentication improvements, profile management, friend requests, rejection notifications, user blocking, and database integration.
