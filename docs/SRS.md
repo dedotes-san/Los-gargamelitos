@@ -1,284 +1,405 @@
-# 📋 Software Requirements Specification (SRS)
+# SOFTWARE REQUIREMENTS SPECIFICATION (SRS)
 
-## MythCore RPG Launcher
+# MythCore RPG Launcher
 
-### Version 1.0
-### CBTis 47
+**Version:** 1.0  
+**Institution:** CBTis 47  
+**Project:** MythCore RPG Launcher  
+**Development Team:**
 
----
+- A. Irvin Hernández Trejo
+- B. Dorian
+- C. Dereck
+- D. Manuel
+- E. Carlos
 
-# 1. Functional Requirements (Agile & UI/UX)
-
-Functional requirements describe the features and services that the MythCore RPG Launcher must provide to users.
-
----
-
-## 1.1 Authentication
-
-FR-01. The system must allow new users to register with a username, email address, password, and profile avatar.
-
-FR-02. The system must validate that the username and email are not already registered in the users table.
-
-FR-03. The system must display validation messages when required fields are left empty.
-
-FR-04. The system must verify that the email contains a valid format including the "@" symbol.
-
-FR-05. The system must validate password security requirements before account creation.
-
-FR-06. The system must authenticate users using their username and password.
-
-FR-07. The system must redirect authenticated users to the main launcher page.
-
-FR-08. The system must allow users to log out at any time.
-
-FR-09. After logout, protected pages must require authentication again.
-
-FR-10. The system must display a loading animation with a sword character while processing registration.
+**Product Owner:** Jose Octavio Sánchez Contreras
 
 ---
 
-## 1.2 User Profile
+# 1. Introduction
 
-FR-11. The system must allow users to view their profile information.
+## 1.1 Purpose
 
-FR-12. The system must allow users to modify profile information.
+The purpose of this Software Requirements Specification (SRS) document is to define the functional and non-functional requirements of the MythCore RPG Launcher system.
 
-FR-13. The system must allow users to change their profile avatar.
+The system allows users to create accounts, log in securely, manage profiles, send friend requests, accept or reject requests, block users, exchange messages, manage favorite games, and interact with social features integrated into the launcher.
 
-FR-14. The selected avatar must be stored in MySQL and persist after future logins.
-
----
-
-## 1.3 Friend Request System
-
-FR-15. The system must allow users to search for other players.
-
-FR-16. The system must allow users to send friend requests.
-
-FR-17. The system must prevent duplicate friend requests.
-
-FR-18. The system must display pending requests.
-
-FR-19. The system must allow users to accept incoming friend requests.
-
-FR-20. When a request is accepted, a new record must be created in the friends table.
-
-FR-21. The system must allow users to reject incoming friend requests.
-
-FR-22. When a request is rejected, the request must be removed from the friend_requests table.
-
-FR-23. When a request is rejected, the button status must change from Pending to Add Friend.
-
-FR-24. The sender must receive the notification:
-
-"Your friend request was rejected."
+This document serves as a reference for developers, testers, stakeholders, and project managers throughout the software development lifecycle.
 
 ---
 
-## 1.4 Messaging System
+## 1.2 Scope
 
-FR-25. The system must allow friends to exchange messages.
+MythCore RPG Launcher is a desktop launcher focused on RPG communities.
 
-FR-26. Messages must be stored in the messages table.
+The system provides:
 
-FR-27. The system must display conversation history.
+- User registration.
+- Secure login and logout.
+- User profile management.
+- Avatar customization.
+- Friend request management.
+- Friend acceptance and rejection.
+- User blocking.
+- Messaging system.
+- Favorite games management.
+- MySQL database integration.
+- Session management.
+- Administrative support features.
 
-FR-28. The system must display the sender username and timestamp.
+The application will be developed using:
 
----
-
-## 1.5 Blocking System
-
-FR-29. The system must allow users to block other players.
-
-FR-30. Blocked users must not be able to send friend requests.
-
-FR-31. Blocked users must not be able to send messages.
-
-FR-32. The system must store blocked users in the blocked_users table.
-
----
-
-## 1.6 Reports System
-
-FR-33. The system must allow users to report inappropriate behavior.
-
-FR-34. Reports must be stored in the reports table.
-
-FR-35. The report must include the reported user, description, date, and reporter.
+- PHP
+- MySQL
+- HTML5
+- CSS3
+- JavaScript
+- XAMPP
+- phpMyAdmin
+- GitHub
 
 ---
 
-## 1.7 Game Library
+## 1.3 Definitions, Acronyms and Abbreviations
 
-FR-36. The system must display available RPG games.
-
-FR-37. The system must allow users to add games to favorites.
-
-FR-38. Favorite games must be stored in the favorites table.
-
-FR-39. Users must be able to view their favorite games list.
-
----
-
-# 2. Agile Requirements
-
-AG-01. The project must be developed using Scrum methodology.
-
-AG-02. The project must be divided into Sprint 1, Sprint 2, and Sprint 3.
-
-AG-03. Every User Story must follow the format:
-
-As a [user], I want [action], so that [benefit].
-
-AG-04. Every User Story must contain Gherkin acceptance criteria using Given, When, and Then.
-
-AG-05. Each User Story must have Story Points assigned.
-
-AG-06. The Product Backlog must be prioritized.
-
-AG-07. Sprint Reviews must be conducted after each Sprint.
-
-AG-08. Source code must be managed using GitHub.
-
-AG-09. Every team member must contribute using their own GitHub account.
-
-AG-10. Sprint documentation must be updated throughout the project.
+| Term | Definition |
+|--------|------------|
+| RPG | Role Playing Game |
+| DB | Database |
+| MySQL | Relational Database Management System |
+| PHP | Hypertext Preprocessor |
+| CRUD | Create, Read, Update, Delete |
+| UI | User Interface |
+| UX | User Experience |
+| SRS | Software Requirements Specification |
+| DBA | Database Administrator |
+| SQL | Structured Query Language |
 
 ---
 
-# 3. UI/UX Requirements
+## 1.4 References
 
-## 3.1 General Interface
-
-UX-01. The launcher must maintain a consistent RPG visual theme.
-
-UX-02. All pages must use the same color palette and typography.
-
-UX-03. Navigation must be accessible through a persistent menu.
-
-UX-04. Action buttons must clearly describe their purpose.
-
-UX-05. Loading indicators must be displayed during server operations.
+- IEEE 830 Software Requirements Specification Standard
+- Scrum Guide 2020
+- PHP Official Documentation
+- MySQL Official Documentation
+- GitHub Documentation
 
 ---
 
-## 3.2 Forms and Validation
+## 1.5 Overview
 
-UX-06. Required fields must be clearly identified.
+This document contains:
 
-UX-07. Validation errors must appear below the corresponding field.
-
-UX-08. Passwords must be hidden by default.
-
-UX-09. Users must receive confirmation messages after successful registration and login.
-
----
-
-## 3.3 Friend System
-
-UX-10. Friend request status must be visually distinguishable.
-
-UX-11. Pending requests must display a "Pending" label.
-
-UX-12. Rejected requests must return to the "Add Friend" state.
-
-UX-13. Acceptance and rejection buttons must remain visible until a decision is made.
+- Functional Requirements
+- Non-Functional Requirements
+- User Interface Requirements
+- Database Requirements
+- Security Requirements
+- Business Rules
+- System Constraints
 
 ---
 
-# 4. Non-Functional Requirements
+# 2. Overall Description
 
-## 4.1 Performance
+## 2.1 Product Perspective
 
-NFR-01. Login operations must complete within 3 seconds.
+MythCore RPG Launcher is a standalone application connected to a MySQL database.
 
-NFR-02. User searches must return results within 2 seconds.
+The launcher acts as a central platform where users can manage their accounts, communicate with friends, customize profiles, and organize RPG-related activities.
 
-NFR-03. Profile updates must be processed within 3 seconds.
-
----
-
-## 4.2 Security
-
-NFR-04. Passwords must be encrypted using PHP password_hash() functions.
-
-NFR-05. Protected pages must require an authenticated session.
-
-NFR-06. SQL Injection protection must be implemented using prepared statements.
-
-NFR-07. User sessions must be securely managed through PHP sessions.
+The system interacts directly with the database to manage authentication, user information, social relationships, messages, and game preferences.
 
 ---
 
-## 4.3 Reliability
+## 2.2 Assumptions and Dependencies
 
-NFR-08. Friend request records must remain consistent after acceptance or rejection.
+The system assumes:
 
-NFR-09. Avatar changes must persist between sessions.
+- MySQL Server is available.
+- XAMPP services are running correctly.
+- PHP version 8.0 or higher is installed.
+- Users have internet access when required.
+- GitHub repository access is available.
+- Database credentials are configured correctly.
 
-NFR-10. Messages must not be lost during normal operation.
+Dependencies include:
 
----
-
-## 4.4 Usability
-
-NFR-11. New users must be able to create an account without assistance.
-
-NFR-12. Error messages must clearly explain the problem.
-
-NFR-13. The launcher must operate entirely through a web browser.
-
----
-
-## 4.5 Maintainability
-
-NFR-14. Source code must be organized into modules.
-
-NFR-15. Database scripts must be documented.
-
-NFR-16. The GitHub repository must include installation instructions.
+- PHP
+- MySQL
+- Apache
+- XAMPP
+- GitHub
 
 ---
 
-## 4.6 Constraints
+# 3. System Features and Requirements
 
-NFR-17. The project must be developed using HTML5, CSS3, JavaScript, PHP, and MySQL.
+## 3.1 Functional Requirements
 
-NFR-18. XAMPP will be used as the local development environment.
+### Authentication
 
-NFR-19. phpMyAdmin will be used for database management.
+**FR-01**  
+The system shall allow new users to register using a username, email address, and password.
 
-NFR-20. The system is intended exclusively for academic purposes within CBTis 47.
+**FR-02**  
+The system shall validate that the username does not already exist in the database.
 
-NFR-21. The system must support modern Chromium-based browsers.
+**FR-03**  
+The system shall validate that the email format is correct.
+
+**FR-04**  
+The system shall prevent registration when required fields are empty.
+
+**FR-05**  
+The system shall store passwords using PHP password hashing functions.
+
+**FR-06**  
+The system shall authenticate users using stored credentials.
+
+**FR-07**  
+The system shall redirect authenticated users to the main dashboard.
+
+**FR-08**  
+The system shall display an error message when incorrect credentials are entered.
+
+**FR-09**  
+The system shall allow users to log out at any time.
+
+**FR-10**  
+The system shall destroy active sessions during logout.
 
 ---
 
-# 👥 Development Team
+### User Profile Management
 
-| Member | Role |
-|----------|----------|
-| A. Irvin | Analyst and Designer |
-| B. Dorian | SQL Developer |
-| C. Dereck | Database Administrator (DBA) |
-| D. Manuel | Query Specialist |
-| E. Carlos | SQL Tester |
+**FR-11**  
+The system shall allow users to edit their profile information.
+
+**FR-12**  
+The system shall allow users to update their avatar image.
+
+**FR-13**  
+The system shall store avatar information in the users table.
+
+**FR-14**  
+The system shall display the selected avatar after login.
 
 ---
 
-# 📌 Project Information
+### Friend Request System
 
-**Project Name:** MythCore RPG Launcher
+**FR-15**  
+The system shall allow users to search for other registered users.
 
-**Institution:** CBTis 47
+**FR-16**  
+The system shall allow users to send friend requests.
 
-**Version:** 1.0
+**FR-17**  
+The system shall prevent duplicate friend requests.
 
-**Methodology:** Scrum
+**FR-18**  
+The system shall store friend requests in the friend_requests table.
 
-**Database:** MySQL (phpMyAdmin)
+**FR-19**  
+The system shall allow users to accept friend requests.
 
-**Development Environment:** XAMPP
+**FR-20**  
+The system shall create friendship records in the friends table after acceptance.
 
-**Repository:** GitHub
+**FR-21**  
+The system shall allow users to reject friend requests.
+
+**FR-22**  
+The system shall remove rejected requests automatically.
+
+**FR-23**  
+The system shall notify the sender when a request is rejected.
+
+---
+
+### User Blocking
+
+**FR-24**  
+The system shall allow users to block other users.
+
+**FR-25**  
+The system shall store blocked users in the blocked_users table.
+
+**FR-26**  
+Blocked users shall not be able to send friend requests.
+
+**FR-27**  
+Blocked users shall not be able to send messages.
+
+---
+
+### Messaging System
+
+**FR-28**  
+The system shall allow users to send messages to friends.
+
+**FR-29**  
+The system shall store messages in the messages table.
+
+**FR-30**  
+The system shall display conversation history.
+
+---
+
+### Favorite Games
+
+**FR-31**  
+The system shall allow users to add games to favorites.
+
+**FR-32**  
+The system shall allow users to remove games from favorites.
+
+**FR-33**  
+The system shall display favorite games in the user profile.
+
+---
+
+## 3.2 Non-Functional Requirements
+
+### Performance Requirements
+
+**NFR-01**  
+The login process shall complete in less than 3 seconds.
+
+**NFR-02**  
+Database queries shall return results within 2 seconds under normal conditions.
+
+**NFR-03**  
+Profile updates shall be reflected immediately after saving.
+
+---
+
+### Security Requirements
+
+**NFR-04**  
+Passwords shall never be stored in plain text.
+
+**NFR-05**  
+All protected pages shall require authentication.
+
+**NFR-06**  
+SQL Injection attacks shall be prevented using prepared statements.
+
+**NFR-07**  
+Sessions shall expire automatically after inactivity.
+
+---
+
+### Reliability Requirements
+
+**NFR-08**  
+The system shall maintain database consistency during transactions.
+
+**NFR-09**  
+Friendship records shall not be duplicated.
+
+**NFR-10**  
+Message records shall remain available after user logout.
+
+---
+
+### Maintainability Requirements
+
+**NFR-11**  
+Source code shall be documented.
+
+**NFR-12**  
+Database scripts shall be version controlled using GitHub.
+
+**NFR-13**  
+The project repository shall include installation instructions.
+
+---
+
+## 3.3 External Interface Requirements
+
+### User Interface Requirements
+
+**UI-01**  
+The system shall provide a login page.
+
+**UI-02**  
+The system shall provide a registration page.
+
+**UI-03**  
+The system shall provide a profile management page.
+
+**UI-04**  
+The system shall provide a friend management interface.
+
+**UI-05**  
+The system shall provide a messaging interface.
+
+**UI-06**  
+The system shall display avatars throughout the application.
+
+---
+
+### Database Interface Requirements
+
+The system shall interact with the following tables:
+
+- users
+- friend_requests
+- friends
+- blocked_users
+- messages
+- games
+- favorites
+- reports
+
+Primary keys and foreign keys shall be enforced to guarantee database integrity.
+
+---
+
+### Business Rules
+
+**BR-01**  
+A username can belong to only one account.
+
+**BR-02**  
+An email address can belong to only one account.
+
+**BR-03**  
+Blocked users cannot send friend requests.
+
+**BR-04**  
+Blocked users cannot send messages.
+
+**BR-05**  
+Only authenticated users can access protected pages.
+
+---
+
+# 4. Constraints
+
+**C-01**  
+The project shall use PHP as the backend language.
+
+**C-02**  
+The database shall be implemented using MySQL.
+
+**C-03**  
+The project shall run locally using XAMPP.
+
+**C-04**  
+The project shall be managed using GitHub.
+
+**C-05**  
+The system is intended exclusively for educational purposes.
+
+---
+
+# 5. Conclusion
+
+This Software Requirements Specification (SRS) defines the complete set of requirements necessary for the successful development, testing, deployment, and maintenance of the MythCore RPG Launcher.
+
+All requirements described in this document must be satisfied before the project is considered complete and accepted by the Product Owner.
