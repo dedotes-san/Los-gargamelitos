@@ -1,0 +1,194 @@
+/* BORRA TODO LO ANTERIOR Y PEGA ESTO */
+body {
+    background: #020617;
+    color: #e2e8f0;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor Principal */
+.main {
+    margin-left: 260px; /* Espacio para el sidebar */
+    padding: 20px;
+}
+
+/* LISTA DE AMIGOS VERTICAL */
+.friends-container {
+    display: flex;
+    flex-direction: column; /* Esto hace que vayan uno abajo del otro */
+    gap: 15px;
+    max-width: 800px;
+}
+
+.friend-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    transition: 0.3s;
+}
+
+.friend-card:hover {
+    border-color: #7c3aed;
+    box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+    transform: translateX(10px);
+}
+
+.friend-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.friend-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #7c3aed;
+    object-fit: cover;
+}
+
+/* ESTADOS */
+.status-on { color: #22c55e; font-size: 12px; font-weight: bold; }
+.status-off { color: #94a3b8; font-size: 12px; }
+
+/* BOTONES PROFESIONALES */
+.btn-chat {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.btn-chat:hover { background: #6d28d9; }
+body {
+    background: #050505 !important;
+    color: white !important;
+}
+
+/* Cualquier botón principal */
+.btn, button, .btn-primary {
+    background: #ff0000 !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5) !important;
+}
+
+/* Inputs de texto */
+input[type="text"], input[type="password"], input[type="email"] {
+    background: #121212 !important;
+    border: 1px solid #ff0000 !important;
+    color: white !important;
+}
+
+/* Títulos con brillo rojo */
+h1, h2, h3 {
+    color: #ff0000 !important;
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Tarjetas o contenedores */
+.card, .container, .sidebar {
+    background: #121212 !important;
+    border: 1px solid #333 !important;
+}
+.blocked-notice {
+    background: #080000;
+    border: 1px solid red;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ff4444;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.ico-lock { font-size: 24px; }
+
+.btn-unlock {
+    background: #ff0000;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-unlock:hover {
+    box-shadow: 0 0 15px #ff0000;
+    transform: scale(1.05);
+}
+/* Barra de progreso neón */
+.progress-section {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+.progress-bar-bg {
+    background: #111;
+    height: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.progress-bar-fill {
+    background: var(--neon-red);
+    height: 100%;
+    box-shadow: var(--glow);
+    transition: width 1s ease-in-out;
+}
+
+/* Estado Bloqueado */
+.card.locked {
+    filter: grayscale(1);
+    opacity: 0.3;
+    border: 1px dashed #444;
+    cursor: not-allowed;
+}
+.card.locked:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #444;
+}
+.card.locked .trophy-icon { opacity: 0.2; }
+.btn-back {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--neon);
+    border: 1px solid var(--neon);
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    background: transparent;
+}
+
+.btn-back:hover {
+    background: var(--neon);
+    color: white;
+    box-shadow: var(--glow);
+    transform: scale(1.05);
+}
+
+#results{
+display:grid;
+grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+gap:20px;
+padding:20px 5%;
+}
